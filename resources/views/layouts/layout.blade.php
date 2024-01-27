@@ -219,8 +219,8 @@
             });
 
             function setBaseURL() {
-                //return "https://ficha.unimex.edu.mx/";
-                return "http://sistema.com:8000/";
+                return "https://testing.ficha.unimex.edu.mx/";
+                //return "http://sistema.com:8000/";
             }
 
             function llenarAreaInformacion(infoProspecto) {
@@ -546,6 +546,22 @@
             }
         </script>
     @endif
+    @if ($validar_folio == false && $validar_prmotor == false)
+    @endif
+    @if ($validar_folio == true && $validar_prmotor == false)
+        <script>
+            $(document).ready(function() {
+                $("#modal_error").modal("show");
+            });
+        </script>
+    @endif
+    @if ($validar_folio == false && $validar_prmotor == true)
+        <script>
+            $(document).ready(function() {
+                $("#modal_error").modal("show");
+            });
+        </script>
+    @endif
 
     <script>
         $(document).ready(function() {
@@ -555,7 +571,6 @@
                 //$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
             });
         });
-
 
 
         function mostrarEdicionProspecto() {
