@@ -219,8 +219,8 @@
             });
 
             function setBaseURL() {
-                return "https://testing.ficha.unimex.edu.mx/";
-                //return "http://sistema.com:8000/";
+                let base_url = "{{ env('APP_URL') }}";
+                return base_url;
             }
 
             function llenarAreaInformacion(infoProspecto) {
