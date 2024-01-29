@@ -26,11 +26,11 @@ class FichaController extends Controller
         }
         else {
             //print('existe el prospecto falta validar el promotor <br>'); 
-            $validacionPromotor = app(PeticionesController::class)->validarPromotor($promotor);
+            $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
 
-            if(intval($validacionPromotor) > 0){
+            if($validacionPromotor['claveUsuario'] != 0){
                 //print('existe promotor <br>');
-                $infoPromotor = app(PeticionesController::class)->optenerDatosPromotor($validacionPromotor);
+                $infoPromotor = $validacionPromotor;
                 $cadenaFecha = $infoPromotor['fechaActual'];
                 $fecha = date('Y-m-d', strtotime($cadenaFecha));
                 $fechaFormateada = SELF::formatearFecha($fecha);
