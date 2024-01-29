@@ -20,43 +20,43 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
+                            <form id="form_search"  method="GET" class="row">
                                 <div class="col-12 col-md-8">
                                     <p>Selecciona un criterio de búsqueda</p>
                                     <div class="w-100 d-flex">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input" type="radio" value="2"
+                                                id="folio?crm" name="search_crm[]">
+                                            <label class="form-check-label" for="folio?crm">
                                                 Folio CRM
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input ms-2" type="radio" value="2"
+                                                id="nombre_crm" name="search_crm[]">
+                                            <label class="form-check-label" for="nombre_crm">
                                                 Nombre
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input ms-2" type="radio" value="3"
+                                                id="tel_crm" name="search_crm[]">
+                                            <label class="form-check-label" for="tel_crm">
                                                 Teléfono Casa/Oficina/Celular
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input ms-2" type="radio" value="4"
+                                                id="email_crm" name="search_crm[]">
+                                            <label class="form-check-label" for="email_crm">
                                                 Email
                                             </label>
                                         </div>
                                     </div>
                                     <div class="mt-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Ingresa
+                                        <label for="text-crm" class="form-label">Ingresa
                                             el FolioCRM / Telefono / Celular / Email:</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                                        <input type="email" class="form-control" required id="text-crm" name="text_crm"
                                             placeholder="Ingresa el FolioCRM / Telefono / Celular / Email">
                                     </div>
                                 </div>
@@ -69,11 +69,11 @@
                                 <div class="col-12 col-md-12" style="height: 150px !important;">
 
                                 </div>
-                            </div>
+                            </form action="" method="GET">
                         </div>
                         <diiv class="row p-3">
                             <div class="col-12 col-md-6">
-                                <button type="button" class="btn btn-primary w-100">Buscar
+                                <button  form="form_search" type="submit" class="btn btn-primary w-100">Buscar
                                     prospectos</button>
                             </div>
                             <div class="col-12 col-md-6">
@@ -90,7 +90,8 @@
                 Genera Matrícula</button>
         </div>
         <div class="col-12 col-md-3">
-            <button type="button" onclick="enviarDatosProspecto()" class="btn btn-info btn-sm"><i class="bi bi-floppy-fill"></i> Guardar
+            <button type="button" onclick="enviarDatosProspecto()" class="btn btn-info btn-sm"><i
+                    class="bi bi-floppy-fill"></i> Guardar
                 Cambios</button>
         </div>
         <div class="col-12 col-md-4">

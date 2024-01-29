@@ -34,7 +34,7 @@ class FichaController extends Controller
                 $cadenaFecha = $infoPromotor['fechaActual'];
                 $fecha = date('Y-m-d', strtotime($cadenaFecha));
                 $fechaFormateada = SELF::formatearFecha($fecha);
-                
+
                 $infoFinal = array(
                     "infoProspecto" => $infoProspecto,
                     "infoPromotor" => $infoPromotor,
@@ -115,7 +115,7 @@ class FichaController extends Controller
         $diasSemanaList = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo"];
         $diaFinal = $diaSemana - 1;
         
-        for ($i=1; $i < (sizeof($diasSemanaList) - 1); $i++) { 
+        for ($i=0; $i < (sizeof($diasSemanaList) - 1); $i++) { 
             if($diaFinal == $i){
                 return $diasSemanaList[$i];
             }

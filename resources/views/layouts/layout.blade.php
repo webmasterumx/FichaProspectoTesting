@@ -174,6 +174,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     @php
         $validar_folio = isset($_REQUEST['folio_crm']);
         $validar_prmotor = isset($_REQUEST['promotor']);
@@ -572,6 +573,7 @@
             });
         });
 
+        $("#form_search").validate();
 
         function mostrarEdicionProspecto() {
             console.log('hola');
