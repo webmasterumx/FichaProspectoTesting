@@ -50,14 +50,50 @@
                 <input type="text" class="form-control text-center" id="telefonoReferido" name="telefonoReferido"
                     placeholder="Tel. maximo 13 digitos">
             </div>
-        </div>
-        <div class="col-12 col-md-8"></div>
-        <div class="col-12 col-md-4">
             <div class="mb-3">
                 <label for="emailReferido" class="form-label">Correo
                     Electronico:</label>
                 <input type="email" class="form-control text-center" id="emailReferido" name="emailReferido"
                     placeholder="Email">
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="table-responsive" style="overflow-y: scroll;  height: 150px;">
+                <table id="table_referidos" class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-encabezado_table text-white" scope="col">Folio CRM</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Nombre</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Telefono</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Telefono 2</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Celular</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Celular 2</th>
+                            <th class="bg-encabezado_table text-white" scope="col">Correo Electronico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $cont = 0;
+                            $stylePar = "background-color:white !important;";
+                            $styleInpar = "background-color:#D3DFE8 !important;";
+                        @endphp
+                        @foreach ($referidos as $referido)
+                            @php
+                                $cont = $cont + 1;
+                            @endphp
+                            
+                            <tr>
+                                <th @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif><a href=""> {{ $referido['folioCRM'] }} </a></th>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['nombreCompleto'] }} </td>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono1'] }} </td>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono2'] }} </td>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular1'] }} </td>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular2'] }} </td>
+                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['email'] }} </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
         @isset($_REQUEST['folio_crm'])

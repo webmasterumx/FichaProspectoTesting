@@ -18,11 +18,14 @@ class FichaController extends Controller
 
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
-            $referidos = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
+            $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
+            $referidos = $referidosRespone['ProspectoCallCenter'];
         }
         else {
             $referidos = array();
         }
+
+        //dd($referidos);
 
         return view('inicio', [
             "planteles" => $planteles, 
