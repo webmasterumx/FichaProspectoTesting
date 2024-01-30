@@ -19,16 +19,19 @@ class FichaController extends Controller
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
             $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
-            $referidos = $referidosRespone['ProspectoCallCenter'];
-        }
-        else {
+            if (sizeof($referidosRespone) > 0) {
+                $referidos = $referidosRespone['ProspectoCallCenter'];
+            } else {
+                $referidos = $referidosRespone;
+            }
+        } else {
             $referidos = array();
         }
 
         //dd($referidos);
 
         return view('inicio', [
-            "planteles" => $planteles, 
+            "planteles" => $planteles,
             "estados" => $estados['EstatusDetalle'],
             "horarios" => $horarios['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
@@ -37,19 +40,18 @@ class FichaController extends Controller
         ]);
     }
 
-    public function getInfoFichaProspecto($folio_crm, $promotor)  
+    public function getInfoFichaProspecto($folio_crm, $promotor)
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        if($infoProspecto['folioCRM'] == 0){
+        if ($infoProspecto['folioCRM'] == 0) {
             //print(' no existe prospecto <br>'); //retornar 1
             return 1;
-        }
-        else {
+        } else {
             //print('existe el prospecto falta validar el promotor <br>'); 
             $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
 
-            if($validacionPromotor['claveUsuario'] != 0){
+            if ($validacionPromotor['claveUsuario'] != 0) {
                 //print('existe promotor <br>');
                 $infoPromotor = $validacionPromotor;
                 $cadenaFecha = $infoPromotor['fechaActual'];
@@ -63,16 +65,11 @@ class FichaController extends Controller
                 );
 
                 return response()->json($infoFinal);
-            }
-            else {
+            } else {
                 //print('no existe promotor'); //retornar 2
                 return 2;
             }
-            
         }
-    
-        
-        
     }
 
     public function guardarDatosProspecto(Request $request)
@@ -97,17 +94,16 @@ class FichaController extends Controller
 
         return redirect()->back();
     }
-    public function searcCrm(Request $request)  
+    public function searcCrm(Request $request)
     {
         $tipo_search = $request->search_crm;
         $text_search = $request->text_crm;
         $plantel_search = $request->plantel_search;
 
         print($tipo_search);
-
     }
 
-    public function formatearFecha($fecha) 
+    public function formatearFecha($fecha)
     {
         $diaSemana = date('N', strtotime($fecha));
         $numeroMes = date('m', strtotime($fecha));
@@ -124,35 +120,34 @@ class FichaController extends Controller
         );
 
         return $fechaFormateada;
-
     }
 
-    public function nombreMes($numeroMes)  
-    {   
-        $mesesList = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];    
-        $mesFinal = $numeroMes - 1 ;
+    public function nombreMes($numeroMes)
+    {
+        $mesesList = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        $mesFinal = $numeroMes - 1;
 
-        for ($i=0; $i <(sizeof($mesesList)-1); $i++) { 
-            if($i == $mesFinal){
+        for ($i = 0; $i < (sizeof($mesesList) - 1); $i++) {
+            if ($i == $mesFinal) {
                 return $mesesList[$i];
             }
         }
     }
 
-    public function nombreDiaSemana($diaSemana) 
+    public function nombreDiaSemana($diaSemana)
     {
-       
+
         $diasSemanaList = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo"];
         $diaFinal = $diaSemana - 1;
-        
-        for ($i=0; $i < (sizeof($diasSemanaList) - 1); $i++) { 
-            if($diaFinal == $i){
+
+        for ($i = 0; $i < (sizeof($diasSemanaList) - 1); $i++) {
+            if ($diaFinal == $i) {
                 return $diasSemanaList[$i];
             }
         }
     }
 
-    public function guardarBitacora(Request $request)  
+    public function guardarBitacora(Request $request)
     {
 
         $valores = array(
@@ -171,10 +166,9 @@ class FichaController extends Controller
         //dd($envio);
 
         return redirect()->back();
-
     }
 
-    public function guardarReferido(Request $request)  
+    public function guardarReferido(Request $request)
     {
 
         $valores = array(
@@ -195,6 +189,5 @@ class FichaController extends Controller
         //dd($envio);
 
         return redirect()->back();
-
     }
 }

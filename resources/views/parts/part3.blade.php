@@ -83,7 +83,7 @@
                             @endphp
                             
                             <tr>
-                                <th @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif><a href=""> {{ $referido['folioCRM'] }} </a></th>
+                                <th @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif><a href="{{ env('APP_URL') }}?folio_crm={{$referido['folioCRM']}}&promotor={{$_REQUEST['promotor']}}"> {{ $referido['folioCRM'] }} </a></th>
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['nombreCompleto'] }} </td>
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono1'] }} </td>
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono2'] }} </td>
