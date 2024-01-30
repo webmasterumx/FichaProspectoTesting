@@ -137,4 +137,21 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
+
+    public function obtenerReferidosProspecto($folioCRM)
+    {
+        $response = Http::post($this->base_url . 'obtener/referidos', [
+            "folioCRM" => $folioCRM
+        ]);
+
+        return $response->json();
+    }
+
+    public function guardarReferidoPeticion($valores)
+    {
+
+        $response = Http::post($this->base_url . 'registrar/referido/prospecto', $valores);
+
+        return $response->json();
+    }
 }

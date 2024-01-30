@@ -9,18 +9,28 @@ class FichaController extends Controller
 
     public function index()
     {
+
         $planteles = app(PeticionesController::class)->getPlanteles();
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
         $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
         $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1);
         $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2);
-       
+
+        if ((isset($_REQUEST['folio_crm']) == true)) {
+            $folio_crm = $_REQUEST['folio_crm'];
+            $referidos = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
+        }
+        else {
+            $referidos = array();
+        }
+
         return view('inicio', [
             "planteles" => $planteles, 
             "estados" => $estados['EstatusDetalle'],
             "horarios" => $horarios['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
-            "actividadesProximas" => $actividadesProximas['TipoContacto']
+            "actividadesProximas" => $actividadesProximas['TipoContacto'],
+            "referidos" => $referidos,
         ]);
     }
 
@@ -155,6 +165,30 @@ class FichaController extends Controller
         );
 
         $envio = app(PeticionesController::class)->guardarBitacora($valores);
+        //dd($envio);
+
+        return redirect()->back();
+
+    }
+
+    public function guardarReferido(Request $request)  
+    {
+
+        $valores = array(
+            "folioCRM" => $request->folio_crm,
+            "nombre" => $request->nombreReferido,
+            "apPaterno" => $request->apellidoPaternoReferido,
+            "apMaterno" => $request->apellidoMaternoReferido,
+            "telefono" => $request->telefonoReferido,
+            "email" => $request->emailReferido,
+            "claveUsuario" => $request->promotor,
+            "tipoTelefono" => $request->telefonoReferidoType,
+        );
+
+        //dd($valores);
+
+        $envio = app(PeticionesController::class)->guardarReferidoPeticion($valores);
+
         //dd($envio);
 
         return redirect()->back();

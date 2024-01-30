@@ -19,6 +19,7 @@ Route::get('/', [FichaController::class, 'index']);
 Route::get('/getFichaProspecto/{folio_crm}/{promotor}', [FichaController::class, 'getInfoFichaProspecto'])->name('get.ficha.prospecto');
 Route::get('/search/crm/{text_crm}/{type_search}/{clave_plantel}', [FichaController::class, 'searcCrm'])->name('search.crm');
 Route::get('/guardar/bitacora', [FichaController::class, 'guardarBitacora'])->name('guardar.bitacora');
+Route::get('/guardar/referido', [FichaController::class, 'guardarReferido'])->name('guardar.referido');
 
 //! Consultas a la api
 
