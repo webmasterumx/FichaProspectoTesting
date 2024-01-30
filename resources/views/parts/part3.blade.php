@@ -19,8 +19,8 @@
                     </div>
                     <div class="form-check">
                         <input class="ms-3 form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                            id="flexRadioDefault3" checked>
+                        <label class="form-check-label" for="flexRadioDefault3">
                             Celular
                         </label>
                     </div>

@@ -20,13 +20,13 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="form_search"  method="GET" class="row">
+                            <form id="form_search" class="row">
                                 <div class="col-12 col-md-8">
                                     <p>Selecciona un criterio de búsqueda</p>
                                     <div class="w-100 d-flex">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="2"
-                                                id="folio?crm" name="search_crm[]">
+                                            <input class="form-check-input" type="radio" value="1" id="folio_crm"
+                                                name="search_crm[]" checked>
                                             <label class="form-check-label" for="folio?crm">
                                                 Folio CRM
                                             </label>
@@ -53,27 +53,38 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="w-100">
+                                        <label id="label-error-type" for="text_crm" class="text-danger">campo
+                                            requerido</label>
+                                    </div>
                                     <div class="mt-3">
                                         <label for="text-crm" class="form-label">Ingresa
                                             el FolioCRM / Telefono / Celular / Email:</label>
-                                        <input type="email" class="form-control" required id="text-crm" name="text_crm"
+                                        <input type="text" class="form-control" required id="text_crm"
+                                            name="text_crm"
                                             placeholder="Ingresa el FolioCRM / Telefono / Celular / Email">
+                                        <label id="label-error-text" for="text_crm" class="text-danger d-none">campo
+                                            requerido</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <p>Si conoces el plantel, seleecionalo aquí:</p>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Selecciona una opción</option>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="plantel_search" id="plantel_search">
+                                        <option value="0" selected>Selecciona una opción</option>
+                                        @foreach ($planteles as $plantel)
+                                            <option value="{{ $plantel['clave'] }}"> {{ $plantel['descrip'] }} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-12" style="height: 150px !important;">
 
                                 </div>
-                            </form action="" method="GET">
+                            </form>
                         </div>
                         <diiv class="row p-3">
                             <div class="col-12 col-md-6">
-                                <button  form="form_search" type="submit" class="btn btn-primary w-100">Buscar
+                                <button onclick="searchProspecto()" type="button" class="btn btn-primary w-100">Buscar
                                     prospectos</button>
                             </div>
                             <div class="col-12 col-md-6">
@@ -95,8 +106,8 @@
                 Cambios</button>
         </div>
         <div class="col-12 col-md-4">
-            <button id="mensajesWhatsapp" type="button" class="btn btn-success btn-sm" onclick="mostrarMensajes()"><i
-                    class="bi bi-phone-fill"></i> Mensajes WhatsApp</button>
+            <button id="mensajesWhatsapp" type="button" class="btn btn-success btn-sm"
+                onclick="mostrarMensajes()"><i class="bi bi-phone-fill"></i> Mensajes WhatsApp</button>
         </div>
     </div>
 </div>

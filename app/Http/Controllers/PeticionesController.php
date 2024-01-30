@@ -109,23 +109,31 @@ class PeticionesController extends Controller
 
     public function getCatalogoEstatusDetalle()
     {
-        $response = Http::post($this->base_url . 'obtener/catalogo/estus/detalle');
+        $response = Http::get($this->base_url . 'obtener/catalogo/estus/detalle');
 
         return $response->json();
     }
 
     public function getCatalogoHorarioContacto()
     {
-        $response = Http::post($this->base_url . 'obtener/catalogo/horario/contacto');
+        $response = Http::get($this->base_url . 'obtener/catalogo/horario/contacto');
 
         return $response->json();
     }
 
     public function getCatalogoTipoContacto($id)
     {
-        $response = Http::post($this->base_url . 'obtener/conversaciones/whatsapp', [
+        $response = Http::post($this->base_url . 'obtener/catalogo/tipo/contacto', [
             "idcombo" => $id
         ]);
+
+        return $response->json();
+    }
+
+    public function guardarBitacora($valores)
+    {
+
+        $response = Http::post($this->base_url . 'registrar/bitacora', $valores);
 
         return $response->json();
     }

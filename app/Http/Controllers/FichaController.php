@@ -10,9 +10,17 @@ class FichaController extends Controller
     public function index()
     {
         $planteles = app(PeticionesController::class)->getPlanteles();
+        $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
+        $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
+        $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1);
+        $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2);
        
         return view('inicio', [
-            "planteles" => $planteles
+            "planteles" => $planteles, 
+            "estados" => $estados['EstatusDetalle'],
+            "horarios" => $horarios['RangoContactacion'],
+            "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
+            "actividadesProximas" => $actividadesProximas['TipoContacto']
         ]);
     }
 
@@ -76,6 +84,15 @@ class FichaController extends Controller
 
         return redirect()->back();
     }
+    public function searcCrm(Request $request)  
+    {
+        $tipo_search = $request->search_crm;
+        $text_search = $request->text_crm;
+        $plantel_search = $request->plantel_search;
+
+        print($tipo_search);
+
+    }
 
     public function formatearFecha($fecha) 
     {
@@ -120,5 +137,27 @@ class FichaController extends Controller
                 return $diasSemanaList[$i];
             }
         }
+    }
+
+    public function guardarBitacora(Request $request)  
+    {
+
+        $valores = array(
+            "folioCRM" => $request->folio_crm,
+            "actRealizada" => $request->actividadRealizada,
+            "estatusDetalle" => $request->estatusDetalle,
+            "tipoContacto" => $request->actividadProxima,
+            "fechaAgenda" => $request->date_bitacora,
+            "idRangoHr" => $request->horarioContacto,
+            "asistioPlantel" => false,
+            "actividad" => $request->comentariosBitacora,
+            "claveUsuario" => $request->promotor,
+        );
+
+        $envio = app(PeticionesController::class)->guardarBitacora($valores);
+        //dd($envio);
+
+        return redirect()->back();
+
     }
 }

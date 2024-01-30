@@ -1,54 +1,53 @@
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
     <div class="row">
         <div class="col-12 col-md-4">
-            <select class="form-select form-select-sm mb-3" aria-label="Default select example">
-                <option selected>Selecciona Actividad Realizada</option>
-                <option value="1">Cita</option>
-                <option value="2">Llamada</option>
-                <option value="3">Mensaje</option>
-                <option value="4">Correo</option>
-            </select>
-            <select class="form-select form-select-sm mb-3" aria-label="Default select example">
-                <option selected>Selecciona Estattus Detalle</option>
-                <option value="1">ANTICIPO PAGO</option>
-                <option value="2">BUZÓN</option>
-                <option value="3">DATOS FALSOS</option>
-                <option value="3">DUPLICADOS</option>
-                <option value="3">ESTÁ EN EL TRABAJO</option>
-                <option value="3">INTERESADO</option>
-                <option value="3">MAS DE 5 INTENTOS SIN CONTACTO</option>
-                <option value="3">NO OCNTESTA</option>
-                <option value="">NO SE ENCUENTRA/ NO PUEDE CONTESTAR</option>
-                <option value="">PROSPECTACION</option>
-                <option value="">PRUEBA</option>
-                <option value="">REALIZO PAGO</option>
-                <option value="">SE CORTO / CUELGA</option>
-            </select>
-            <select class="form-select form-select-sm mb-3" aria-label="Default select example">
-                <option selected>Seleccion la Proxima Actividad</option>
-                <option value="1">Cita</option>
-                <option value="2">Llamada</option>
-                <option value="3">Mensaje</option>
-                <option value="4">Correo</option>
-            </select>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Ingrese la Fecha a la
-                    Agenda</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <select class="form-select form-select-sm mb-3" aria-label="Default select example">
-                <option selected>Seleccion Horario de Contactación</option>
-                <option value="1">9 - 11 am</option>
-                <option value="1">11 - 2 pm</option>
-                <option value="1">2 - 4 pm</option>
-                <option value="1">4 - 7 pm</option>
-                <option value="1">7 - 9 pm</option>
-            </select>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Comentarios o
-                    Actividad</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+            <form id="formBitacora" action="{{ route('guardar.bitacora') }}" method="GET">
+                <select class="form-select form-select-sm mb-3" aria-label="Default select example"
+                    id="actividadRealizada" name="actividadRealizada">
+                    @foreach ($actividadesRealizadas as $actividadRealizada)
+                        <option value="{{ $actividadRealizada['tipoContacto'] }}">
+                            {{ $actividadRealizada['Descripcion'] }}
+                        </option>
+                    @endforeach
+                </select>
+                <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="estatusDetalle"
+                    name="estatusDetalle">
+                    <option selected disabled>Selecciona Estattus Detalle</option>
+                    @foreach ($estados as $estado)
+                        <option value="{{ $estado['clave'] }}">{{ $estado['descrip'] }}</option>
+                    @endforeach
+                </select>
+                <select class="form-select form-select-sm mb-3" aria-label="Default select example"
+                    id="actividadProxima" name="actividadProxima">
+                    @foreach ($actividadesProximas as $actividadProxima)
+                        <option value="{{ $actividadProxima['tipoContacto'] }}">
+                            {{ $actividadProxima['Descripcion'] }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="mb-3">
+                    <label for="date_bitacora" class="form-label">Elegir fecha</label>
+                    <input type="date" class="form-control" id="date_bitacora" name="date_bitacora">
+                </div>
+                <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="horarioContacto"
+                    name="horarioContacto">
+                    <option selected>Seleccion Horario de Contactación</option>
+                    @foreach ($horarios as $horario)
+                        <option value="{{ $horario['id'] }}"> {{ $horario['nombre'] }} </option>
+                    @endforeach
+                </select>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Comentarios o
+                        Actividad</label>
+                    <textarea class="form-control" id="comentariosBitacora" name="comentariosBitacora" rows="3"></textarea>
+                </div>
+                @isset($_REQUEST['folio_crm'])
+                    <input type="text" value="{{ $_REQUEST['folio_crm'] }}" name="folio_crm" id="folio_crm" hidden>
+                @endisset
+                @isset($_REQUEST['promotor'])
+                    <input type="text" value="{{ $_REQUEST['promotor'] }}" name="promotor" id="promotor" hidden>
+                @endisset
+            </form>
         </div>
         <div class="col-12 col-md-8">
             <div class="table-responsive" style="overflow-y: scroll;  height: 300px;">
@@ -71,6 +70,8 @@
                     </tbody>
                 </table>
             </div>
+            <button type="submit" form="formBitacora" class="btn btn-primary mt-3"><i class="bi bi-floppy-fill"></i>
+                &nbsp; Guardar Actividad</button>
         </div>
     </div>
 </div>

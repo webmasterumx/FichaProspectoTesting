@@ -451,6 +451,7 @@
             function establecer_bitacora(bitacora) {
                 for (let index = 0; index < bitacora.length; index++) {
                     const element = bitacora[index];
+                    //console.log(element);
                     cont = index + 1;
                     if (cont % 2 !== 0) {
                         //numero inpar
@@ -468,7 +469,7 @@
                             <td style="${style}">${element.estatusDetalle}</td>
                             <td style="${style}">${element.actividad}</td>
                             <td style="${style}">${element.fechaHoraCaptura}</td>
-                            <td style="${style}"></td>
+                            <td style="${style}">${element.tipoContacto}</td>
                             <td style="${style}">${element.promotorPropietario}</td>
                             <td style="${style}"></td>
                         </tr>
@@ -573,7 +574,9 @@
             });
         });
 
-        $("#form_search").validate();
+        function searchProspecto() {
+            console.log('hola');
+        }
 
         function mostrarEdicionProspecto() {
             console.log('hola');
