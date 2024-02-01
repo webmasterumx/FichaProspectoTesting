@@ -65,7 +65,7 @@
                                             placeholder="Ingresa el FolioCRM / Telefono / Celular / Email">
                                         <label id="label-error-text" for="text_crm" class="text-danger d-none">campo
                                             requerido</label>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <p>Si conoces el plantel, seleecionalo aquí:</p>
@@ -78,20 +78,45 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-12" style="height: 150px !important;">
+                                    <div class="table-responsive mt-3" style="overflow-y: scroll;  height: 150px;">
+                                        <table id="table_search" class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Folio CRM
+                                                    </th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Nombre
+                                                    </th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Telefono
+                                                    </th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Telefono 2
+                                                    </th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Celular
+                                                    </th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Celular
+                                                        2</th>
+                                                    <th class="bg-encabezado_table text-white" scope="col">Correo
+                                                        Electronico</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </form>
                         </div>
-                        <diiv class="row p-3">
+                        <div class="row p-3">
                             <div class="col-12 col-md-6">
-                                <button onclick="searchProspecto()" type="button" class="btn btn-primary w-100">Buscar
+                                <button onclick="searchProspecto()" type="button"
+                                    class="btn btn-primary w-100">Buscar
                                     prospectos</button>
                             </div>
                             <div class="col-12 col-md-6">
                                 <button type="button" class="btn btn-danger w-100"
                                     data-bs-dismiss="modal">Cancelar</button>
                             </div>
-                        </diiv>
+                        </div>
                     </div>
                 </div>
             </div>

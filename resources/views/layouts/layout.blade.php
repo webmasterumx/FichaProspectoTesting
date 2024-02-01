@@ -415,7 +415,6 @@
                 $('#datePromotor').html(lineaFecha);
             }
 
-
             //informacion de los tabs
             function establecerNumeros(infoProspecto) {
                 if (infoProspecto.celular1 == "") {
@@ -576,6 +575,56 @@
 
         function searchProspecto() {
             console.log('hola');
+
+            var formElement = document.getElementById("form_search");
+            formData = new FormData(formElement);
+            console.log(formData);
+            console.log(formData.get('search_crm[]'));
+
+            let search_type = formData.get('search_crm[]');
+            let search_text = formData.get('text_crm');
+            let search_plantel = formData.get('plantel_search');
+
+            let ruta = "{{ env('APP_URL') }}" + "search/crm/" + search_type + "/" + search_text + "/" + search_plantel;
+            console.log(ruta);
+
+            $.ajax({
+                url: ruta,
+                method: "GET",
+                dataType: 'json',
+            }).done(function(data) {
+                console.log(data); // imprimimos la respuesta
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    //console.log(element);
+                    cont = index + 1;
+                    if (cont % 2 !== 0) {
+                        //numero inpar
+                        style = "background-color:white !important;";
+                    }
+                    if (cont % 2 === 0) {
+                        //numero par
+                        style = "background-color:#D3DFE8 !important;";
+                    }
+                    let fila = `
+                        <tr>
+                            <td style="${style}">${element.folioCRM}</td>
+                            <td style="${style}">${element.nombreCompleto}</td>
+                            <td style="${style}">${element.telefono1}</td>
+                            <td style="${style}">${element.telefono2}</td>
+                            <td style="${style}">${element.celular1}</td>
+                            <td style="${style}">${element.celular2}</td>
+                            <td style="${style}">${element.email}</td>
+                        </tr>
+                    `;
+                    $('#table_search tbody').append(fila);
+                }
+
+
+            }).fail(function(e) {
+                console.log("Request: " + JSON.stringify(e));
+            })
+
         }
 
         function mostrarEdicionProspecto() {

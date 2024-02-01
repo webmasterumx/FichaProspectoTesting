@@ -154,4 +154,11 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
+
+    public function getBusqueda($valores)  
+    {
+        $response = Http::post($this->base_url . 'buscador/prospecto', $valores);
+
+        return $response->json();
+    }
 }

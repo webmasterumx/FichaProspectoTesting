@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class FichaController extends Controller
 {
@@ -94,13 +96,46 @@ class FichaController extends Controller
 
         return redirect()->back();
     }
-    public function searcCrm(Request $request)
+    public function searcCrm($search_type, $search_text, $search_plantel)
     {
-        $tipo_search = $request->search_crm;
-        $text_search = $request->text_crm;
-        $plantel_search = $request->plantel_search;
+        $tipo_search = $search_type;
+        $text_search = $search_text;
+        $plantel_search = $search_plantel;
 
-        print($tipo_search);
+        //print($tipo_search);
+
+        $valores = array(
+            "tipoBusqueda" => $tipo_search,
+            "textoBuscar" => $text_search,
+            "clavePlantel" => $plantel_search,
+        );
+
+        $busqueda = app(PeticionesController::class)->getBusqueda($valores);
+        $resulList = array();
+
+        if (isset($busqueda['ProspectoCallCenter']['folioCRM'])) {
+            //echo 'es uno';
+
+            $resultado = array(
+                "folioCRM" => $busqueda['ProspectoCallCenter']['folioCRM'],
+                "nombreCompleto" => $busqueda['ProspectoCallCenter']['nombreCompleto'],
+                "telefono1" => $busqueda['ProspectoCallCenter']['telefono1'],
+                "telefono2" => $busqueda['ProspectoCallCenter']['telefono2'],
+                "celular1" => $busqueda['ProspectoCallCenter']['celular1'],
+                "celular2" => $busqueda['ProspectoCallCenter']['celular2'],
+                "email" => $busqueda['ProspectoCallCenter']['email'],
+            );
+
+            array_push($resulList, $resultado);
+        }
+        else {
+            //echo 'son mas de uno';
+            
+            $resulList = $busqueda['ProspectoCallCenter'];
+
+        }
+
+        return Response::json($resulList);
     }
 
     public function formatearFecha($fecha)
