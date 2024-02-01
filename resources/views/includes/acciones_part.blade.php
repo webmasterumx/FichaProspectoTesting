@@ -53,10 +53,6 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="w-100">
-                                        <label id="label-error-type" for="text_crm" class="text-danger">campo
-                                            requerido</label>
-                                    </div>
                                     <div class="mt-3">
                                         <label for="text-crm" class="form-label">Ingresa
                                             el FolioCRM / Telefono / Celular / Email:</label>

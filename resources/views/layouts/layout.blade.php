@@ -586,7 +586,13 @@
             let search_plantel = formData.get('plantel_search');
 
             let ruta = "{{ env('APP_URL') }}" + "search/crm/" + search_type + "/" + search_text + "/" + search_plantel;
-            console.log(ruta);
+            
+            if (search_text == null || search_text == "" || search_text == " ") {
+                $('#label-error-text').removeClass('d-none');
+            }
+            else {
+                $('#label-error-text').addClass('d-none');
+            }
 
             $.ajax({
                 url: ruta,
