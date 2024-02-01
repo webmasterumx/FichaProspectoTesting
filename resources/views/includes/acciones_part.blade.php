@@ -65,7 +65,7 @@
                                             placeholder="Ingresa el FolioCRM / Telefono / Celular / Email">
                                         <label id="label-error-text" for="text_crm" class="text-danger d-none">campo
                                             requerido</label>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <p>Si conoces el plantel, seleecionalo aquí:</p>
