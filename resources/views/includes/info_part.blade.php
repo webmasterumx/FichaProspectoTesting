@@ -72,6 +72,9 @@
         <label for="exampleFormControlInput1" class="form-label">Carrera:</label>
         <select class="form-select form-select-sm" aria-label="Small select example" id="carrera_info"
             name="carrera_info" form="formDatosGenerales">
+            @foreach ($carreras as $carrera)
+                <option value=" {{ $carrera['clave_carrera'] }} "> {{ $carrera['descrip_ofi'] }} </option>
+            @endforeach
         </select>
     </div>
 </div>
@@ -80,7 +83,6 @@
         <label for="exampleFormControlInput1" class="form-label">Horario:</label>
         <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info"
             name="horario_info" form="formDatosGenerales">
-            <option value="0" selected disabled>Selecciona un horario</option>
         </select>
     </div>
 </div>

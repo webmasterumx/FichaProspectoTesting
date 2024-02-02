@@ -76,7 +76,7 @@
             <div class="col-12 col-md-4">
                 <div class="mb-3">
                     <label for="email_form" class="form-label">Correo electrónico:</label>
-                    <input type="email" class="form-control" id="email_form" value="">
+                    <input type="email" class="form-control" id="email_form" name="email_form" value="">
                 </div>
             </div>
             <div class="col-12 col-md-4">

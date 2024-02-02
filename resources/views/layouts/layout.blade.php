@@ -319,11 +319,18 @@
                 $("#plantel_info option[value=" + clavePlantel + "]").attr("selected", true);
                 $("#nivel_info option[value=" + claveNivel + "]").attr("selected", true);
 
+
                 establecer_color(nombre);
-                if (claveCarrera == "" || claveCarrera == "" || claveCarrera == null) {
+                if (claveCarrera == 1 || claveCarrera == "" || claveCarrera == null) {
                     generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera);
                 } else {
-                    $("#carrera_info option[value=" + claveCarrera + "]").attr("selected", true);
+                    establecerCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera)
+                }
+
+                if (claveHorario == 1 || claveCarrera == "" || claveCarrera == null) {
+                    generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera);
+                } else {
+                    generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
                 }
 
             }
@@ -403,6 +410,30 @@
                 })
             }
 
+            function generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
+                $("#horario_info").empty();
+                $("#horario_info").prepend('<option value="0" selected disabled>Selecciona una carrera</option>');
+                $.ajax({
+                    url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
+                        claveNivel + "/" + claveCarrera,
+                    method: "GET",
+                    dataType: 'json',
+                }).done(function(data) {
+                    console.log(data.Horarios.length);
+                    if (data.Horarios.length > 0) {
+                        //hay array de carreras
+                        for (let index = 0; index < data.Horarios.length; index++) {
+                            const element = data.Horarios[index];
+                            //console.log(element);
+                            $("#horario_info").prepend("<option value='" + element.Clave_turno +
+                                "' selected='selected'>" + element.Descripcion + "</option>");
+                        }
+                    }
+                }).fail(function(e) {
+                    console.log("Request: " + JSON.stringify(e));
+                })
+            }
+
             function establecerListaHorarios() {
                 $("#horario_info").empty();
 
@@ -444,6 +475,59 @@
 
                 $('#namePromotor').html(lineaPromotor);
                 $('#datePromotor').html(lineaFecha);
+            }
+
+            function establecerCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera) {
+                $("#carrera_info").empty();
+                $.ajax({
+                    url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
+                        claveNivel,
+                    method: "GET",
+                    dataType: 'json',
+                }).done(function(data) {
+                    console.log(data.Carrera.length);
+                    if (data.Carrera.length > 0) {
+                        //hay array de carreras
+                        for (let index = 0; index < data.Carrera.length; index++) {
+                            const element = data.Carrera[index];
+                            //console.log(element);
+                            if (element.clave_carrera == claveCarrera) {
+                                $("#carrera_info").prepend("<option value='" + element.clave_carrera +
+                                    "' selected='selected'>" + element.descrip_ofi + "</option>");
+                            } else {
+                                $("#carrera_info").prepend("<option value='" + element.clave_carrera +
+                                    "'>" + element.descrip_ofi + "</option>");
+                            }
+                        }
+                    }
+                }).fail(function(e) {
+                    console.log("Request: " + JSON.stringify(e));
+                })
+            }
+
+            function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
+                $("#horario_info").empty();
+                $.ajax({
+                    url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
+                        claveNivel + "/" + claveCarrera,
+                    method: "GET",
+                    dataType: 'json',
+                }).done(function(data) {
+                    console.log(data.Horarios.length);
+                    if (data.Horarios.length > 0) {
+                        //hay array de carreras
+                        for (let index = 0; index < data.Horarios.length; index++) {
+                            const element = data.Horarios[index];
+                            //console.log(element);
+                            if (element.Horario == claveHorario) {
+                                $("#horario_info").prepend("<option value='" + element.Clave_turno +
+                                    "' selected='selected'>" + element.Descripcion + "</option>");
+                            }
+                        }
+                    }
+                }).fail(function(e) {
+                    console.log("Request: " + JSON.stringify(e));
+                })
             }
 
             //informacion de los tabs

@@ -17,17 +17,22 @@ class FichaController extends Controller
             $folio_crm = $_REQUEST['folio_crm'];
 
             $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
+            
+            $claveCampana = $infoProspecto['claveCampana'];
             $clavePlantel = $infoProspecto['clavePlantel'];
+            $claveNivel = $infoProspecto['claveNivel'];
+            $claveCarrera = $infoProspecto['claveCarrera'];
 
         } else {
-            # code...
+            
         }
         
-
         //? metodos de llenado de combos de informacion superior de prospecto
         $campañas = app(PeticionesController::class)->getCampanas(0);
         $planteles = app(PeticionesController::class)->getPlanteles();
         $niveles = app(PeticionesController::class)->getNiveles($clavePlantel);
+        $carreras = app(PeticionesController::class)->getCarreras($claveCampana, $clavePlantel, $claveNivel, $claveCarrera);
+        //dd($carreras);
 
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
         $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
@@ -72,6 +77,7 @@ class FichaController extends Controller
             "campañas" => $campañas['EntCampanaDTO'],
             "planteles" => $planteles,
             "niveles" => $niveles,
+            "carreras" => $carreras['Carrera'],
             "estados" => $estados['EstatusDetalle'],
             "horarios" => $horarios['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
@@ -115,15 +121,55 @@ class FichaController extends Controller
     public function guardarDatosProspecto(Request $request)
     {
 
-        dd($request->especialidad_info);
+        if ($request->campana_info === "" || $request->campana_info === null) {
+            //print('no hay campaña <br>');
+            $campana_info = 1;
+        }
+        else {
+            //print(' si hay campaña <br>');
+            $campana_info = $request->campana_info;
+        }
+        if ($request->plantel_info === "" || $request->plantel_info === null) {
+            //print('no hay plantel <br>');
+            $plantel_info = 1;
+        }
+        else {
+            //print(' si hay plantel <br>');
+            $plantel_info = $request->plantel_info;
+        }
+        if ($request->nivel_info === "" || $request->nivel_info === null) {
+            //print('no hay nivel <br>');
+            $nivel_info = 1;
+        }
+        else {
+            //print(' si hay nivel <br>');
+            $nivel_info = $request->nivel_info;
+        }
+        if ($request->carrera_info === "" || $request->carrera_info === null) {
+            //print('no hay carrera <br>');
+            $carrera_info = 1;
+        }
+        else {
+            print(' si hay carrera <br>');
+            $carrera_info = $request->carrera_info;
+        }
+        if ($request->horario_info === "" || $request->horario_info === null) {
+            //print('no hay horario <br>');
+            $horario_info = 1;
+        }
+        else {
+            //print(' si hay horario <br>');
+            $horario_info = $request->horario_info;
+        }
 
-        $valores = array(
+
+       $valores = array(
             "folioCRM" => $request->folio_crm,
-            "claveCampana" => 36,
-            "clavePlantel" => 4,
-            "claveNivel" => 2,
-            "claveCarrera" =>  1,
-            "claveHorario" => 1,
+            "claveCampana" => $campana_info,
+            "clavePlantel" => $plantel_info,
+            "claveNivel" => $nivel_info,
+            "claveCarrera" =>  $carrera_info,
+            "claveHorario" => $horario_info,
             "nombre" => $request->nombre_form,
             "apPaterno" => $request->apellidos_form,
             "apMaterno" => $request->apellido_mat_form,
@@ -133,9 +179,13 @@ class FichaController extends Controller
             "celular2" => $request->celular_dos,
         );
 
-        app(PeticionesController::class)->guardarDatosGeneralesProspecto($valores);
+        //dd($valores);
 
-        return redirect()->back();
+        $envio = app(PeticionesController::class)->guardarDatosGeneralesProspecto($valores);
+
+        //dd($envio);
+
+        return redirect()->back(); 
     }
     public function searcCrm($search_type, $search_text, $search_plantel)
     {
