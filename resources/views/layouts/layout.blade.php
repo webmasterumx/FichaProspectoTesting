@@ -232,11 +232,67 @@
 
             });
 
+            // escuchador de cambio de plantel se llena de nuevo el combo nivel y se resetan carrera y horario
+            $("select[name=plantel_info]").change(function() {
+                $("#nivel_info").empty();
+                $("#carrera_info").empty();
+                $("#horario_info").empty();
+
+                $("#nivel_info").prepend('<option value="0" selected disabled>Selecciona un nivel</option>');
+                let plantel = $('select[name=plantel_info]').val();
+
+                $.ajax({
+                    url: setBaseURL() + "get/niveles/" + plantel,
+                    method: "GET",
+                    dataType: 'json',
+                }).done(function(data) {
+                    console.log(data);
+                    for (let index = 0; index < data.length; index++) {
+                        const element = data[index].clave;
+                        $("#nivel_info").prepend("<option value='" + data[index].clave +
+                            "' selected='selected'>" + data[index].descrip + "</option>");
+                    }
+                }).fail(function(e) {
+                    console.log("Request: " + JSON.stringify(e));
+                })
+            });
+
+            $("select[name=nivel_info]").change(function() {
+                $("#carrera_info").empty();
+                $("#horario_info").empty();
+
+                $("#carrera_info").prepend('<option value="0" selected disabled>Selecciona un carrera</option>');
+                let claveCampana = $('select[name=campana_info]').val();
+                let clavePlantel = $('select[name=plantel_info]').val();
+                let claveNivel = $('select[name=nivel_info]').val();
+
+                $.ajax({
+                    url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
+                        claveNivel,
+                    method: "GET",
+                    dataType: 'json',
+                }).done(function(data) {
+                    console.log(data.Carrera.length);
+                    if (data.Carrera.length > 0) {
+                        //hay array de carreras
+                        for (let index = 0; index < data.Carrera.length; index++) {
+                            const element = data.Carrera[index];
+                            //console.log(element);
+                            $("#carrera_info").prepend("<option value='" + element.clave_carrera +
+                                "' selected='selected'>" + element.descrip_ofi + "</option>");
+                        }
+                    }
+                }).fail(function(e) {
+                    console.log("Request: " + JSON.stringify(e));
+                })
+            });
+
+            // escuchador de cambio de carrera
             $("select[name=carrera_info]").change(function() {
                 console.log($('select[name=carrera_info]').val());
 
                 establecerListaHorarios();
-               
+
             });
 
             function setBaseURL() {
@@ -356,8 +412,9 @@
                 let claveCarrera = $('select[name=carrera_info]').val();
 
                 $("#horario_info").prepend('<option value="0" selected disabled>Selecciona un horario</option>');
-                
-                let url = setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' + claveNivel + "/" + claveCarrera;
+
+                let url = setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' + claveNivel + "/" +
+                    claveCarrera;
 
                 $.ajax({
                     url: url,
