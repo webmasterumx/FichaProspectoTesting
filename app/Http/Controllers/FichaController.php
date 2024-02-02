@@ -40,11 +40,13 @@ class FichaController extends Controller
 
                $referidos = $referidoFinal;
             } else {
-                $referidos = $referidosRespone;
+                $referidos = $referidosRespone['ProspectoCallCenter'];
             }
         } else {
             $referidos = array();
         }
+
+        //dd($referidos);
 
         return view('inicio', [
             "planteles" => $planteles,
