@@ -15,32 +15,36 @@ class FichaController extends Controller
         $planteles = app(PeticionesController::class)->getPlanteles();
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
         $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
-        
+
         $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1);
         $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2);
 
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
             $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
-            
-            if (isset($referidosRespone['ProspectoCallCenter']['folioCRM'])) {
-               $referidosList  = array(
-                "folioCRM" => $referidosRespone['ProspectoCallCenter']['folioCRM'],
-                "nombreCompleto" => $referidosRespone['ProspectoCallCenter']['nombreCompleto'],
-                "telefono1" => $referidosRespone['ProspectoCallCenter']['telefono1'],
-                "telefono2" => $referidosRespone['ProspectoCallCenter']['telefono2'],
-                "celular1" => $referidosRespone['ProspectoCallCenter']['celular1'],
-                "celular2" => $referidosRespone['ProspectoCallCenter']['celular2'],
-                "email" => $referidosRespone['ProspectoCallCenter']['email']
-               );
 
-               $referidoFinal = array();
+            if (sizeof($referidosRespone) > 0) {
+                if (isset($referidosRespone['ProspectoCallCenter']['folioCRM'])) {
+                    $referidosList  = array(
+                        "folioCRM" => $referidosRespone['ProspectoCallCenter']['folioCRM'],
+                        "nombreCompleto" => $referidosRespone['ProspectoCallCenter']['nombreCompleto'],
+                        "telefono1" => $referidosRespone['ProspectoCallCenter']['telefono1'],
+                        "telefono2" => $referidosRespone['ProspectoCallCenter']['telefono2'],
+                        "celular1" => $referidosRespone['ProspectoCallCenter']['celular1'],
+                        "celular2" => $referidosRespone['ProspectoCallCenter']['celular2'],
+                        "email" => $referidosRespone['ProspectoCallCenter']['email']
+                    );
 
-               array_push($referidoFinal, $referidosList);
+                    $referidoFinal = array();
 
-               $referidos = $referidoFinal;
+                    array_push($referidoFinal, $referidosList);
+
+                    $referidos = $referidoFinal;
+                } else {
+                    $referidos = $referidosRespone['ProspectoCallCenter'];
+                }
             } else {
-                $referidos = $referidosRespone['ProspectoCallCenter'];
+                $referidos = array();
             }
         } else {
             $referidos = array();
@@ -146,12 +150,10 @@ class FichaController extends Controller
             );
 
             array_push($resulList, $resultado);
-        }
-        else {
+        } else {
             //echo 'son mas de uno';
-            
-            $resulList = $busqueda['ProspectoCallCenter'];
 
+            $resulList = $busqueda['ProspectoCallCenter'];
         }
 
         return Response::json($resulList);
