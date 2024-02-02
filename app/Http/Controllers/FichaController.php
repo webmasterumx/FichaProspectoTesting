@@ -177,6 +177,7 @@ class FichaController extends Controller
             "telefono2" => $request->telefono_dos,
             "celular1" => $request->celular_uno,
             "celular2" => $request->celular_dos,
+            "email" => $request->email_form,
         );
 
         //dd($valores);
