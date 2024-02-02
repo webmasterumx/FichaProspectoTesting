@@ -12,12 +12,28 @@ class FichaController extends Controller
     public function index()
     {
 
+        //* optencio de la info prospecto
+        if ((isset($_REQUEST['folio_crm']) == true)) {
+            $folio_crm = $_REQUEST['folio_crm'];
+
+            $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
+            $clavePlantel = $infoProspecto['clavePlantel'];
+
+        } else {
+            # code...
+        }
+        
+
+        //? metodos de llenado de combos de informacion superior de prospecto
+        $campañas = app(PeticionesController::class)->getCampanas(0);
         $planteles = app(PeticionesController::class)->getPlanteles();
+        $niveles = app(PeticionesController::class)->getNiveles($clavePlantel);
+
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
         $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
 
-        $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1);
-        $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2);
+        $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1); //! combo lista de actividades realizadas
+        $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2); //! combo lista de actividades por realizar
 
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
@@ -53,7 +69,9 @@ class FichaController extends Controller
         //dd($referidos);
 
         return view('inicio', [
+            "campañas" => $campañas['EntCampanaDTO'],
             "planteles" => $planteles,
+            "niveles" => $niveles,
             "estados" => $estados['EstatusDetalle'],
             "horarios" => $horarios['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],

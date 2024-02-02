@@ -37,37 +37,50 @@
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Campaña:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="campana_info" form="formDatosGenerales" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="campana_info"
+            name="campana_info" form="formDatosGenerales">
+            @foreach ($campañas as $campaña)
+                <option value="{{ $campaña['Campana'] }}"> {{ $campaña['Nombre'] }} </option>
+            @endforeach
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Plantel:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="plantel_info" form="formDatosGenerales"
-            name="plantel_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="plantel_info"
+            form="formDatosGenerales" name="plantel_info">
+            @foreach ($planteles as $plantel)
+                <option value="{{ $plantel['clave'] }}">{{ $plantel['descrip'] }}</option>
+            @endforeach
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nivel:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="especialidad_info" form="formDatosGenerales"
-            name="especialidad_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="nivel_info"
+            form="formDatosGenerales" name="nivel_info">
+            @foreach ($niveles as $nivel)
+                <option value="{{ $nivel['clave'] }}">{{ $nivel['descrip'] }}</option>
+            @endforeach
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Carrera:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="carrera_info" form="formDatosGenerales" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="carrera_info"
+            name="carrera_info" form="formDatosGenerales">
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Horario:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info" form="formDatosGenerales" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info"
+            name="horario_info" form="formDatosGenerales">
+            <option value="0" selected disabled>Selecciona un horario</option>
         </select>
     </div>
 </div>
