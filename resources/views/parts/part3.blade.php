@@ -3,21 +3,21 @@
         <div class="col-12 col-md-4 d-flex">
             Telefono
             <div class="form-check">
-                <input class="ms-3 form-check-input" type="radio" id="radio_casa" name="telefonoReferidoType"
+                <input class="ms-3 form-check-input" type="radio" id="radio_casa" name="telefonoReferidoType[]"
                     value="1">
                 <label class="form-check-label" for="radio_casa">
                     Casa
                 </label>
             </div>
             <div class="form-check">
-                <input class="ms-3 form-check-input" type="radio" id="radio_oficina" name="telefonoReferidoType"
+                <input class="ms-3 form-check-input" type="radio" id="radio_oficina" name="telefonoReferidoType[]"
                     value="2">
                 <label class="form-check-label" for="radio_oficina">
                     Oficina
                 </label>
             </div>
             <div class="form-check">
-                <input class="ms-3 form-check-input" type="radio" id="radio_celular" name="telefonoReferidoType"
+                <input class="ms-3 form-check-input" type="radio" id="radio_celular" name="telefonoReferidoType[]"
                     value="3">
                 <label class="form-check-label" for="radio_celular">
                     Celular
@@ -90,7 +90,7 @@
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular1'] }} </td>
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular2'] }} </td>
                                 <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['email'] }} </td>
-                            </tr>
+                            </tr> 
                         @endforeach
                     </tbody>
                 </table>

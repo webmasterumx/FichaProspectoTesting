@@ -15,22 +15,36 @@ class FichaController extends Controller
         $planteles = app(PeticionesController::class)->getPlanteles();
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
         $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
+        
         $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1);
         $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2);
 
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
             $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
-            if (sizeof($referidosRespone) > 0) {
-                $referidos = $referidosRespone['ProspectoCallCenter'];
+            
+            if (isset($referidosRespone['ProspectoCallCenter']['folioCRM'])) {
+               $referidosList  = array(
+                "folioCRM" => $referidosRespone['ProspectoCallCenter']['folioCRM'],
+                "nombreCompleto" => $referidosRespone['ProspectoCallCenter']['nombreCompleto'],
+                "telefono1" => $referidosRespone['ProspectoCallCenter']['telefono1'],
+                "telefono2" => $referidosRespone['ProspectoCallCenter']['telefono2'],
+                "celular1" => $referidosRespone['ProspectoCallCenter']['celular1'],
+                "celular2" => $referidosRespone['ProspectoCallCenter']['celular2'],
+                "email" => $referidosRespone['ProspectoCallCenter']['email']
+               );
+
+               $referidoFinal = array();
+
+               array_push($referidoFinal, $referidosList);
+
+               $referidos = $referidoFinal;
             } else {
                 $referidos = $referidosRespone;
             }
         } else {
             $referidos = array();
         }
-
-        //dd($referidos);
 
         return view('inicio', [
             "planteles" => $planteles,
@@ -76,6 +90,9 @@ class FichaController extends Controller
 
     public function guardarDatosProspecto(Request $request)
     {
+
+        dd($request->especialidad_info);
+
         $valores = array(
             "folioCRM" => $request->folio_crm,
             "claveCampana" => 36,
@@ -214,10 +231,8 @@ class FichaController extends Controller
             "telefono" => $request->telefonoReferido,
             "email" => $request->emailReferido,
             "claveUsuario" => $request->promotor,
-            "tipoTelefono" => $request->telefonoReferidoType,
+            "tipoTelefono" => $request->telefonoReferidoType[0],
         );
-
-        //dd($valores);
 
         $envio = app(PeticionesController::class)->guardarReferidoPeticion($valores);
 

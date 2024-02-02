@@ -204,6 +204,22 @@
                     } else {
                         console.log('tratar info Prospecto');
 
+                        let matricula  = data.matricula;
+
+                        if (matricula === "" || matricula === " " || matricula == null) {
+                            console.log('este prospecto no tiene matricula, se puede editar');
+                            $("#plantel_info").prop('disabled', false);
+                            $("#especialidad_info").prop('disabled', false);
+                            $("#carrera_info").prop('disabled', false);
+                            $("#horario_info").prop('disabled', false);
+                            $("#campana_info").prop('disabled', false);
+                        }
+                        else {
+                            console.log("este prospecto trae matricula por lo tanto no se puede editar");
+                        }
+
+                        console.log('saber si existe matricula para poder tener o no los campos desbloqueados');
+
                         let infoProspecto = data.infoProspecto;
                         let infoPromotor = data.infoPromotor;
                         let dateInfo = data.fechaFormateada;

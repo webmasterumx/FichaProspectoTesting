@@ -37,38 +37,37 @@
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Campaña:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example"
-            id="campana_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="campana_info" form="formDatosGenerales" disabled>
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Plantel:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="plantel_info" name="plantel_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="plantel_info" form="formDatosGenerales"
+            name="plantel_info" disabled>
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nivel:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example"
-            id="especialidad_info" name="especialidad_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="especialidad_info" form="formDatosGenerales"
+            name="especialidad_info" disabled>
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Carrera:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example"
-            id="carrera_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="carrera_info" form="formDatosGenerales" disabled>
         </select>
     </div>
 </div>
 <div class="col-12 col-md-4">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Horario:</label>
-        <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info" disabled>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info" form="formDatosGenerales" disabled>
         </select>
     </div>
 </div>
