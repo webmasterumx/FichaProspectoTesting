@@ -12,7 +12,7 @@ class FichaController extends Controller
     public function index()
     {
 
-        //* optencio de la info prospecto
+        //* optencion de la info prospecto
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
 

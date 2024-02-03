@@ -33,121 +33,7 @@
                 <p><i class="bi bi-telephone-fill"></i> Call Center</p>
             </div>
         </header>
-        <header class="py-1 mt-0 bg-unimex">
-            <div class="container-fluid">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                    </a>
-                    <ul id="listaMenus" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Doc. Grales
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Convenios</a></li>
-                                <li><a class="dropdown-item" href="#">Documentación Nuevo Ingreso</a></li>
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Folleto de Ventajas
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Metropolitano</a></li>
-                                        <li><a class="dropdown-item" href="#">Veracruz</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Apertura de Grupos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">IZCALLI</a></li>
-                                <li><a class="dropdown-item" href="#">SATÉLITE</a></li>
-                                <li><a class="dropdown-item" href="#">POLANCO</a></li>
-                                <li><a class="dropdown-item" href="#">VERACRUZ</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Hojas de Costos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        IZCALLI
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropend">
-                                            <a class="dropdown-item" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Preparatoría
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">2020 - 2021</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend">
-                                            <a class="dropdown-item" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Licenciatura
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">2021 - 3</a></li>
-                                                <li><a class="dropdown-item" href="#">2021 - 2</a></li>
-                                                <li><a class="dropdown-item" href="#">2021 - 1</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend">
-                                            <a class="dropdown-item" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Posgrado
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">2021 - 3</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="dropdown-item" href="#">SATÉLITE</a></li>
-                                <li><a class="dropdown-item" href="#">POLANCO</a></li>
-                                <li><a class="dropdown-item" href="#">VERACRUZ</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Folletos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Metropolitano</a></li>
-                                <li><a class="dropdown-item" href="#">Veracruz</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Mapas de Ubicación
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">IZCALLI</a></li>
-                                <li><a class="dropdown-item" href="#">SATÉLITE</a></li>
-                                <li><a class="dropdown-item" href="#">POLANCO</a></li>
-                                <li><a class="dropdown-item" href="#">VERACRUZ</a></li>
-                            </ul>
-                        </li> 
-                    </ul>
-                </div>
-            </div>
-        </header>
+        @include('includes.menu_archivos')
     </div>
 
     @yield('content')
@@ -338,7 +224,7 @@
                     generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera);
                 } else {
                     console.log('horario existente');
-                    establecerListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
+                    establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
                 }
 
             }
@@ -434,40 +320,7 @@
                         for (let index = 0; index < data.Horarios.length; index++) {
                             const element = data.Horarios[index];
                             //console.log(element);
-                            $("#horario_info").prepend("<option value='" + element.Clave_turno +
-                                "'>" + element.Descripcion + "</option>");
-                        }
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
-
-            function establecerListaHorarios() {
-                $("#horario_info").empty();
-
-                let claveCampana = $('select[name=campana_info]').val();
-                let clavePlantel = $('select[name=plantel_info]').val();
-                let claveNivel = $('select[name=nivel_info]').val();
-                let claveCarrera = $('select[name=carrera_info]').val();
-
-                $("#horario_info").prepend('<option value="0" selected disabled>Selecciona un horario</option>');
-
-                let url = setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' + claveNivel + "/" +
-                    claveCarrera;
-
-                $.ajax({
-                    url: url,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data.Horarios);
-                    if (data.Horarios.length > 0) {
-                        //hay array de carreras
-                        for (let index = 0; index < data.Horarios.length; index++) {
-                            const element = data.Horarios[index];
-                            //console.log(element);
-                            $("#horario_info").prepend("<option value='" + element.Clave_turno +
+                            $("#horario_info").prepend("<option value='" + element.Horario +
                                 "'>" + element.Descripcion + "</option>");
                         }
                     }
@@ -515,6 +368,7 @@
             }
 
             function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
+                console.log(claveHorario);
                 $("#horario_info").empty();
                 $.ajax({
                     url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
@@ -527,11 +381,17 @@
                         //hay array de carreras
                         for (let index = 0; index < data.Horarios.length; index++) {
                             const element = data.Horarios[index];
-                            //console.log(element);
+                            console.log(element);
                             if (element.Horario == claveHorario) {
-                                $("#horario_info").prepend("<option value='" + element.Clave_turno +
-                                    "' selected='selected'>" + element.Descripcion + "</option>");
+                                console.log(true);
+                                selector = 'selected';
+                            } else {
+                                console.log(false);
+                                selector = '';
                             }
+                            $("#horario_info").prepend("<option value='" + element.Horario + "' " + selector + ">" +
+                                element.Descripcion + "</option>");
+
                         }
                     }
                 }).fail(function(e) {
