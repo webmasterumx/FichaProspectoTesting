@@ -161,4 +161,13 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
+
+    public function getMenu($valor)  
+    {
+        $response = Http::post($this->base_url . 'obtener/menu', [
+            "parentMenuId" => $valor
+        ]);
+
+        return $response->json();
+    }
 }

@@ -23,15 +23,20 @@ class FichaController extends Controller
             $claveNivel = $infoProspecto['claveNivel'];
             $claveCarrera = $infoProspecto['claveCarrera'];
 
+            $niveles = app(PeticionesController::class)->getNiveles($clavePlantel);
+            $carreras = app(PeticionesController::class)->getCarreras($claveCampana, $clavePlantel, $claveNivel, $claveCarrera);
+
         } else {
-            
+            $niveles = [];
+            $carreras = array(
+                "Carrera" => array()
+            );
         }
         
         //? metodos de llenado de combos de informacion superior de prospecto
         $campañas = app(PeticionesController::class)->getCampanas(0);
         $planteles = app(PeticionesController::class)->getPlanteles();
-        $niveles = app(PeticionesController::class)->getNiveles($clavePlantel);
-        $carreras = app(PeticionesController::class)->getCarreras($claveCampana, $clavePlantel, $claveNivel, $claveCarrera);
+   
         //dd($carreras);
 
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();

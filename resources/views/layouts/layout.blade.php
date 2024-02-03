@@ -41,7 +41,7 @@
                             <use xlink:href="#bootstrap"></use>
                         </svg>
                     </a>
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <ul id="listaMenus" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -143,7 +143,7 @@
                                 <li><a class="dropdown-item" href="#">POLANCO</a></li>
                                 <li><a class="dropdown-item" href="#">VERACRUZ</a></li>
                             </ul>
-                        </li>
+                        </li> 
                     </ul>
                 </div>
             </div>
@@ -204,9 +204,9 @@
                     } else {
                         console.log('tratar info Prospecto');
 
-                        let matricula = data.matricula;
+                        let matricula = data.infoProspecto.matricula;
 
-                        if (matricula === "" || matricula === " " || matricula == null) {
+                        if (matricula === "" || matricula === " " || matricula === null) {
                             console.log('este prospecto no tiene matricula, se puede editar');
                             $("#plantel_info").prop('disabled', false);
                             $("#especialidad_info").prop('disabled', false);
@@ -215,6 +215,12 @@
                             $("#campana_info").prop('disabled', false);
                         } else {
                             console.log("este prospecto trae matricula por lo tanto no se puede editar");
+                            $("#plantel_info").prop('disabled', true);
+                            $("#especialidad_info").prop('disabled', true);
+                            $("#carrera_info").prop('disabled', true);
+                            $("#horario_info").prop('disabled', true);
+                            $("#campana_info").prop('disabled', true);
+                            $("#nivel_info").prop('disabled', true);
                         }
 
                         let infoProspecto = data.infoProspecto;
@@ -322,15 +328,17 @@
 
                 establecer_color(nombre);
                 if (claveCarrera == 1 || claveCarrera == "" || claveCarrera == null) {
-                    generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera);
+                    //generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera);
                 } else {
                     establecerCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera)
                 }
 
                 if (claveHorario == 1 || claveCarrera == "" || claveCarrera == null) {
+                    console.log('horario inexistente');
                     generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera);
                 } else {
-                    generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
+                    console.log('horario existente');
+                    establecerListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
                 }
 
             }
@@ -389,7 +397,7 @@
             }
 
             function generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera) {
-                $("#carrera_info").prepend('<option value="0" selected disabled>Selecciona una carrera</option>');
+                $("#carrera_info").prepend('<option value="1" selected disabled>Selecciona una carrera</option>');
                 $.ajax({
                     url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
                         claveNivel,
@@ -401,6 +409,7 @@
                         //hay array de carreras
                         for (let index = 0; index < data.Carrera.length; index++) {
                             const element = data.Carrera[index];
+                            console.log(element);
                             $("#carrera_info").prepend("<option value='" + element.clave_carrera +
                                 "'>" + element.descrip_ofi + "</option>");
                         }
@@ -412,7 +421,7 @@
 
             function generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
                 $("#horario_info").empty();
-                $("#horario_info").prepend('<option value="0" selected disabled>Selecciona una carrera</option>');
+                $("#horario_info").prepend('<option value="0" selected disabled>Selecciona un horario</option>');
                 $.ajax({
                     url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
                         claveNivel + "/" + claveCarrera,
@@ -426,7 +435,7 @@
                             const element = data.Horarios[index];
                             //console.log(element);
                             $("#horario_info").prepend("<option value='" + element.Clave_turno +
-                                "' selected='selected'>" + element.Descripcion + "</option>");
+                                "'>" + element.Descripcion + "</option>");
                         }
                     }
                 }).fail(function(e) {
@@ -686,7 +695,76 @@
             }, function() {
                 //$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
             });
+
+            //getMenu(0);
+
         });
+
+        function getMenu(idMenu) {
+
+            let ruta = "{{ env('APP_URL') }}obtener/menu/" + idMenu;
+            console.log(ruta);
+
+            $.ajax({
+                url: ruta,
+                method: "GET",
+                dataType: 'json',
+            }).done(function(data) {
+                console.log(data.Cls_MenuDoctos.length); // imprimimos la respuesta
+                for (let index = 0; index < data.Cls_MenuDoctos.length; index++) {
+                    const element = data.Cls_MenuDoctos[index];
+                    console.log(element);
+                    let item = `
+                        <li class="dropdown" id="${element.id_menu}">
+                            <a class="nav-link dropdown-toggle text-white" onmouseover="getSubMenus(${element.id_menu})" href="${element.url_destino}" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                ${element.descripcion}
+                            </a>
+                        </li>
+                    `;
+                    $("#listaMenus").append($("<li>").html(item));
+                }
+
+            }).fail(function(e) {
+                console.log("Request: " + JSON.stringify(e));
+            })
+        }
+
+        function getSubMenus(idMenu) {
+            let ruta = "{{ env('APP_URL') }}obtener/menu/" + idMenu;
+            console.log(ruta);
+
+            $.ajax({
+                url: ruta,
+                method: "GET",
+                dataType: 'json',
+            }).done(function(data) {
+                console.log(data.Cls_MenuDoctos.length); // imprimimos la respuesta
+                let submenu = `<ul class="dropdown-menu show">`;
+                for (let index = 0; index < data.Cls_MenuDoctos.length; index++) {
+                    const element = data.Cls_MenuDoctos[index];
+                    //console.log(element);
+                    let menuPeque = `
+                        <li class="dropend ">
+                            <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                                ${element.descripcion}
+                            </a>
+                        </li>
+                    `;
+
+                    submenu = submenu + menuPeque;
+                }
+
+                submenu = submenu + `</ul>`;
+                console.log(submenu);
+
+                $('#menu_' + idMenu).append(submenu);
+
+            }).fail(function(e) {
+                console.log("Request: " + JSON.stringify(e));
+            })
+        }
 
         function searchProspecto() {
             console.log('hola');

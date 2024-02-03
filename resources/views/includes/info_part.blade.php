@@ -71,7 +71,8 @@
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Carrera:</label>
         <select class="form-select form-select-sm" aria-label="Small select example" id="carrera_info"
-            name="carrera_info" form="formDatosGenerales">
+            name="carrera_info" form="formDatosGenerales"> 
+            <option value="0" selected disabled>Selecciona una carrera</option>
             @foreach ($carreras as $carrera)
                 <option value=" {{ $carrera['clave_carrera'] }} "> {{ $carrera['descrip_ofi'] }} </option>
             @endforeach

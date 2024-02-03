@@ -31,3 +31,4 @@ Route::get('/obtener/carreras/{claveCampana}/{clavePlantel}/{claveNivel}', [Peti
 Route::get('/obtener/horarios/{claveCampana}/{clavePlantel}/{claveNivel}/{claveCarrera}', [PeticionesController::class, 'getHorarios'])->name('obtener.horarios');
 Route::get('/obtener/campanas/{claveCampana}', [PeticionesController::class, 'getCampanas'])->name('obtener.campanas');
 Route::get('/obtener/mensajes/whatsapp/{folio_crm}', [PeticionesController::class, 'getConversacionesWhatsapp'])->name('obtener.mensajes');
+Route::get('/obtener/menu/{idMenu}', [PeticionesController::class, 'getMenu'])->name('obtener.menu');
