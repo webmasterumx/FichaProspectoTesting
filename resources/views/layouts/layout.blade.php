@@ -61,6 +61,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+    <script src="{{ asset('assets/js/bloqueos.js') }}"></script>
     @php
         $validar_folio = isset($_REQUEST['folio_crm']);
         $validar_prmotor = isset($_REQUEST['promotor']);
@@ -193,13 +194,13 @@
             }
 
             function llenarAreaInformacion(infoProspecto) {
-                $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected",true); //establece campana
-                $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected",true); //establece plantel
+                $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected", true); //establece campana
+                $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected", true); //establece plantel
                 $("#nivel_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
                 $("#carrera_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
                 $("#horario_info option[value=" + infoProspecto.claveHorario + "]").attr("selected", true); // establece nivel
                 $("#origen_info option[value=" + infoProspecto.origen + "]").attr("selected", true); // establece origen
-                
+
                 let nombre = infoProspecto.termometro;
 
 
@@ -210,7 +211,7 @@
             function llenarCamposEditables(infoProspecto) {
 
                 //!llenado del formulario de guardar datos
-                
+
                 $('#nombreProspecto').html('<i class="bi bi-file-person-fill"></i> Ficha Prospecto: ' + infoProspecto
                     .nombreCompleto)
 
@@ -530,6 +531,7 @@
             //getMenu(0);
 
         });
+
 
         function getMenu(idMenu) {
 
