@@ -131,7 +131,6 @@
                 $("#carrera_info").empty();
                 $("#horario_info").empty();
 
-                $("#nivel_info").prepend('<option value="0" selected disabled>Selecciona un nivel</option>');
                 let plantel = $('select[name=plantel_info]').val();
 
                 $.ajax({
@@ -140,10 +139,11 @@
                     dataType: 'json',
                 }).done(function(data) {
                     console.log(data);
+                    $("#nivel_info").prepend('<option value="">Selecciona un nivel</option>');
                     for (let index = 0; index < data.length; index++) {
                         const element = data[index].clave;
                         $("#nivel_info").prepend("<option value='" + data[index].clave +
-                            "' selected='selected'>" + data[index].descrip + "</option>");
+                            "'>" + data[index].descrip + "</option>");
                     }
                 }).fail(function(e) {
                     console.log("Request: " + JSON.stringify(e));
@@ -154,7 +154,7 @@
                 $("#carrera_info").empty();
                 $("#horario_info").empty();
 
-                $("#carrera_info").prepend('<option value="0" selected disabled>Selecciona un carrera</option>');
+
                 let claveCampana = $('select[name=campana_info]').val();
                 let clavePlantel = $('select[name=plantel_info]').val();
                 let claveNivel = $('select[name=nivel_info]').val();
@@ -166,13 +166,14 @@
                     dataType: 'json',
                 }).done(function(data) {
                     console.log(data.Carrera.length);
+                    $("#carrera_info").prepend('<option value="">Selecciona un carrera</option>');
                     if (data.Carrera.length > 0) {
                         //hay array de carreras
                         for (let index = 0; index < data.Carrera.length; index++) {
                             const element = data.Carrera[index];
                             //console.log(element);
                             $("#carrera_info").prepend("<option value='" + element.clave_carrera +
-                                "' selected='selected'>" + element.descrip_ofi + "</option>");
+                                "'>" + element.descrip_ofi + "</option>");
                         }
                     }
                 }).fail(function(e) {
@@ -184,7 +185,12 @@
             $("select[name=carrera_info]").change(function() {
                 console.log($('select[name=carrera_info]').val());
 
-                establecerListaHorarios();
+                let claveCampana = $('select[name=campana_info]').val();
+                let clavePlantel = $('select[name=plantel_info]').val();
+                let claveNivel = $('select[name=nivel_info]').val();
+                let claveCarrera = $('select[name=carrera_info]').val();
+
+                establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera);
 
             });
 
@@ -339,8 +345,7 @@
                 })
             }
 
-            function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
-                console.log(claveHorario);
+            function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera) {
                 $("#horario_info").empty();
                 $.ajax({
                     url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
@@ -348,23 +353,23 @@
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
-                    console.log(data.Horarios.length);
+                    console.log(data.Horarios);
                     if (data.Horarios.length > 0) {
                         //hay array de carreras
+                        $("#horario_info").prepend(
+                            '<option value="">Selecciona un horario</option>');
                         for (let index = 0; index < data.Horarios.length; index++) {
                             const element = data.Horarios[index];
-                            console.log(element);
-                            if (element.Horario == claveHorario) {
-                                console.log(true);
-                                selector = 'selected';
-                            } else {
-                                console.log(false);
-                                selector = '';
-                            }
-                            $("#horario_info").prepend("<option value='" + element.Horario + "' " + selector + ">" +
+                            //console.log(element);
+                            $("#horario_info").prepend("<option value='" + element.Horario + "'>" +
                                 element.Descripcion + "</option>");
 
                         }
+                    } else {
+                        $("#horario_info").prepend(
+                            '<option value="">Selecciona un horario</option>');
+                        $("#horario_info").prepend("<option value='" + data.Horarios.Horario + "'>" +
+                            data.Horarios.Descripcion + "</option>")
                     }
                 }).fail(function(e) {
                     console.log("Request: " + JSON.stringify(e));

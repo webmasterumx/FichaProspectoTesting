@@ -47,7 +47,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm form-control-sm" aria-label="Username"
                         id="telefono_uno" name="telefono_uno" aria-describedby="telefono_uno_label" maxlength="10"
-                        minlength="10" placeholder="Tel. a 10 digitos"
+                        minlength="13" placeholder="Tel. a 10 digitos"
                         @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['telefono1'] }}"@endisset
                         form="formDatosGenerales">
                     <span id="etiqueta_telefon_uno" class="input-group-text  text-white py-1" id="telefono_uno_label">
@@ -59,7 +59,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Tel. a 10 digitos" aria-label="Username"
                         id="telefono_dos" name="telefono_dos" aria-describedby="telefono_dos_label" maxlength="10"
-                        minlength="10"
+                        minlength="13"
                         @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['telefono2'] }}"@endisset
                         form="formDatosGenerales">
                     <span id="etiqueta_telefono_dos" class="input-group-text  text-white py-1" id="telefono_dos_label">
@@ -71,7 +71,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm" aria-label="Username" name="celular_uno"
                         id="celular_uno" aria-describedby="celular_uno_label" placeholder="Telfono Celular 1"
-                        maxlength="10" minlength="10"
+                        maxlength="10" minlength="13"
                         @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['celular1'] }}"@endisset
                         form="formDatosGenerales">
                     <span id="etiqueta_celular_uno" class="input-group-text  text-white py-1" id="celular_uno_label">
@@ -83,7 +83,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm" placeholder="Telefono celular 2"
                         aria-label="Username" aria-describedby="celular_dos_label" name="celular_dos" id="celular_dos"
-                        maxlength="10" minlength="10"
+                        maxlength="10" minlength="13"
                         @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['celular2'] }}"@endisset
                         form="formDatosGenerales">
                     <span id="etiqueta_celular_dos" class="input-group-text  text-white py-1" id="celular_dos_label">
