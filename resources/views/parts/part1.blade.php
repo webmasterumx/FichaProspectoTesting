@@ -5,21 +5,27 @@
                 <div class="mb-3">
                     <label for="nombre_form" class="form-label">Nombre:</label>
                     <input type="text" class="form-control text-center form-control-sm" name="nombre_form"
-                        id="nombre_form" value="{{ $ficha_prospecto['nombre'] }}" form="formDatosGenerales">
+                        id="nombre_form"
+                        @isset($_REQUEST['folio_crm']) value="{{ $ficha_prospecto['nombre'] }}" @endisset
+                        form="formDatosGenerales">
                 </div>
             </div>
             <div class="col-12 col-md-2">
                 <div class="mb-3">
                     <label for="apellidos_form" class="form-label">Apellido Paterno:</label>
                     <input type="text" class="form-control form-control-sm text-center" name="apellidos_form"
-                        id="apellidos_form" value="{{ $ficha_prospecto['apPaterno'] }}" form="formDatosGenerales">
+                        id="apellidos_form"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['apPaterno'] }}"@endisset
+                        form="formDatosGenerales">
                 </div>
             </div>
             <div class="col-12 col-md-2">
                 <div class="mb-3">
                     <label for="apellido_mat_form" class="form-label">Apellido Materno:</label>
                     <input type="text" class="form-control form-control-sm text-center" name="apellido_mat_form"
-                        id="apellido_mat_form" value="{{ $ficha_prospecto['apMaterno'] }}" form="formDatosGenerales">
+                        id="apellido_mat_form"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['apMaterno'] }}"@endisset
+                        form="formDatosGenerales">
                 </div>
             </div>
             <div class="col-12 col-md-4">
@@ -40,8 +46,10 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm form-control-sm" aria-label="Username"
-                        id="telefono_uno" name="telefono_uno" aria-describedby="telefono_uno_label"  maxlength="10" minlength="10"
-                        placeholder="Tel. a 10 digitos" value="{{ $ficha_prospecto['telefono1'] }}" form="formDatosGenerales">
+                        id="telefono_uno" name="telefono_uno" aria-describedby="telefono_uno_label" maxlength="10"
+                        minlength="10" placeholder="Tel. a 10 digitos"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['telefono1'] }}"@endisset
+                        form="formDatosGenerales">
                     <span id="etiqueta_telefon_uno" class="input-group-text  text-white py-1" id="telefono_uno_label">
                         <i class="bi bi-x-circle-fill"></i>
                     </span>
@@ -50,8 +58,10 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Tel. a 10 digitos" aria-label="Username"
-                        id="telefono_dos" name="telefono_dos" aria-describedby="telefono_dos_label" maxlength="10" minlength="10"
-                        value="{{ $ficha_prospecto['telefono2'] }}" form="formDatosGenerales">
+                        id="telefono_dos" name="telefono_dos" aria-describedby="telefono_dos_label" maxlength="10"
+                        minlength="10"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['telefono2'] }}"@endisset
+                        form="formDatosGenerales">
                     <span id="etiqueta_telefono_dos" class="input-group-text  text-white py-1" id="telefono_dos_label">
                         <i class="bi bi-x-circle-fill"></i>
                     </span>
@@ -60,8 +70,10 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm" aria-label="Username" name="celular_uno"
-                        id="celular_uno" aria-describedby="celular_uno_label" placeholder="Telfono Celular 1" maxlength="10" minlength="10"
-                        value="{{ $ficha_prospecto['celular1'] }}" form="formDatosGenerales">
+                        id="celular_uno" aria-describedby="celular_uno_label" placeholder="Telfono Celular 1"
+                        maxlength="10" minlength="10"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['celular1'] }}"@endisset
+                        form="formDatosGenerales">
                     <span id="etiqueta_celular_uno" class="input-group-text  text-white py-1" id="celular_uno_label">
 
                     </span>
@@ -70,8 +82,10 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-sm" placeholder="Telefono celular 2"
-                        aria-label="Username" aria-describedby="celular_dos_label" name="celular_dos" id="celular_dos" maxlength="10" minlength="10"
-                        value="{{ $ficha_prospecto['celular2'] }}" form="formDatosGenerales">
+                        aria-label="Username" aria-describedby="celular_dos_label" name="celular_dos" id="celular_dos"
+                        maxlength="10" minlength="10"
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['celular2'] }}"@endisset
+                        form="formDatosGenerales">
                     <span id="etiqueta_celular_dos" class="input-group-text  text-white py-1" id="celular_dos_label">
 
                     </span>
@@ -81,7 +95,8 @@
                 <div class="mb-3">
                     <label for="email_form" class="form-label">Correo electrónico:</label>
                     <input type="email" class="form-control" id="email_form" name="email_form"
-                        value="{{ $ficha_prospecto['email'] }}" form="formDatosGenerales">
+                        @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['email'] }}"@endisset
+                        form="formDatosGenerales">
                 </div>
             </div>
             <div class="col-12 col-md-4">
@@ -108,7 +123,8 @@
                 </div>
             </div>
             @isset($_REQUEST['folio_crm'])
-                <input type="text" form="formDatosGenerales" value="{{ $_REQUEST['folio_crm'] }}" name="folio_crm" id="folio_crm" hidden>
+                <input type="text" form="formDatosGenerales" value="{{ $_REQUEST['folio_crm'] }}" name="folio_crm"
+                    id="folio_crm" hidden>
             @endisset
         </div>
     </div>

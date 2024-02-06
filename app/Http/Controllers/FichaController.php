@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Response;
 
 class FichaController extends Controller
@@ -30,9 +31,13 @@ class FichaController extends Controller
             $origenes = $origenesList['OrigenesDTO'];
         } else {
             $niveles = [];
-            $carreras = array(
-                "Carrera" => array()
-            );
+            $infoProspecto = array();
+            $campanas = array();
+            $plantelesList = array();
+            $niveles = array();
+            $carrreas = array();
+            $horarios = array();
+            $origenes = array();
         }
 
         //dd($carreras);

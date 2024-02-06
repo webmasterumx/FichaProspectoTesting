@@ -1,37 +1,46 @@
 <div class="col-12 col-md-2">
     <div class="mb-3">
         <label for="folio_crm" class="form-label">Folio CRM:</label>
-        <input type="text" class="form-control text-center" id="folio_crm" value="{{ $ficha_prospecto['folioCRM'] }}" disabled>
+        <input type="text" class="form-control text-center" id="folio_crm"
+            @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['folioCRM'] }}"@endisset disabled>
     </div>
 </div>
 <div class="col-12 col-md-2">
     <div class="mb-3">
         <label for="matricula" class="form-label">Matrícula:</label>
-        <input type="text" class="form-control text-center" id="matricula" value="{{ $ficha_prospecto['matricula'] }}" disabled>
+        <input type="text" class="form-control text-center" id="matricula"
+            @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['matricula'] }}"@endisset disabled>
     </div>
 </div>
 <div class="col-12 col-md-5">
     <div class="mb-3">
         <label for="prospecto" class="form-label">Prospecto:</label>
-        <input type="email" class="form-control text-center" value="{{ $ficha_prospecto['nombreCompleto'] }}" id="prospecto" disabled>
+        <input type="email" class="form-control text-center"
+            @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['nombreCompleto'] }}"@endisset id="prospecto"
+            disabled>
     </div>
 </div>
 <div class="col-12 col-md-3">
     <div class="mb-3">
         <label for="promotor_propietario" class="form-label">Promotor Propietario:</label>
-        <input type="email" class="form-control text-center"  id="promotor_propietario" disabled>
+        <input type="email" class="form-control text-center" id="promotor_propietario" disabled>
     </div>
 </div>
 <div class="col-12 col-md-2">
     <div class="mb-3">
         <label for="saldo_actual" class="form-label">Saldo Actual:</label>
-        <input type="text" class="form-control text-center" id="saldo_actual" value="{{ $ficha_prospecto['saldoActual'] }}" disabled>
+        <input type="text" class="form-control text-center" id="saldo_actual"
+            @isset($_REQUEST['folio_crm'])value="{{ $ficha_prospecto['saldoActual'] }}"@endisset disabled>
     </div>
 </div>
 <div class="col-12 col-md-2">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Último Estatus Detalle:</label>
-        <span id="status_detalle" class="badge w-100">{{ $ficha_prospecto['ultimoEstatusDetalle'] }}</span>
+        <span id="status_detalle" class="badge w-100">
+            @isset($_REQUEST['folio_crm'])
+                {{ $ficha_prospecto['ultimoEstatusDetalle'] }}
+            @endisset
+        </span>
     </div>
 </div>
 <div class="col-12 col-md-4">
