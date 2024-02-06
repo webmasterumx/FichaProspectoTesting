@@ -193,53 +193,24 @@
             }
 
             function llenarAreaInformacion(infoProspecto) {
-                $('#folio_crm').val(infoProspecto.folioCRM);
-                $('#matricula').val(infoProspecto.matricula);
-                $('#prospecto').val(infoProspecto.nombreCompleto);
-                $('#saldo_actual').val(infoProspecto.saldoActual);
-                $('#promotor_propietario').val(infoProspecto.promotorPropietario);
-                $('#status_detalle').html(infoProspecto.ultimoEstatusDetalle);
-
-                let claveCampana = infoProspecto.claveCampana;
-                let clavePlantel = infoProspecto.clavePlantel;
-                let claveNivel = infoProspecto.claveNivel;
-                let claveCarrera = infoProspecto.claveCarrera;
-                let claveHorario = infoProspecto.claveHorario;
+                $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected",true); //establece campana
+                $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected",true); //establece plantel
+                $("#nivel_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
+                $("#carrera_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
+                $("#horario_info option[value=" + infoProspecto.claveHorario + "]").attr("selected", true); // establece nivel
+                $("#origen_info option[value=" + infoProspecto.origen + "]").attr("selected", true); // establece origen
+                
                 let nombre = infoProspecto.termometro;
-
-                $("#campana_info option[value=" + claveCampana + "]").attr("selected", true);
-                $("#plantel_info option[value=" + clavePlantel + "]").attr("selected", true);
-                $("#nivel_info option[value=" + claveNivel + "]").attr("selected", true);
 
 
                 establecer_color(nombre);
-                if (claveCarrera == 1 || claveCarrera == "" || claveCarrera == null) {
-                    //generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera);
-                } else {
-                    establecerCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera)
-                }
-
-                if (claveHorario == 1 || claveCarrera == "" || claveCarrera == null) {
-                    console.log('horario inexistente');
-                    generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera);
-                } else {
-                    console.log('horario existente');
-                    establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario)
-                }
 
             }
 
             function llenarCamposEditables(infoProspecto) {
 
                 //!llenado del formulario de guardar datos
-                $('#nombre_form').val(infoProspecto.nombre);
-                $('#apellidos_form').val(infoProspecto.apPaterno);
-                $('#apellido_mat_form').val(infoProspecto.apMaterno);
-                $('#email_form').val(infoProspecto.email);
-                $('#celular_uno').val(infoProspecto.celular1);
-                $('#celular_dos').val(infoProspecto.celular2);
-                $('#telefono_uno').val(infoProspecto.telefono1);
-                $('#telefono_dos').val(infoProspecto.telefono2);
+                
                 $('#nombreProspecto').html('<i class="bi bi-file-person-fill"></i> Ficha Prospecto: ' + infoProspecto
                     .nombreCompleto)
 

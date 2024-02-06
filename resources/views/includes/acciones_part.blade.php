@@ -118,13 +118,15 @@
             </div>
         </div>
         <div class="col-12 col-md-3">
-            <button type="button" class="btn btn-warning btn-sm" disabled><i class="bi bi-upc"></i>
+            <button type="button" class="btn btn-secondary btn-sm" disabled><i class="bi bi-upc"></i>
                 Genera Matrícula</button>
         </div>
         <div class="col-12 col-md-3">
-            <button type="button" onclick="enviarDatosProspecto()" class="btn btn-info btn-sm"><i
-                    class="bi bi-floppy-fill"></i> Guardar
-                Cambios</button>
+            <form id="formDatosGenerales" class="row" action="{{ route('guardar.datos.prospecto') }}"
+                method="get">
+                <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-floppy-fill"></i> Guardar
+                    Cambios</button>
+            </form>
         </div>
         <div class="col-12 col-md-4">
             <button id="mensajesWhatsapp" type="button" class="btn btn-success btn-sm"

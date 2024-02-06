@@ -170,4 +170,11 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
+    
+    public function getOrigenes()
+    {
+        $response = Http::get($this->base_url . 'obtener/catalogo/origenes');
+
+        return $response->json();
+    }
 }

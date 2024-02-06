@@ -15,33 +15,30 @@ class FichaController extends Controller
         //* optencion de la info prospecto
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
-
             $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
-            
-            $claveCampana = $infoProspecto['claveCampana'];
-            $clavePlantel = $infoProspecto['clavePlantel'];
-            $claveNivel = $infoProspecto['claveNivel'];
-            $claveCarrera = $infoProspecto['claveCarrera'];
 
-            $niveles = app(PeticionesController::class)->getNiveles($clavePlantel);
-            $carreras = app(PeticionesController::class)->getCarreras($claveCampana, $clavePlantel, $claveNivel, $claveCarrera);
-
+            $verificaciones = new VerificacionesController($infoProspecto);
+            $campanasList = app(PeticionesController::class)->getCampanas(0);
+            $campanas = $campanasList['EntCampanaDTO'];
+            $plantelesList = app(PeticionesController::class)->getPlanteles();
+            $niveles = $verificaciones->getNiveles();
+            $carrreasList = $verificaciones->getCarreras();
+            $carrreas = $carrreasList['Carrera'];
+            $horariosList  = $verificaciones->getHorarios();
+            $horarios = $horariosList['Horarios'];
+            $origenesList = app(PeticionesController::class)->getOrigenes();
+            $origenes = $origenesList['OrigenesDTO'];
         } else {
             $niveles = [];
             $carreras = array(
                 "Carrera" => array()
             );
         }
-        
-        //? metodos de llenado de combos de informacion superior de prospecto
-        $campañas = app(PeticionesController::class)->getCampanas(0);
-        $planteles = app(PeticionesController::class)->getPlanteles();
-   
+
         //dd($carreras);
 
         $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
-        $horarios = app(PeticionesController::class)->getCatalogoHorarioContacto();
-
+        $horariosContacto = app(PeticionesController::class)->getCatalogoHorarioContacto();
         $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1); //! combo lista de actividades realizadas
         $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2); //! combo lista de actividades por realizar
 
@@ -76,15 +73,18 @@ class FichaController extends Controller
             $referidos = array();
         }
 
-        //dd($referidos);
+        //dd($horariosContacto);
 
         return view('inicio', [
-            "campañas" => $campañas['EntCampanaDTO'],
-            "planteles" => $planteles,
+            "ficha_prospecto" => $infoProspecto,
+            "campanas" => $campanas,
+            "planteles" => $plantelesList,
             "niveles" => $niveles,
-            "carreras" => $carreras['Carrera'],
+            "carreras" => $carrreas,
+            "horarios" => $horarios,
+            "origenes" => $origenes,
             "estados" => $estados['EstatusDetalle'],
-            "horarios" => $horarios['RangoContactacion'],
+            "horariosContacto" => $horariosContacto['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
             "actividadesProximas" => $actividadesProximas['TipoContacto'],
             "referidos" => $referidos,
@@ -126,55 +126,24 @@ class FichaController extends Controller
     public function guardarDatosProspecto(Request $request)
     {
 
-        if ($request->campana_info === "" || $request->campana_info === null) {
-            //print('no hay campaña <br>');
-            $campana_info = 1;
-        }
-        else {
-            //print(' si hay campaña <br>');
-            $campana_info = $request->campana_info;
-        }
-        if ($request->plantel_info === "" || $request->plantel_info === null) {
-            //print('no hay plantel <br>');
-            $plantel_info = 1;
-        }
-        else {
-            //print(' si hay plantel <br>');
-            $plantel_info = $request->plantel_info;
-        }
-        if ($request->nivel_info === "" || $request->nivel_info === null) {
-            //print('no hay nivel <br>');
-            $nivel_info = 1;
-        }
-        else {
-            //print(' si hay nivel <br>');
-            $nivel_info = $request->nivel_info;
-        }
-        if ($request->carrera_info === "" || $request->carrera_info === null) {
-            //print('no hay carrera <br>');
-            $carrera_info = 1;
-        }
-        else {
-            print(' si hay carrera <br>');
-            $carrera_info = $request->carrera_info;
-        }
-        if ($request->horario_info === "" || $request->horario_info === null) {
-            //print('no hay horario <br>');
-            $horario_info = 1;
-        }
-        else {
-            //print(' si hay horario <br>');
-            $horario_info = $request->horario_info;
-        }
 
+        $this->validate($request, [
+            'campana_info' => 'required',
+            'plantel_info' => 'required',
+            'nivel_info' => 'required',
+            'carrera_info' => 'required',
+            'horario_info' => 'required'
+        ], $message = [
+            'required' => 'campo obligatorio'
+        ]);
 
-       $valores = array(
+        $valores = array(
             "folioCRM" => $request->folio_crm,
-            "claveCampana" => $campana_info,
-            "clavePlantel" => $plantel_info,
-            "claveNivel" => $nivel_info,
-            "claveCarrera" =>  $carrera_info,
-            "claveHorario" => $horario_info,
+            "claveCampana" => $request->campana_info,
+            "clavePlantel" => $request->plantel_info,
+            "claveNivel" => $request->nivel_info,
+            "claveCarrera" =>  $request->carrera_info,
+            "claveHorario" => $request->horario_info,
             "nombre" => $request->nombre_form,
             "apPaterno" => $request->apellidos_form,
             "apMaterno" => $request->apellido_mat_form,
@@ -191,7 +160,7 @@ class FichaController extends Controller
 
         //dd($envio);
 
-        return redirect()->back(); 
+        return redirect()->back();
     }
     public function searcCrm($search_type, $search_text, $search_plantel)
     {
@@ -279,6 +248,16 @@ class FichaController extends Controller
 
     public function guardarBitacora(Request $request)
     {
+
+        $this->validate($request, [
+            'campana_info' => 'required',
+            'plantel_info' => 'required',
+            'nivel_info' => 'required',
+            'carrera_info' => 'required',
+            'horario_info' => 'required'
+        ], $message = [
+            'required' => 'campo obligatorio'
+        ]);
 
         $valores = array(
             "folioCRM" => $request->folio_crm,

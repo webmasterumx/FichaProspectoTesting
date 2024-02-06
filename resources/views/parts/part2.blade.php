@@ -32,9 +32,9 @@
                 <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="horarioContacto"
                     name="horarioContacto">
                     <option selected>Seleccion Horario de Contactación</option>
-                    @foreach ($horarios as $horario)
-                        <option value="{{ $horario['id'] }}"> {{ $horario['nombre'] }} </option>
-                    @endforeach
+                    @foreach ($horariosContacto as $horarioContacto)
+                        <option value="{{ $horarioContacto['id'] }}"> {{ $horarioContacto['nombre'] }} </option>
+                    @endforeach 
                 </select>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Comentarios o
