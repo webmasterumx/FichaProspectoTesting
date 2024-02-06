@@ -20,15 +20,15 @@ class FichaController extends Controller
 
             $verificaciones = new VerificacionesController($infoProspecto);
             $campanasList = app(PeticionesController::class)->getCampanas(0);
-            $campanas = $campanasList['EntCampanaDTO'];
+            $campanas = (isset($campanasList['EntCampanaDTO'])) ? $campanasList['EntCampanaDTO'] : array();
             $plantelesList = app(PeticionesController::class)->getPlanteles();
             $niveles = $verificaciones->getNiveles();
             $carrreasList = $verificaciones->getCarreras();
-            $carrreas = $carrreasList['Carrera'];
+            $carrreas = (isset($carrreasList['Carrera'])) ? $carrreasList['Carrera'] : array();
             $horariosList  = $verificaciones->getHorarios();
-            $horarios = $horariosList['Horarios'];
+            $horarios = (isset($horariosList['Horarios'])) ? $horariosList['Horarios'] : array();
             $origenesList = app(PeticionesController::class)->getOrigenes();
-            $origenes = $origenesList['OrigenesDTO'];
+            $origenes = (isset($origenesList['OrigenesDTO'])) ? $origenesList['OrigenesDTO'] : array(); 
         } else {
             $niveles = [];
             $infoProspecto = array();
