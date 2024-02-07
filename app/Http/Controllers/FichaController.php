@@ -285,6 +285,16 @@ class FichaController extends Controller
     public function guardarReferido(Request $request)
     {
 
+        $this->validate($request, [
+            'nombreReferido' => 'required',
+            'apellidoPaternoReferido' => 'required',
+            'apellidoMaternoReferido' => 'required',
+            'telefonoReferido' => 'required',
+            'emailReferido' => 'required'
+        ], $message = [
+            'required' => 'campo obligatorio'
+        ]);
+
         $valores = array(
             "folioCRM" => $request->folio_crm,
             "nombre" => $request->nombreReferido,

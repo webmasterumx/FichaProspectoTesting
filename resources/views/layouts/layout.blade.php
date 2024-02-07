@@ -62,6 +62,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <script src="{{ asset('assets/js/bloqueos.js') }}"></script>
+    <script src="{{ asset('assets/js/form.js') }}"></script>
     @php
         $validar_folio = isset($_REQUEST['folio_crm']);
         $validar_prmotor = isset($_REQUEST['promotor']);
@@ -80,28 +81,28 @@
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
-                    console.log(data); // imprimimos la respuesta
+                    //console.log(data); // imprimimos la respuesta
 
                     if (data == 1) {
-                        console.log('no existe prospecto');
+                        //console.log('no existe prospecto');
                         $("#modal_error_folio").modal("show");
                     } else if (data == 2) {
-                        console.log('no existe promotor');
+                        //console.log('no existe promotor');
                         $('#modal_error_promotor').modal('show');
                     } else {
-                        console.log('tratar info Prospecto');
+                        //console.log('tratar info Prospecto');
 
                         let matricula = data.infoProspecto.matricula;
 
                         if (matricula === "" || matricula === " " || matricula === null) {
-                            console.log('este prospecto no tiene matricula, se puede editar');
+                            //console.log('este prospecto no tiene matricula, se puede editar');
                             $("#plantel_info").prop('disabled', false);
                             $("#especialidad_info").prop('disabled', false);
                             $("#carrera_info").prop('disabled', false);
                             $("#horario_info").prop('disabled', false);
                             $("#campana_info").prop('disabled', false);
                         } else {
-                            console.log("este prospecto trae matricula por lo tanto no se puede editar");
+                            //console.log("este prospecto trae matricula por lo tanto no se puede editar");
                             $("#plantel_info").prop('disabled', true);
                             $("#especialidad_info").prop('disabled', true);
                             $("#carrera_info").prop('disabled', true);
@@ -138,7 +139,7 @@
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
-                    console.log(data);
+                    //console.log(data);
                     $("#nivel_info").prepend('<option value="">Selecciona un nivel</option>');
                     for (let index = 0; index < data.length; index++) {
                         const element = data[index].clave;
@@ -165,7 +166,7 @@
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
-                    console.log(data.Carrera.length);
+                    //console.log(data.Carrera.length);
                     $("#carrera_info").prepend('<option value="">Selecciona un carrera</option>');
                     if (data.Carrera.length > 0) {
                         //hay array de carreras
@@ -183,7 +184,7 @@
 
             // escuchador de cambio de carrera
             $("select[name=carrera_info]").change(function() {
-                console.log($('select[name=carrera_info]').val());
+                //console.log($('select[name=carrera_info]').val());
 
                 let claveCampana = $('select[name=campana_info]').val();
                 let clavePlantel = $('select[name=plantel_info]').val();
@@ -260,53 +261,6 @@
                 }
             }
 
-            function generarListaCarreras(claveCampana, clavePlantel, claveNivel, claveCarrera) {
-                $("#carrera_info").prepend('<option value="1" selected disabled>Selecciona una carrera</option>');
-                $.ajax({
-                    url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
-                        claveNivel,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data.Carrera.length);
-                    if (data.Carrera.length > 0) {
-                        //hay array de carreras
-                        for (let index = 0; index < data.Carrera.length; index++) {
-                            const element = data.Carrera[index];
-                            console.log(element);
-                            $("#carrera_info").prepend("<option value='" + element.clave_carrera +
-                                "'>" + element.descrip_ofi + "</option>");
-                        }
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
-
-            function generarListaHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
-                $("#horario_info").empty();
-                $("#horario_info").prepend('<option value="0" selected disabled>Selecciona un horario</option>');
-                $.ajax({
-                    url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
-                        claveNivel + "/" + claveCarrera,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data.Horarios.length);
-                    if (data.Horarios.length > 0) {
-                        //hay array de carreras
-                        for (let index = 0; index < data.Horarios.length; index++) {
-                            const element = data.Horarios[index];
-                            //console.log(element);
-                            $("#horario_info").prepend("<option value='" + element.Horario +
-                                "'>" + element.Descripcion + "</option>");
-                        }
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
-
             function printInfoPromotor(infoPromotor, dateInfo) {
 
                 let lineaPromotor = '<i class="bi bi-person-fill"></i> ' + infoPromotor.nombre;
@@ -315,34 +269,6 @@
 
                 $('#namePromotor').html(lineaPromotor);
                 $('#datePromotor').html(lineaFecha);
-            }
-
-            function establecerCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera) {
-                $("#carrera_info").empty();
-                $.ajax({
-                    url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
-                        claveNivel,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data.Carrera.length);
-                    if (data.Carrera.length > 0) {
-                        //hay array de carreras
-                        for (let index = 0; index < data.Carrera.length; index++) {
-                            const element = data.Carrera[index];
-                            //console.log(element);
-                            if (element.clave_carrera == claveCarrera) {
-                                $("#carrera_info").prepend("<option value='" + element.clave_carrera +
-                                    "' selected='selected'>" + element.descrip_ofi + "</option>");
-                            } else {
-                                $("#carrera_info").prepend("<option value='" + element.clave_carrera +
-                                    "'>" + element.descrip_ofi + "</option>");
-                            }
-                        }
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
             }
 
             function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera) {
@@ -363,7 +289,6 @@
                             //console.log(element);
                             $("#horario_info").prepend("<option value='" + element.Horario + "'>" +
                                 element.Descripcion + "</option>");
-
                         }
                     } else {
                         $("#horario_info").prepend(
@@ -526,83 +451,6 @@
     @endif
 
     <script>
-        $(document).ready(function() {
-            $('ul.nav li.dropdown').hover(function() {
-                //$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
-            }, function() {
-                //$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
-            });
-
-            //getMenu(0);
-
-        });
-
-
-        function getMenu(idMenu) {
-
-            let ruta = "{{ env('APP_URL') }}obtener/menu/" + idMenu;
-            console.log(ruta);
-
-            $.ajax({
-                url: ruta,
-                method: "GET",
-                dataType: 'json',
-            }).done(function(data) {
-                console.log(data.Cls_MenuDoctos.length); // imprimimos la respuesta
-                for (let index = 0; index < data.Cls_MenuDoctos.length; index++) {
-                    const element = data.Cls_MenuDoctos[index];
-                    console.log(element);
-                    let item = `
-                        <li class="dropdown" id="${element.id_menu}">
-                            <a class="nav-link dropdown-toggle text-white" onmouseover="getSubMenus(${element.id_menu})" href="${element.url_destino}" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                ${element.descripcion}
-                            </a>
-                        </li>
-                    `;
-                    $("#listaMenus").append($("<li>").html(item));
-                }
-
-            }).fail(function(e) {
-                console.log("Request: " + JSON.stringify(e));
-            })
-        }
-
-        function getSubMenus(idMenu) {
-            let ruta = "{{ env('APP_URL') }}obtener/menu/" + idMenu;
-            console.log(ruta);
-
-            $.ajax({
-                url: ruta,
-                method: "GET",
-                dataType: 'json',
-            }).done(function(data) {
-                console.log(data.Cls_MenuDoctos.length); // imprimimos la respuesta
-                let submenu = `<ul class="dropdown-menu show">`;
-                for (let index = 0; index < data.Cls_MenuDoctos.length; index++) {
-                    const element = data.Cls_MenuDoctos[index];
-                    //console.log(element);
-                    let menuPeque = `
-                        <li class="dropend ">
-                            <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                                ${element.descripcion}
-                            </a>
-                        </li>
-                    `;
-
-                    submenu = submenu + menuPeque;
-                }
-
-                submenu = submenu + `</ul>`;
-                console.log(submenu);
-
-                $('#menu_' + idMenu).append(submenu);
-
-            }).fail(function(e) {
-                console.log("Request: " + JSON.stringify(e));
-            })
-        }
 
         function searchProspecto() {
             console.log('hola');
@@ -670,9 +518,6 @@
             $('#editar_prospecto').removeClass('d-none');
         }
 
-        function enviarDatosProspecto() {
-            $("#formDatosGenerales").submit();
-        }
     </script>
 </body>
 

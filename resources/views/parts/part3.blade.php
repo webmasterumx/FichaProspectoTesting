@@ -4,7 +4,7 @@
             Telefono
             <div class="form-check">
                 <input class="ms-3 form-check-input" type="radio" id="radio_casa" name="telefonoReferidoType[]"
-                    value="1">
+                    value="1" checked>
                 <label class="form-check-label" for="radio_casa">
                     Casa
                 </label>
@@ -29,17 +29,32 @@
                 <label for="nombreReferido" class="form-label">Nombre:</label>
                 <input type="text" class="form-control" id="nombreReferido" name="nombreReferido">
             </div>
+            <div class="text-danger fs-6">
+                @foreach ($errors->get('nombreReferido') as $error)
+                    {{ $error }}
+                @endforeach
+            </div>
         </div>
         <div class="col-12 col-md-2">
             <div class="mb-3">
                 <label for="apellidoPaternoReferido" class="form-label">Apellido Paterno:</label>
                 <input type="text" class="form-control" id="apellidoPaternoReferido" name="apellidoPaternoReferido">
             </div>
+            <div class="text-danger fs-6">
+                @foreach ($errors->get('apellidoPaternoReferido') as $error)
+                    {{ $error }}
+                @endforeach
+            </div>
         </div>
         <div class="col-12 col-md-2">
             <div class="mb-3">
                 <label for="apellidoMaternoReferido" class="form-label">Apellido Materno:</label>
                 <input type="text" class="form-control" id="apellidoMaternoReferido" name="apellidoMaternoReferido">
+            </div>
+            <div class="text-danger fs-6">
+                @foreach ($errors->get('apellidoMaternoReferido') as $error)
+                    {{ $error }}
+                @endforeach
             </div>
         </div>
         <div class="col-12 col-md-2">
@@ -48,13 +63,23 @@
         <div class="col-12 col-md-4">
             <div class="mb-3">
                 <input type="text" class="form-control text-center" id="telefonoReferido" name="telefonoReferido"
-                    placeholder="Tel. maximo 13 digitos">
+                    placeholder="Tel. maximo 13 digitos" maxlength="13" minlength="10">
+            </div>
+            <div class="text-danger fs-6">
+                @foreach ($errors->get('telefonoReferido') as $error)
+                    {{ $error }}
+                @endforeach
             </div>
             <div class="mb-3">
                 <label for="emailReferido" class="form-label">Correo
                     Electronico:</label>
                 <input type="email" class="form-control text-center" id="emailReferido" name="emailReferido"
                     placeholder="Email">
+            </div>
+            <div class="text-danger fs-6">
+                @foreach ($errors->get('emailReferido') as $error)
+                    {{ $error }}
+                @endforeach
             </div>
         </div>
         <div class="col-12 col-md-8">
@@ -74,23 +99,40 @@
                     <tbody>
                         @php
                             $cont = 0;
-                            $stylePar = "background-color:white !important;";
-                            $styleInpar = "background-color:#D3DFE8 !important;";
+                            $stylePar = 'background-color:white !important;';
+                            $styleInpar = 'background-color:#D3DFE8 !important;';
                         @endphp
                         @foreach ($referidos as $referido)
                             @php
                                 $cont = $cont + 1;
                             @endphp
-                            
+
                             <tr>
-                                <th @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif><a href="{{ env('APP_URL') }}?folio_crm={{$referido['folioCRM']}}&promotor={{$_REQUEST['promotor']}}"> {{ $referido['folioCRM'] }} </a></th>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['nombreCompleto'] }} </td>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono1'] }} </td>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['telefono2'] }} </td>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular1'] }} </td>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['celular2'] }} </td>
-                                <td @if (($cont % 2) == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif> {{ $referido['email'] }} </td>
-                            </tr> 
+                                <th
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    <a
+                                        href="{{ env('APP_URL') }}?folio_crm={{ $referido['folioCRM'] }}&promotor={{ $_REQUEST['promotor'] }}">
+                                        {{ $referido['folioCRM'] }} </a>
+                                </th>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['nombreCompleto'] }} </td>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['telefono1'] }} </td>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['telefono2'] }} </td>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['celular1'] }} </td>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['celular2'] }} </td>
+                                <td
+                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
+                                    {{ $referido['email'] }} </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
