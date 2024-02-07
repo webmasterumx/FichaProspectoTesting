@@ -204,7 +204,7 @@
                 $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected", true); //establece campana
                 $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected", true); //establece plantel
                 $("#nivel_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
-                $("#carrera_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
+                $("#carrera_info option[value=" + infoProspecto.claveCarrera + "]").attr("selected", true); // establece nivel
                 $("#horario_info option[value=" + infoProspecto.claveHorario + "]").attr("selected", true); // establece nivel
                 $("#origen_info option[value=" + infoProspecto.origen + "]").attr("selected", true); // establece origen
 
