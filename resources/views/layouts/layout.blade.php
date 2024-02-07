@@ -17,10 +17,10 @@
         <header
             class="ff_header bg-unimex d-flex flex-wrap align-items-center justify-content-center justify-content-md-between border-bottom">
             <div class="col-md-2 mb-md-0">
-                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <div class="d-inline-flex link-body-emphasis text-decoration-none">
                     <img src="{{ asset('assets/img/logo_Unimex.png') }}"
                         srcset="{{ asset('assets/img/logo_Unimex.png') }}" alt="">
-                </a>
+                </div>
             </div>
 
             <div class="col-12 col-md-4">
@@ -55,6 +55,7 @@
             </div>
         </div>
     </footer>
+    @include('modales.modal_confirmacion')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -200,6 +201,16 @@
                 return base_url;
             }
 
+            function setFolioCrm() {
+                let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
+                return folio_crm;
+            }
+
+            function setPromotor(){
+                let promotor = "{{ $_REQUEST['promotor'] }}";
+                return promotor;
+            }
+
             function llenarAreaInformacion(infoProspecto) {
                 $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected", true); //establece campana
                 $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected", true); //establece plantel
@@ -209,8 +220,6 @@
                 $("#origen_info option[value=" + infoProspecto.origen + "]").attr("selected", true); // establece origen
 
                 let nombre = infoProspecto.termometro;
-
-
                 establecer_color(nombre);
 
             }
@@ -449,76 +458,7 @@
             });
         </script>
     @endif
-
-    <script>
-
-        function searchProspecto() {
-            console.log('hola');
-
-            var formElement = document.getElementById("form_search");
-            formData = new FormData(formElement);
-            console.log(formData);
-            console.log(formData.get('search_crm[]'));
-
-            let search_type = formData.get('search_crm[]');
-            let search_text = formData.get('text_crm');
-            let search_plantel = formData.get('plantel_search');
-
-            let ruta = "{{ env('APP_URL') }}" + "search/crm/" + search_type + "/" + search_text + "/" + search_plantel;
-
-            if (search_text == null || search_text == "" || search_text == " ") {
-                $('#label-error-text').removeClass('d-none');
-            } else {
-                $('#label-error-text').addClass('d-none');
-
-                $.ajax({
-                    url: ruta,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data); // imprimimos la respuesta
-                    for (let index = 0; index < data.length; index++) {
-                        const element = data[index];
-                        //console.log(element);
-                        cont = index + 1;
-                        if (cont % 2 !== 0) {
-                            //numero inpar
-                            style = "background-color:white !important;";
-                        }
-                        if (cont % 2 === 0) {
-                            //numero par
-                            style = "background-color:#D3DFE8 !important;";
-                        }
-                        let fila = `
-                            <tr>
-                                <td style="${style}"><a href="{{ env('APP_URL') }}/?folio_crm=${element.folioCRM}&promotor=@isset($_REQUEST['promotor']){{ $_REQUEST['promotor'] }}@endisset">${element.folioCRM}</a></td>
-                                <td style="${style}">${element.nombreCompleto}</td>
-                                <td style="${style}">${element.telefono1}</td>
-                                <td style="${style}">${element.telefono2}</td>
-                                <td style="${style}">${element.celular1}</td>
-                                <td style="${style}">${element.celular2}</td>
-                                <td style="${style}">${element.email}</td>
-                            </tr>
-                        `;
-                        $('#table_search tbody').append(fila);
-                    }
-
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
-
-
-        }
-
-        function mostrarEdicionProspecto() {
-            console.log('hola');
-            $('#mensajes_whatsapp').addClass('d-none');
-
-            $('#editar_prospecto').removeClass('d-none');
-        }
-
-    </script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 
 </html>

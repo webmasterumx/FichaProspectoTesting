@@ -14,7 +14,6 @@ class VerificacionesController extends Controller
 
     public function __construct($ficha_prospecto)
     {
-
         $this->clave_campana = $ficha_prospecto['claveCampana'];
         $this->clave_plantel = $ficha_prospecto['clavePlantel'];
         $this->clave_nivel = $ficha_prospecto['claveNivel'];

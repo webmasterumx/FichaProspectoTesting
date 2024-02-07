@@ -108,7 +108,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Campaña:</label>
+                    <label for="origen_info" class="form-label">Origen del Registro:</label>
                     <select class="form-select form-select-sm" aria-label="Small select example" id="origen_info"
                         name="origen_info" disabled>
                         @foreach ($origenes as $origen)
@@ -119,7 +119,7 @@
                         @foreach ($errors->get('campana_info') as $error)
                             {{ $error }}
                         @endforeach
-                    </div>
+                    </div>  
                 </div>
             </div>
             @isset($_REQUEST['folio_crm'])

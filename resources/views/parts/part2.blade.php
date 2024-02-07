@@ -12,7 +12,7 @@
                 </select>
                 <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="estatusDetalle"
                     name="estatusDetalle">
-                    <option selected disabled>Selecciona Estattus Detalle</option>
+                    <option value="">Selecciona Estatus Detalle</option>
                     @foreach ($estados as $estado)
                         <option value="{{ $estado['clave'] }}">{{ $estado['descrip'] }}</option>
                     @endforeach

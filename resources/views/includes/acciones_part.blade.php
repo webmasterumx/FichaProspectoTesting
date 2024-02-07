@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <p>Si conoces el plantel, seleecionalo aquí:</p>
+                                    <p>Si conoces el plantel, seleccionalo aquí:</p>
                                     <select class="form-select" aria-label="Default select example"
                                         name="plantel_search" id="plantel_search">
                                         <option value="0" selected>Selecciona una opción</option>
@@ -73,7 +73,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-12 col-md-12" style="height: 150px !important;">
+                                <div id="cargador" class="col-12 col-md-12 mt-3 text-center d-none">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p>Cargando datos</p>
+                                </div>
+                                <div id="dataBuscador" class="col-12 col-md-12 d-none"
+                                    style="height: 150px !important;">
                                     <div class="table-responsive mt-3" style="overflow-y: scroll;  height: 150px;">
                                         <table id="table_search" class="table table-sm">
                                             <thead>
@@ -122,11 +129,11 @@
                 Genera Matrícula</button>
         </div>
         <div class="col-12 col-md-3">
-            <form id="formDatosGenerales" class="row" action="{{ route('guardar.datos.prospecto') }}"
-                method="get">
-                <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-floppy-fill"></i> Guardar
-                    Cambios</button>
-            </form>
+            <button onclick="actualizarReferido()" type="button" class="btn btn-info btn-sm">
+                <i class="bi bi-floppy-fill"></i> 
+                Guardar
+                Cambios
+            </button>
         </div>
         <div class="col-12 col-md-4">
             <button id="mensajesWhatsapp" type="button" class="btn btn-success btn-sm"

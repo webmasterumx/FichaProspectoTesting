@@ -97,7 +97,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
+                        {{-- @php
                             $cont = 0;
                             $stylePar = 'background-color:white !important;';
                             $styleInpar = 'background-color:#D3DFE8 !important;';
@@ -133,7 +133,7 @@
                                     @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
                                     {{ $referido['email'] }} </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>

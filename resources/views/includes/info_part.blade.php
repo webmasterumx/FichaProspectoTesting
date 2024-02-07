@@ -23,7 +23,8 @@
 <div class="col-12 col-md-3">
     <div class="mb-3">
         <label for="promotor_propietario" class="form-label">Promotor Propietario:</label>
-        <input type="email" class="form-control text-center" id="promotor_propietario" disabled>
+        <input type="email" class="form-control text-center" id="promotor_propietario"
+            value="{{ $ficha_prospecto['promotorPropietario'] }}" disabled>
     </div>
 </div>
 <div class="col-12 col-md-2">
@@ -53,10 +54,8 @@
                 <option value="{{ $campana['Campana'] }}">{{ $campana['Nombre'] }}</option>
             @endforeach
         </select>
-        <div class="text-danger fs-6">
-            @foreach ($errors->get('campana_info') as $error)
-                {{ $error }}
-            @endforeach
+        <div id="campana_info_error" class="text-danger fs-7 d-none">
+            campo obligatorio
         </div>
     </div>
 </div>
@@ -70,10 +69,8 @@
                 <option value="{{ $plantel['clave'] }}">{{ $plantel['descrip'] }}</option>
             @endforeach
         </select>
-        <div class="text-danger fs-6">
-            @foreach ($errors->get('plantel_info') as $error)
-                {{ $error }}
-            @endforeach
+        <div id="plantel_info_error" class="text-danger fs-7 d-none">
+            campo obligatorio
         </div>
     </div>
 </div>
@@ -87,10 +84,8 @@
                 <option value="{{ $nivel['clave'] }}">{{ $nivel['descrip'] }}</option>
             @endforeach
         </select>
-        <div class="text-danger fs-6">
-            @foreach ($errors->get('nivel_info') as $error)
-                {{ $error }}
-            @endforeach
+        <div id="nivel_info_error" class="text-danger fs-7 d-none">
+            campo obligatorio
         </div>
     </div>
 </div>
@@ -104,10 +99,8 @@
                 <option value="{{ $carrera['clave_carrera'] }}">{{ $carrera['descrip_ofi'] }}</option>
             @endforeach
         </select>
-        <div class="text-danger fs-6">
-            @foreach ($errors->get('carrera_info') as $error)
-                {{ $error }}
-            @endforeach
+        <div id="carrera_info_error" class="text-danger fs-7 d-none">
+            campo obligatorio
         </div>
         <div>
             @isset($envio)
@@ -121,15 +114,13 @@
         <label for="exampleFormControlInput1" class="form-label">Horario:</label>
         <select class="form-select form-select-sm" aria-label="Small select example" id="horario_info"
             name="horario_info" form="formDatosGenerales">
-            <option value="">Selecciona un horario</option>
+            <option value="default">Selecciona un horario</option>
             @foreach ($horarios as $horario)
                 <option value="{{ $horario['Horario'] }}"> {{ $horario['Descripcion'] }} </option>
             @endforeach
         </select>
-        <div class="text-danger fs-6">
-            @foreach ($errors->get('horario_info') as $error)
-                {{ $error }}
-            @endforeach
+        <div id="horario_info_error" class="text-danger fs-7 d-none">
+            campo obligatorio
         </div>
     </div>
 </div>

@@ -72,3 +72,12 @@ select {
 .error{
     color: red;
 }
+
+.bs-primary-bg-subtle{
+    background-color: #031633 !important;
+    color: white !important;
+}
+
+.fs-7{
+    font-size: 12px !important;
+}
