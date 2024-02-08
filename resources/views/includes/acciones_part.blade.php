@@ -116,7 +116,7 @@
                                     prospectos</button>
                             </div>
                             <div class="col-12 col-md-6">
-                                <button type="button" class="btn btn-danger w-100"
+                                <button onclick="limpiarTabla()" type="button" class="btn btn-danger w-100"
                                     data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </div>

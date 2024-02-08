@@ -61,9 +61,15 @@
             <button type="submit" class="btn btn-primary">Agregar Referido</button>
         </div>
         <div class="col-12 col-md-4">
-            <div class="mb-3">
+            <div class="mb-3 d-flex">
                 <input type="text" class="form-control text-center" id="telefonoReferido" name="telefonoReferido"
                     placeholder="Tel. maximo 13 digitos" maxlength="13" minlength="10">
+                <button onclick="searchForTelefono()" type="button" class="btn btn-primary">
+                    <i id="iconoSearch" class="bi bi-search"></i>
+                    <div id="iconoCargando" class="spinner-border d-none" style="height: 12px !important; width: 12px !important;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
             </div>
             <div class="text-danger fs-6">
                 @foreach ($errors->get('telefonoReferido') as $error)
@@ -103,43 +109,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @php
-                            $cont = 0;
-                            $stylePar = 'background-color:white !important;';
-                            $styleInpar = 'background-color:#D3DFE8 !important;';
-                        @endphp
-                        @foreach ($referidos as $referido)
-                            @php
-                                $cont = $cont + 1;
-                            @endphp
-
-                            <tr>
-                                <th
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    <a
-                                        href="{{ env('APP_URL') }}?folio_crm={{ $referido['folioCRM'] }}&promotor={{ $_REQUEST['promotor'] }}">
-                                        {{ $referido['folioCRM'] }} </a>
-                                </th>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['nombreCompleto'] }} </td>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['telefono1'] }} </td>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['telefono2'] }} </td>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['celular1'] }} </td>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['celular2'] }} </td>
-                                <td
-                                    @if ($cont % 2 == 0) style="{!! $stylePar !!}" @else style=" {!! $styleInpar !!} " @endif>
-                                    {{ $referido['email'] }} </td>
-                            </tr>
-                        @endforeach --}}
                     </tbody>
                 </table>
             </div>

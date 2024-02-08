@@ -437,6 +437,7 @@
     @endif
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/js/consumo.js') }}"></script>
+    <script src="{{ asset('assets/js/busquedas.js') }}"></script>
 </body>
 
 </html>

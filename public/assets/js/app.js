@@ -1,5 +1,14 @@
+function limpiarTabla(){
+    $('#table_search > tbody').empty();
+
+    if ($("#dataBuscador").hasClass("d-none") === false) {
+        $('#dataBuscador').addClass('d-none');
+    }
+}
+
 function searchProspecto() {
     $('#table_search > tbody').empty();
+    $('#cargador').removeClass('d-none');
     if ($("#dataBuscador").hasClass("d-none") === false) {
         $('#dataBuscador').addClass('d-none');
     }
@@ -28,6 +37,8 @@ function searchProspecto() {
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 //console.log(element);
+                let rutaPros = setBaseURL() + "?folio_crm=" + element.folioCRM + "&promotor=" + setPromotor();
+                //console.log(rutaPros);
                 cont = index + 1;
                 if (cont % 2 !== 0) {
                     //numero inpar
@@ -39,7 +50,7 @@ function searchProspecto() {
                 }
                 let fila = `
                     <tr>
-                        <td style="${style}"><a href=${setBaseURL()}"/?folio_crm=${element.folioCRM}&promotor=${setPromotor()}">${element.folioCRM}</a></td>
+                        <td style="${style}"><a href="${rutaPros}">${element.folioCRM}</a></td>
                         <td style="${style}">${element.nombreCompleto}</td>
                         <td style="${style}">${element.telefono1}</td>
                         <td style="${style}">${element.telefono2}</td>
