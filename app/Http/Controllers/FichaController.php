@@ -17,7 +17,6 @@ class FichaController extends Controller
         if ((isset($_REQUEST['folio_crm']) == true)) {
             $folio_crm = $_REQUEST['folio_crm'];
             $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
-
             $verificaciones = new VerificacionesController($infoProspecto);
             $campanasList = app(PeticionesController::class)->getCampanas(0);
             $campanas = (isset($campanasList['EntCampanaDTO'])) ? $campanasList['EntCampanaDTO'] : array();

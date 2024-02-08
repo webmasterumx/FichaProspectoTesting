@@ -150,10 +150,10 @@ function getBitacora() {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        $("#estatusDetalle").prepend('<option value="">Selecciona Estatus Detalle</option>');
+        $("#estatusDetalle").append('<option value="">Selecciona Estatus Detalle</option>');
         //console.log(data.EstatusDetalle); // imprimimos la respuesta
         for (let index = 0; index < data.EstatusDetalle.length; index++) {
-            $("#estatusDetalle").prepend("<option value='" + data.EstatusDetalle[index].clave + "'>" + data.EstatusDetalle[index].descrip + "</option>");
+            $("#estatusDetalle").append("<option value='" + data.EstatusDetalle[index].clave + "'>" + data.EstatusDetalle[index].descrip + "</option>");
         }
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
@@ -165,10 +165,10 @@ function getBitacora() {
         dataType: 'json',
     }).done(function (data) {
         //console.log(data);
-        $("#horarioContacto").prepend('<option value="">Seleccion Horario de Contactación</option>');
+        $("#horarioContacto").append('<option value="">Seleccion Horario de Contactación</option>');
         //console.log(data.RangoContactacion); // imprimimos la respuesta
         for (let index = 0; index < data.RangoContactacion.length; index++) {
-            $("#horarioContacto").prepend("<option value='" + data.RangoContactacion[index].id + "'>" + data.RangoContactacion[index].nombre + "</option>");
+            $("#horarioContacto").append("<option value='" + data.RangoContactacion[index].id + "'>" + data.RangoContactacion[index].nombre + "</option>");
         }
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
@@ -182,7 +182,7 @@ function getBitacora() {
         //console.log(data);
         //console.log(data.TipoContacto); // imprimimos la respuesta
         for (let index = 0; index < data.TipoContacto.length; index++) {
-            $("#actividadRealizada").prepend("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
+            $("#actividadRealizada").append("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
         }
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
@@ -196,7 +196,7 @@ function getBitacora() {
         //console.log(data);
         //console.log(data.TipoContacto); // imprimimos la respuesta
         for (let index = 0; index < data.TipoContacto.length; index++) {
-            $("#actividadProxima").prepend("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
+            $("#actividadProxima").append("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
         }
 
         $('#cargador_bitacora').addClass('d-none');
