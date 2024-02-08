@@ -222,13 +222,13 @@ class FichaController extends Controller
     {
 
         if ($_REQUEST['date_bitacora'] == null || $_REQUEST['date_bitacora'] == "")  {
-            echo 'no hay fecha';
+            //echo 'no hay fecha';
             $date = " ";
         }
         else{
-            echo 'si hay fecha';
+            //echo 'si hay fecha';
             $date = $_REQUEST['date_bitacora'];
-        }
+        }//
 
         if ($_REQUEST['actividadProxima'] == 0) {
             $contacto = null;
