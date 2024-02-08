@@ -366,20 +366,24 @@
 
             // parte de los mensajes de whats
             function establecer_mensajes_whats(folioCRM) {
+                $('#conversaciones > tbody').empty();
 
                 let folio_crm = setFolioCrm();
+                let url = setBaseURL() + "obtener/mensajes/whatsapp/" + folio_crm;
+                console.log(url);
 
                 $.ajax({
-                    url: setBaseURL() + "obtener/mensajes/whatsapp/" + folioCRM,
+                    url: url,
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
 
-                    console.log(data.length);
+                    console.log(data);
+                    //console.log(data.length);
 
                     if (data.length == 0) {
                         console.log('no hay datos');
-                        
+
                         $('#modal_no_mensajes').modal('show');
 
                     } else {
@@ -397,7 +401,24 @@
                                 style = "background-color:#D3DFE8 !important;";
                             }
                             const element = data.Cls_MensajesWhatsapp[index];
-                            console.log(element);
+
+                            //console.log(element);
+
+                            switch (element.sentimientoMW) {
+                                case "Normal":
+                                    caritaBg = "&#128512;";
+                                    break;
+                                case "Triste":
+                                    caritaBg = "&#128543;";
+                                    break;
+                                case "Enojado":
+                                    caritaBg = " &#128545;";
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
                             let fila = `
                                 <tr>
                                     <td style="${style}">${element.fechaMW}</td>
@@ -405,7 +426,7 @@
                                     <td style="${style}">${element.nombreMW}</td>
                                     <td style="${style}">${element.detalleMW}</td>
                                     <td style="${style}">${element.estatus_conversacionMW}</td>
-                                    <td style="${style}">${element.sentimientoMW}</td>
+                                    <td style="${style}">${caritaBg}</td>
                                 </tr>
                             `;
                             $('#conversaciones tbody').append(fila);

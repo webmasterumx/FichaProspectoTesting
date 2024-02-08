@@ -163,3 +163,21 @@ $("#formBitacora").validate({
 
     }
 });
+
+$("#formBitacora").validate({
+    rules: {
+        text_crm: {
+            required: true,
+        }
+    },
+    messages: {
+        text_crm: {
+            required: "campo requerido",
+        }
+    },
+    submitHandler: function (form) {
+        form.preventDefault();
+        searchProspecto();
+
+    }
+});

@@ -1,4 +1,6 @@
-function limpiarTabla(){
+
+
+function limpiarTabla() {
     $('#table_search > tbody').empty();
 
     if ($("#dataBuscador").hasClass("d-none") === false) {
@@ -17,10 +19,12 @@ function searchProspecto() {
     formData = new FormData(formElement);
 
     let search_type = formData.get('search_crm[]');
-    let search_text = formData.get('text_crm');
-    let search_plantel = formData.get('plantel_search');
+    let search_text = $('#text_crm').val();
+    let search_plantel = $('select[name=plantel_search]').val();
 
     let ruta = setBaseURL() + "search/crm/" + search_type + "/" + search_text + "/" + search_plantel;
+
+    console.log(ruta);
 
     if (search_text == null || search_text == "" || search_text == " ") {
         $('#label-error-text').removeClass('d-none');
@@ -66,7 +70,7 @@ function searchProspecto() {
         }).fail(function (e) {
             console.log("Request: " + JSON.stringify(e));
         })
-    }
+    } 
 
 
 }
@@ -118,7 +122,7 @@ function actualizarReferido() {
         let email_form = $('#email_form').val()
         let folio_crm = setFolioCrm();
 
-        let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" +  claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel  + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario  + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form  + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
+        let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" + claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
         let xhr = new XMLHttpRequest();
 
         // 2. Configuración: solicitud GET para la URL /article/.../load

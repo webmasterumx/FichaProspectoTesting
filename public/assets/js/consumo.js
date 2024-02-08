@@ -75,6 +75,11 @@ function getBitacora() {
         console.log(bitacora.Cls_Bitacora);
         if (bitacora.length == undefined) {
             //console.log(bitacora);
+            if (bitacora.cerrado == false) {
+                iconoCerrado = '<i class="bi bi-check-square"></i>';
+            } else {
+                iconoCerrado = '<i class="bi bi-app"></i>';
+            }
             let fila = `
                 <tr>
                     <td style="background-color:white !important;">${bitacora.fechaAgenda}</td>
@@ -85,7 +90,7 @@ function getBitacora() {
                     <td style="background-color:white !important;">${bitacora.fechaHoraCaptura}</td>
                     <td style="background-color:white !important;">${bitacora.tipoContacto}</td>
                     <td style="background-color:white !important;">${bitacora.promotorPropietario}</td>
-                    <td style="background-color:white !important;"></td>
+                    <td class="text-center" style="background-color:white !important; color: #327AB7 !important; font-size: 22px !important;">${iconoCerrado}</td>
                 </tr>
             `;
             $('#bitacora_table tbody').append(fila);
@@ -103,6 +108,13 @@ function getBitacora() {
                     //numero par
                     style = "background-color:#D3DFE8 !important;";
                 }
+
+                if (element.cerrado == false) {
+                    iconoCerrado = '<i class="bi bi-check-square"></i>';
+                } else {
+                    iconoCerrado = '<i class="bi bi-app"></i>';
+                }
+                
                 let fila = `
                     <tr>
                         <td style="${style}">${element.fechaAgenda}</td>
@@ -113,7 +125,7 @@ function getBitacora() {
                         <td style="${style}">${element.fechaHoraCaptura}</td>
                         <td style="${style}">${element.tipoContacto}</td>
                         <td style="${style}">${element.promotorPropietario}</td>
-                        <td style="${style}"></td>
+                        <td class="text-center" style="${style} color: #327AB7 !important; font-size: 22px !important;">${iconoCerrado}</td>
                     </tr>
                 `;
                 $('#bitacora_table tbody').append(fila);
