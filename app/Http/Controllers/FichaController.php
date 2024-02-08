@@ -249,38 +249,36 @@ class FichaController extends Controller
         }
     }
 
-    public function getReferidos()  
+    public function getReferidos($folio_crm)
     {
-        if ((isset($_REQUEST['folio_crm']) == true)) {
-            $folio_crm = $_REQUEST['folio_crm'];
-            $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
 
-            if (sizeof($referidosRespone) > 0) {
-                if (isset($referidosRespone['ProspectoCallCenter']['folioCRM'])) {
-                    $referidosList  = array(
-                        "folioCRM" => $referidosRespone['ProspectoCallCenter']['folioCRM'],
-                        "nombreCompleto" => $referidosRespone['ProspectoCallCenter']['nombreCompleto'],
-                        "telefono1" => $referidosRespone['ProspectoCallCenter']['telefono1'],
-                        "telefono2" => $referidosRespone['ProspectoCallCenter']['telefono2'],
-                        "celular1" => $referidosRespone['ProspectoCallCenter']['celular1'],
-                        "celular2" => $referidosRespone['ProspectoCallCenter']['celular2'],
-                        "email" => $referidosRespone['ProspectoCallCenter']['email']
-                    );
+        $referidosRespone = app(PeticionesController::class)->obtenerReferidosProspecto($folio_crm);
 
-                    $referidoFinal = array();
+        if (sizeof($referidosRespone) > 0) {
+            if (isset($referidosRespone['ProspectoCallCenter']['folioCRM'])) {
+                $referidosList  = array(
+                    "folioCRM" => $referidosRespone['ProspectoCallCenter']['folioCRM'],
+                    "nombreCompleto" => $referidosRespone['ProspectoCallCenter']['nombreCompleto'],
+                    "telefono1" => $referidosRespone['ProspectoCallCenter']['telefono1'],
+                    "telefono2" => $referidosRespone['ProspectoCallCenter']['telefono2'],
+                    "celular1" => $referidosRespone['ProspectoCallCenter']['celular1'],
+                    "celular2" => $referidosRespone['ProspectoCallCenter']['celular2'],
+                    "email" => $referidosRespone['ProspectoCallCenter']['email']
+                );
 
-                    array_push($referidoFinal, $referidosList);
+                $referidoFinal = array();
 
-                    $referidos = $referidoFinal;
-                } else {
-                    $referidos = $referidosRespone['ProspectoCallCenter'];
-                }
+                array_push($referidoFinal, $referidosList);
+
+                $referidos = $referidoFinal;
             } else {
-                $referidos = array();
+                $referidos = $referidosRespone['ProspectoCallCenter'];
             }
         } else {
             $referidos = array();
         }
+
+        return response()->json($referidos);
     }
 
     public function guardarReferido(Request $request)

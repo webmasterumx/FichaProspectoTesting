@@ -82,7 +82,13 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-12 col-md-8">
+        <div id="cargador_referidos" class="col-12 col-md-8 mt-3 text-center d-none">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Cargando datos</p>
+        </div>
+        <div id="dataReferidos" class="col-12 col-md-8 d-none">
             <div class="table-responsive" style="overflow-y: scroll;  height: 150px;">
                 <table id="table_referidos" class="table table-sm">
                     <thead>
