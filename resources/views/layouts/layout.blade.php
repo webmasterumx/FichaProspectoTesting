@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ficha Prospecto</title>
+    <link rel="shortcut icon" href="https://unimexver.edu.mx/favicon.webp" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -56,6 +57,7 @@
         </div>
     </footer>
     @include('modales.modal_confirmacion')
+    @include('modales.modal_no_mensajes')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -206,7 +208,7 @@
                 return folio_crm;
             }
 
-            function setPromotor(){
+            function setPromotor() {
                 let promotor = "{{ $_REQUEST['promotor'] }}";
                 return promotor;
             }
@@ -363,46 +365,52 @@
             }
 
             // parte de los mensajes de whats
-            function mostrarMensajes() {
-                $('#editar_prospecto').addClass('d-none');
-                $('#mensajes_whatsapp').removeClass('d-none');
-
-                let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
-
-                establecer_mensajes_whats(folio_crm);
-            }
-
             function establecer_mensajes_whats(folioCRM) {
+
+                let folio_crm = setFolioCrm();
+
                 $.ajax({
                     url: setBaseURL() + "obtener/mensajes/whatsapp/" + folioCRM,
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
 
-                    for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
-                        cont = index + 1;
-                        if (cont % 2 !== 0) {
-                            //numero inpar
-                            style = "background-color:white !important;";
-                        }
-                        if (cont % 2 === 0) {
-                            //numero par
-                            style = "background-color:#D3DFE8 !important;";
-                        }
-                        const element = data.Cls_MensajesWhatsapp[index];
-                        console.log(element);
-                        let fila = `
-                            <tr>
-                                <td style="${style}">${element.fechaMW}</td>
-                                <td style="${style}">${element.tipo_usuarioMW}</td>
-                                <td style="${style}">${element.nombreMW}</td>
-                                <td style="${style}">${element.detalleMW}</td>
-                                <td style="${style}">${element.estatus_conversacionMW}</td>
-                                <td style="${style}">${element.sentimientoMW}</td>
-                            </tr>
-                        `;
-                        $('#conversaciones tbody').append(fila);
+                    console.log(data.length);
 
+                    if (data.length == 0) {
+                        console.log('no hay datos');
+                        
+                        $('#modal_no_mensajes').modal('show');
+
+                    } else {
+                        $('#editar_prospecto').addClass('d-none');
+                        $('#mensajes_whatsapp').removeClass('d-none');
+
+                        for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
+                            cont = index + 1;
+                            if (cont % 2 !== 0) {
+                                //numero inpar
+                                style = "background-color:white !important;";
+                            }
+                            if (cont % 2 === 0) {
+                                //numero par
+                                style = "background-color:#D3DFE8 !important;";
+                            }
+                            const element = data.Cls_MensajesWhatsapp[index];
+                            console.log(element);
+                            let fila = `
+                                <tr>
+                                    <td style="${style}">${element.fechaMW}</td>
+                                    <td style="${style}">${element.tipo_usuarioMW}</td>
+                                    <td style="${style}">${element.nombreMW}</td>
+                                    <td style="${style}">${element.detalleMW}</td>
+                                    <td style="${style}">${element.estatus_conversacionMW}</td>
+                                    <td style="${style}">${element.sentimientoMW}</td>
+                                </tr>
+                            `;
+                            $('#conversaciones tbody').append(fila);
+
+                        }
                     }
 
                 }).fail(function(e) {

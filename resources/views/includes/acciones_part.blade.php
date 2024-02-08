@@ -137,7 +137,7 @@
         </div>
         <div class="col-12 col-md-4">
             <button id="mensajesWhatsapp" type="button" class="btn btn-success btn-sm"
-                onclick="mostrarMensajes()"><i class="bi bi-phone-fill"></i> Mensajes WhatsApp</button>
+                onclick="establecer_mensajes_whats()"><i class="bi bi-phone-fill"></i> Mensajes WhatsApp</button>
         </div>
     </div>
 </div>

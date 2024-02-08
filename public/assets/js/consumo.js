@@ -28,7 +28,7 @@ function getReferidos() {
             }
             let fila = `
                 <tr>
-                    <td style="${style}"><a href="{{ env('APP_URL') }}/?folio_crm=${element.folioCRM}&promotor=@isset($_REQUEST['promotor']){{ $_REQUEST['promotor'] }}@endisset">${element.folioCRM}</a></td>
+                    <td style="${style}"><a href="${setBaseURL()}/?folio_crm=${element.folioCRM}&promotor=${setPromotor()}">${element.folioCRM}</a></td>
                     <td style="${style}">${element.nombreCompleto}</td>
                     <td style="${style}">${element.telefono1}</td>
                     <td style="${style}">${element.telefono2}</td>
