@@ -16,6 +16,7 @@ function getReferidos() {
         console.log(data); // imprimimos la respuesta
         for (let index = 0; index < data.length; index++) {
             const element = data[index];
+            let rutaPros = setBaseURL() + "?folio_crm=" + element.folioCRM + "&promotor=" + setPromotor();
             //console.log(element);
             cont = index + 1;
             if (cont % 2 !== 0) {
@@ -28,7 +29,7 @@ function getReferidos() {
             }
             let fila = `
                 <tr>
-                    <td style="${style}"><a href="${setBaseURL()}/?folio_crm=${element.folioCRM}&promotor=${setPromotor()}">${element.folioCRM}</a></td>
+                    <td style="${style}"><a href="${rutaPros}">${element.folioCRM}</a></td>
                     <td style="${style}">${element.nombreCompleto}</td>
                     <td style="${style}">${element.telefono1}</td>
                     <td style="${style}">${element.telefono2}</td>
