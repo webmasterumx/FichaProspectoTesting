@@ -83,7 +83,7 @@ function mostrarEdicionProspecto() {
 }
 
 function actualizarReferido() {
-    $('#modal_carga').modal('show');
+    
     let claveCampana = $('select[name=campana_info]').val();
     let clavePlantel = $('select[name=plantel_info]').val();
     let claveNivel = $('select[name=nivel_info]').val();
@@ -108,6 +108,7 @@ function actualizarReferido() {
     }
     else {
 
+        $('#modal_carga').modal('show');
         let claveCampana = $('select[name=campana_info]').val();
         let clavePlantel = $('select[name=plantel_info]').val();
         let claveNivel = $('select[name=nivel_info]').val();

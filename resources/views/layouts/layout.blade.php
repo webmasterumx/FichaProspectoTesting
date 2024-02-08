@@ -132,6 +132,7 @@
 
             // escuchador de cambio de plantel se llena de nuevo el combo nivel y se resetan carrera y horario
             $("select[name=plantel_info]").change(function() {
+                $('#plantel_info_error').addClass('d-none');
                 $("#nivel_info").empty();
                 $("#carrera_info").empty();
                 $("#horario_info").empty();
@@ -156,6 +157,7 @@
             });
 
             $("select[name=nivel_info]").change(function() {
+                $('#nivel_info_error').addClass('d-none');
                 $("#carrera_info").empty();
                 $("#horario_info").empty();
 
@@ -187,7 +189,7 @@
 
             // escuchador de cambio de carrera
             $("select[name=carrera_info]").change(function() {
-                //console.log($('select[name=carrera_info]').val());
+                $('#carrera_info_error').addClass('d-none');
 
                 let claveCampana = $('select[name=campana_info]').val();
                 let clavePlantel = $('select[name=plantel_info]').val();
@@ -197,6 +199,14 @@
                 establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera);
 
             });
+
+            $("select[name=campana_info]").change(function() {
+                $('#campana_info_error').addClass('d-none');
+            });
+            $("select[name=horario_info]").change(function() {
+                $('#horario_info_error').addClass('d-none');
+            });
+
 
             function setBaseURL() {
                 let base_url = "{{ env('APP_URL') }}";
