@@ -166,7 +166,7 @@ function getBitacora() {
         dataType: 'json',
     }).done(function (data) {
         //console.log(data);
-        $("#horarioContacto").append('<option value="">Seleccion Horario de Contactación</option>');
+        $("#horarioContacto").append('<option value="0">Seleccion Horario de Contactación</option>');
         //console.log(data.RangoContactacion); // imprimimos la respuesta
         for (let index = 0; index < data.RangoContactacion.length; index++) {
             $("#horarioContacto").append("<option value='" + data.RangoContactacion[index].id + "'>" + data.RangoContactacion[index].nombre + "</option>");

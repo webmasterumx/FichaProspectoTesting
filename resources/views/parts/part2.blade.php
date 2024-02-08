@@ -21,7 +21,7 @@
                 </select>
                 <div class="mb-3">
                     <label for="date_bitacora" class="form-label">Elegir fecha</label>
-                    <input type="date" class="form-control" id="date_bitacora" name="date_bitacora">
+                    <input type="date" class="form-control" id="date_bitacora" name="date_bitacora" value="">
                 </div>
                 <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="horarioContacto"
                     name="horarioContacto">

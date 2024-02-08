@@ -221,19 +221,42 @@ class FichaController extends Controller
     public function guardarBitacora(Request $request)
     {
 
+        if ($_REQUEST['date_bitacora'] == null || $_REQUEST['date_bitacora'] == "")  {
+            echo 'no hay fecha';
+            $date = " ";
+        }
+        else{
+            echo 'si hay fecha';
+            $date = $_REQUEST['date_bitacora'];
+        }
+
+        if ($_REQUEST['actividadProxima'] == 0) {
+            $contacto = null;
+        } else {
+            $contacto = $_REQUEST['actividadProxima'];
+        }
+
+        if ($_REQUEST['horarioContacto'] == 0) {
+            $horario = null;
+        } else {
+            $horario = $_REQUEST['horarioContacto'];
+        }
+
         $valores = array(
             "folioCRM" => $_REQUEST['folio_crm'],
             "actRealizada" => $_REQUEST['actividadRealizada'],
             "estatusDetalle" => $_REQUEST['estatusDetalle'],
-            "tipoContacto" => $_REQUEST['actividadProxima'],
-            "fechaAgenda" => $_REQUEST['date_bitacora'],
-            "idRangoHr" => $_REQUEST['horarioContacto'],
+            "tipoContacto" => $contacto,
+            "fechaAgenda" => $date,
+            "idRangoHr" => $horario,
             "asistioPlantel" => false,
             "actividad" => $_REQUEST['comentariosBitacora'],
             "claveUsuario" => $_REQUEST['promotor'],
         );
 
+        //dd($valores);
         $envio = app(PeticionesController::class)->guardarBitacora($valores);
+        
         //dd($envio);
 
         if ($envio === true) {
