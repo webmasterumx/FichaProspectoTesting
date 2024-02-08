@@ -70,6 +70,7 @@ $("#formReferido").validate({
                 if (xhr.response == true || xhr.response == 1) {
                     $('#messageConfirmacion').html('Referido agregado con exito')
                     $("#modal_confirmacion").modal("show");
+                    $('#enviarReferido').attr('disabled', false);
 
                     getReferidos();
                 }
@@ -156,7 +157,7 @@ $("#formBitacora").validate({
                 if (xhr.response == true || xhr.response == 1) {
                     $('#messageConfirmacion').html('Datos guardados con exito')
                     $("#modal_confirmacion").modal("show");
-
+                    $('#enviarActividad').attr('disabled', false);
                     getBitacora();
                 }
                 else {

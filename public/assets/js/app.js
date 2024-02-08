@@ -83,6 +83,7 @@ function mostrarEdicionProspecto() {
 }
 
 function actualizarReferido() {
+    $('#modal_carga').modal('show');
     let claveCampana = $('select[name=campana_info]').val();
     let clavePlantel = $('select[name=plantel_info]').val();
     let claveNivel = $('select[name=nivel_info]').val();
@@ -140,6 +141,7 @@ function actualizarReferido() {
                 console.log("respuesta: " + xhr.response);
 
                 if (xhr.response == true || xhr.response == 1) {
+                    $('#modal_carga').modal('hide');
                     $('#messageConfirmacion').html('Datos del prospecto guardados con exito')
                     $("#modal_confirmacion").modal("show");
                 }

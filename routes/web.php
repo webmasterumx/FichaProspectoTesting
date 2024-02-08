@@ -38,4 +38,5 @@ Route::get('/obtener/estados', [PeticionesController::class, 'getCatalogoEstatus
 Route::get('/obtener/horariosContacto', [PeticionesController::class, 'getCatalogoHorarioContacto']);
 Route::get('/obtener/actividadesRealizadas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
 Route::get('/obtener/actividadesProximas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
+Route::get('/viabilidad/matriculacion/{folioCRM}', [PeticionesController::class, 'viabilidadMatriculacion'])->name('viabilidad.matricula');
 

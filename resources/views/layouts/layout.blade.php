@@ -58,6 +58,7 @@
     </footer>
     @include('modales.modal_confirmacion')
     @include('modales.modal_no_mensajes')
+    @include('modales.modal_carga')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -437,6 +438,11 @@
                     console.log("Request: " + JSON.stringify(e));
                 })
             }
+
+            const myModal = new bootstrap.Modal('#modal_carga', {
+                backdrop: 'static',
+                keyboard: false
+            })
         </script>
     @endif
     @if ($validar_folio == false && $validar_prmotor == false)

@@ -155,14 +155,14 @@ class PeticionesController extends Controller
         return $response->json();
     }
 
-    public function getBusqueda($valores)  
+    public function getBusqueda($valores)
     {
         $response = Http::post($this->base_url . 'buscador/prospecto', $valores);
 
         return $response->json();
     }
 
-    public function getMenu($valor)  
+    public function getMenu($valor)
     {
         $response = Http::post($this->base_url . 'obtener/menu', [
             "parentMenuId" => $valor
@@ -170,10 +170,19 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
-    
+
     public function getOrigenes()
     {
         $response = Http::get($this->base_url . 'obtener/catalogo/origenes');
+
+        return $response->json();
+    }
+
+    public function viabilidadMatriculacion($folio_crm)
+    {
+        $response = Http::post($this->base_url . 'validar/viabilidad/matriculacion', [
+            "folioCRM" => $folio_crm
+        ]);
 
         return $response->json();
     }

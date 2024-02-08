@@ -111,11 +111,11 @@ function getBitacora() {
 
                 if (element.cerrado == false) {
                     iconoCerrado = '<i class="bi bi-app"></i>';
-                    
+
                 } else {
                     iconoCerrado = '<i class="bi bi-check-square"></i>';
                 }
-                
+
                 let fila = `
                     <tr>
                         <td style="${style}">${element.fechaAgenda}</td>
@@ -207,4 +207,26 @@ function getBitacora() {
         console.log("Request: " + JSON.stringify(e));
     })
 
+    getViabilidadMatriculacion();
+
+}
+
+function getViabilidadMatriculacion() {
+    let folio_crm = setFolioCrm();
+    let url = setBaseURL() + "viabilidad/matriculacion/" + folio_crm;
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: 'json',
+    }).done(function (data) {
+        console.log(data);
+        if (data == true || data == 1) {
+            $('#enviarActividad').attr('disabled', false);
+        }
+        else {
+            $('#enviarActividad').attr('disabled', true);
+        }
+    }).fail(function (e) {
+        console.log("Request: " + JSON.stringify(e));
+    })
 }
