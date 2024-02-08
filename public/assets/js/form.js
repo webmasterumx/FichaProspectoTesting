@@ -36,6 +36,12 @@ $("#formReferido").validate({
         },
     },
     submitHandler: function (form) {
+        $('#enviarReferido').attr('disabled', true);
+        $('#cargador_referidos').removeClass('d-none');
+        if ($("#dataReferidos").hasClass("d-none") === false) {
+            $('#dataReferidos').addClass('d-none');
+        }
+
         let data = new FormData(form);
         let typeTelefono = data.get('telefonoReferidoType[]');
         let nombreP = data.get('nombreReferido');
@@ -64,6 +70,8 @@ $("#formReferido").validate({
                 if (xhr.response == true || xhr.response == 1) {
                     $('#messageConfirmacion').html('Referido agregado con exito')
                     $("#modal_confirmacion").modal("show");
+
+                    getReferidos();
                 }
                 else {
 
@@ -84,6 +92,7 @@ $("#formReferido").validate({
             console.log("Solicitud fallida");
         };
 
+        form.reset();
     }
 });
 
@@ -111,6 +120,12 @@ $("#formBitacora").validate({
         }
     },
     submitHandler: function (form) {
+        $('#enviarActividad').attr('disabled', true);
+        $('#cargador_bitacora').removeClass('d-none');
+        if ($("#form_bitacora").hasClass("d-none") === false || $("#lista_bitacora").hasClass("d-none") === false) {
+            $('#form_bitacora').addClass('d-none');
+            $('#lista_bitacora').addClass('d-none');
+        }
 
         let data = new FormData(form);
         let actividadRealizada = $('select[name=actividadRealizada]').val();
@@ -141,6 +156,8 @@ $("#formBitacora").validate({
                 if (xhr.response == true || xhr.response == 1) {
                     $('#messageConfirmacion').html('Datos guardados con exito')
                     $("#modal_confirmacion").modal("show");
+
+                    getBitacora();
                 }
                 else {
 
@@ -161,10 +178,11 @@ $("#formBitacora").validate({
             console.log("Solicitud fallida");
         };
 
+        form.reset();
     }
 });
 
-$("#formBitacora").validate({
+$("#form_search").validate({
     rules: {
         text_crm: {
             required: true,

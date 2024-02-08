@@ -76,9 +76,9 @@ function getBitacora() {
         if (bitacora.length == undefined) {
             //console.log(bitacora);
             if (bitacora.cerrado == false) {
-                iconoCerrado = '<i class="bi bi-check-square"></i>';
-            } else {
                 iconoCerrado = '<i class="bi bi-app"></i>';
+            } else {
+                iconoCerrado = '<i class="bi bi-check-square"></i>';
             }
             let fila = `
                 <tr>
@@ -110,9 +110,10 @@ function getBitacora() {
                 }
 
                 if (element.cerrado == false) {
-                    iconoCerrado = '<i class="bi bi-check-square"></i>';
-                } else {
                     iconoCerrado = '<i class="bi bi-app"></i>';
+                    
+                } else {
+                    iconoCerrado = '<i class="bi bi-check-square"></i>';
                 }
                 
                 let fila = `

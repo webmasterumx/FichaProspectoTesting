@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="col-12 col-md-2">
-            <button type="submit" class="btn btn-primary">Agregar Referido</button>
+            <button id="enviarReferido" type="submit" class="btn btn-primary">Agregar Referido</button>
         </div>
         <div class="col-12 col-md-4">
             <div class="mb-3 d-flex">

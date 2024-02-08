@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
             </div>
-            <button type="submit" form="formBitacora" class="btn btn-primary mt-3"><i class="bi bi-floppy-fill"></i>
+            <button id="enviarActividad" type="submit" form="formBitacora" class="btn btn-primary mt-3"><i class="bi bi-floppy-fill"></i>
                 &nbsp; Guardar Actividad</button>
         </div>
     </div>
