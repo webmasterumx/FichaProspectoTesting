@@ -33,3 +33,9 @@ Route::get('/obtener/horarios/{claveCampana}/{clavePlantel}/{claveNivel}/{claveC
 Route::get('/obtener/campanas/{claveCampana}', [PeticionesController::class, 'getCampanas'])->name('obtener.campanas');
 Route::get('/obtener/mensajes/whatsapp/{folio_crm}', [PeticionesController::class, 'getConversacionesWhatsapp'])->name('obtener.mensajes');
 Route::get('/obtener/menu/{idMenu}', [PeticionesController::class, 'getMenu'])->name('obtener.menu');
+//combos bitacora
+Route::get('/obtener/estados', [PeticionesController::class, 'getCatalogoEstatusDetalle']);
+Route::get('/obtener/horariosContacto', [PeticionesController::class, 'getCatalogoHorarioContacto']);
+Route::get('/obtener/actividadesRealizadas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
+Route::get('/obtener/actividadesProximas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
+

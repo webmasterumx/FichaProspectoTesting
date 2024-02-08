@@ -41,9 +41,6 @@ class FichaController extends Controller
         }
 
         //dd($carreras);
-
-        $estados = app(PeticionesController::class)->getCatalogoEstatusDetalle();
-        $horariosContacto = app(PeticionesController::class)->getCatalogoHorarioContacto();
         $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1); //! combo lista de actividades realizadas
         $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2); //! combo lista de actividades por realizar
 
@@ -57,8 +54,6 @@ class FichaController extends Controller
             "carreras" => $carrreas,
             "horarios" => $horarios,
             "origenes" => $origenes,
-            "estados" => $estados['EstatusDetalle'],
-            "horariosContacto" => $horariosContacto['RangoContactacion'],
             "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
             "actividadesProximas" => $actividadesProximas['TipoContacto'],
         ]);

@@ -1,6 +1,5 @@
 function searchProspecto() {
     $('#table_search > tbody').empty();
-    $('#cargador').removeClass('d-none');
     if ($("#dataBuscador").hasClass("d-none") === false) {
         $('#dataBuscador').addClass('d-none');
     }
@@ -24,6 +23,7 @@ function searchProspecto() {
             method: "GET",
             dataType: 'json',
         }).done(function (data) {
+            $('#cargador').removeClass('d-none');
             console.log(data.length); // imprimimos la respuesta
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];

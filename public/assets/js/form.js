@@ -101,7 +101,7 @@ $("#formBitacora").validate({
     },
     messages: {
         actividadRealizada: {
-            required: "campo requerido"
+            required: "campo requerido",
         },
         estatusDetalle: {
             required: "campo requerido"

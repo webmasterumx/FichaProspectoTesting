@@ -235,7 +235,6 @@
                 let listRedes = infoProspecto.listRedes;
 
                 establecerNumeros(infoProspecto);
-                establecer_bitacora(bitacora);
                 establecer_redes(listRedes);
             }
 
@@ -339,36 +338,6 @@
                 } else {
                     $('#etiqueta_telefono_dos').addClass('bg-success');
                     $('#etiqueta_telefono_dos').html('<i class="bi bi-check-circle-fill"></i>');
-                }
-            }
-
-            function establecer_bitacora(bitacora) {
-                for (let index = 0; index < bitacora.length; index++) {
-                    const element = bitacora[index];
-                    //console.log(element);
-                    cont = index + 1;
-                    if (cont % 2 !== 0) {
-                        //numero inpar
-                        style = "background-color:white !important;";
-                    }
-                    if (cont % 2 === 0) {
-                        //numero par
-                        style = "background-color:#D3DFE8 !important;";
-                    }
-                    let fila = `
-                        <tr>
-                            <td style="${style}">${element.fechaAgenda}</td>
-                            <td style="${style}">${element.promotorActividad}</td>
-                            <td style="${style}">${element.actividadRealizada}</td>
-                            <td style="${style}">${element.estatusDetalle}</td>
-                            <td style="${style}">${element.actividad}</td>
-                            <td style="${style}">${element.fechaHoraCaptura}</td>
-                            <td style="${style}">${element.tipoContacto}</td>
-                            <td style="${style}">${element.promotorPropietario}</td>
-                            <td style="${style}"></td>
-                        </tr>
-                    `;
-                    $('#bitacora_table tbody').append(fila);
                 }
             }
 
