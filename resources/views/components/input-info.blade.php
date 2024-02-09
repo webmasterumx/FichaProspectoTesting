@@ -1,0 +1,1 @@
+<input type="text" class="form-control text-center" {{ $attributes }} disabled>

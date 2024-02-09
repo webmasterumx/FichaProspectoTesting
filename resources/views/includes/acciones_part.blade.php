@@ -70,9 +70,6 @@
                                     <select class="form-select" aria-label="Default select example"
                                         name="plantel_search" id="plantel_search">
                                         <option value="0" selected>Selecciona una opción</option>
-                                        @foreach ($planteles as $plantel)
-                                            <option value="{{ $plantel['clave'] }}"> {{ $plantel['descrip'] }} </option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 <div id="cargador" class="col-12 col-md-12 mt-3 text-center d-none">

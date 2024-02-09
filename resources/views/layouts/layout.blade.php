@@ -77,7 +77,6 @@
 
                 let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
                 let promotor = "{{ $_REQUEST['promotor'] }}";
-
                 let ruta = setBaseURL() + "getFichaProspecto/" + folio_crm + "/" + promotor;
 
                 $.ajax({
@@ -85,43 +84,32 @@
                     method: "GET",
                     dataType: 'json',
                 }).done(function(data) {
-                    //console.log(data); // imprimimos la respuesta
-
                     if (data == 1) {
-                        //console.log('no existe prospecto');
+                        // no existe prospecto
                         $("#modal_error_folio").modal("show");
                     } else if (data == 2) {
-                        //console.log('no existe promotor');
+                        // no existe promotor
                         $('#modal_error_promotor').modal('show');
                     } else {
-                        //console.log('tratar info Prospecto');
-
-                        let matricula = data.infoProspecto.matricula;
-
-                        if (matricula === "" || matricula === " " || matricula === null) {
-                            //console.log('este prospecto no tiene matricula, se puede editar');
-                            $("#plantel_info").prop('disabled', false);
-                            $("#especialidad_info").prop('disabled', false);
-                            $("#carrera_info").prop('disabled', false);
-                            $("#horario_info").prop('disabled', false);
-                            $("#campana_info").prop('disabled', false);
-                        } else {
-                            //console.log("este prospecto trae matricula por lo tanto no se puede editar");
-                            $("#plantel_info").prop('disabled', true);
-                            $("#especialidad_info").prop('disabled', true);
-                            $("#carrera_info").prop('disabled', true);
-                            $("#horario_info").prop('disabled', true);
-                            $("#campana_info").prop('disabled', true);
-                            $("#nivel_info").prop('disabled', true);
-                        }
+                        // tratar info Prospecto
 
                         let infoProspecto = data.infoProspecto;
                         let infoPromotor = data.infoPromotor;
                         let dateInfo = data.fechaFormateada;
+                        let matricula = data.infoProspecto.matricula;
+                        let listRedes = infoProspecto.listRedes;
+                        let nombre = infoProspecto.termometro;
+                        let ultimoEstatusDetalle = infoProspecto.ultimoEstatusDetalle;
 
-                        llenarAreaInformacion(infoProspecto);
-                        llenarCamposEditables(infoProspecto);
+                        validarMatricula(matricula);
+                        llenarInputs(infoProspecto);
+                        establecer_color(nombre, ultimoEstatusDetalle);
+                        llenar_combos(infoProspecto);
+                        establecerNumeros(infoProspecto);
+                        establecer_redes(listRedes);
                         printInfoPromotor(infoPromotor, dateInfo);
+                        
+
                     }
 
                 }).fail(function(e) {
@@ -130,83 +118,7 @@
 
             });
 
-            // escuchador de cambio de plantel se llena de nuevo el combo nivel y se resetan carrera y horario
-            $("select[name=plantel_info]").change(function() {
-                $('#plantel_info_error').addClass('d-none');
-                $("#nivel_info").empty();
-                $("#carrera_info").empty();
-                $("#horario_info").empty();
-
-                let plantel = $('select[name=plantel_info]').val();
-
-                $.ajax({
-                    url: setBaseURL() + "get/niveles/" + plantel,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    //console.log(data);
-                    $("#nivel_info").append('<option value="">Selecciona un nivel</option>');
-                    for (let index = 0; index < data.length; index++) {
-                        const element = data[index].clave;
-                        $("#nivel_info").append("<option value='" + data[index].clave +
-                            "'>" + data[index].descrip + "</option>");
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            });
-
-            $("select[name=nivel_info]").change(function() {
-                $('#nivel_info_error').addClass('d-none');
-                $("#carrera_info").empty();
-                $("#horario_info").empty();
-
-                let claveCampana = $('select[name=campana_info]').val();
-                let clavePlantel = $('select[name=plantel_info]').val();
-                let claveNivel = $('select[name=nivel_info]').val();
-
-                $.ajax({
-                    url: setBaseURL() + "obtener/carreras/" + claveCampana + '/' + clavePlantel + '/' +
-                        claveNivel,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    //console.log(data.Carrera.length);
-                    $("#carrera_info").append('<option value="">Selecciona un carrera</option>');
-                    if (data.Carrera.length > 0) {
-                        //hay array de carreras
-                        for (let index = 0; index < data.Carrera.length; index++) {
-                            const element = data.Carrera[index];
-                            //console.log(element);
-                            $("#carrera_info").append("<option value='" + element.clave_carrera +
-                                "'>" + element.descrip_ofi + "</option>");
-                        }
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            });
-
-            // escuchador de cambio de carrera
-            $("select[name=carrera_info]").change(function() {
-                $('#carrera_info_error').addClass('d-none');
-
-                let claveCampana = $('select[name=campana_info]').val();
-                let clavePlantel = $('select[name=plantel_info]').val();
-                let claveNivel = $('select[name=nivel_info]').val();
-                let claveCarrera = $('select[name=carrera_info]').val();
-
-                establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera);
-
-            });
-
-            $("select[name=campana_info]").change(function() {
-                $('#campana_info_error').addClass('d-none');
-            });
-            $("select[name=horario_info]").change(function() {
-                $('#horario_info_error').addClass('d-none');
-            });
-
+            // incio - funciones de establecimiento 
 
             function setBaseURL() {
                 let base_url = "{{ env('APP_URL') }}";
@@ -223,156 +135,7 @@
                 return promotor;
             }
 
-            function llenarAreaInformacion(infoProspecto) {
-                $("#campana_info option[value=" + infoProspecto.claveCampana + "]").attr("selected", true); //establece campana
-                $("#plantel_info option[value=" + infoProspecto.clavePlantel + "]").attr("selected", true); //establece plantel
-                $("#nivel_info option[value=" + infoProspecto.claveNivel + "]").attr("selected", true); // establece nivel
-                $("#carrera_info option[value=" + infoProspecto.claveCarrera + "]").attr("selected", true); // establece nivel
-                $("#horario_info option[value=" + infoProspecto.claveHorario + "]").attr("selected", true); // establece nivel
-                $("#origen_info option[value=" + infoProspecto.origen + "]").attr("selected", true); // establece origen
-
-                let nombre = infoProspecto.termometro;
-                establecer_color(nombre);
-
-            }
-
-            function llenarCamposEditables(infoProspecto) {
-
-                //!llenado del formulario de guardar datos
-
-                $('#nombreProspecto').html('<i class="bi bi-file-person-fill"></i> Ficha Prospecto: ' + infoProspecto
-                    .nombreCompleto)
-
-                let bitacora = infoProspecto.listaBitacoraSeguimiento.Cls_Bitacora;
-                let listRedes = infoProspecto.listRedes;
-
-                establecerNumeros(infoProspecto);
-                establecer_redes(listRedes);
-            }
-
-            function establecer_color(nombre) {
-                switch (nombre) {
-                    case "Green":
-                        $('#status_detalle').addClass('text-bg-success');
-                        break;
-                    case "Yellow":
-                        $('#status_detalle').addClass('text-bg-warning');
-                        break;
-                    case "Black":
-                        $('#status_detalle').addClass('bg-black');
-                        break;
-                    case "Gray":
-                        $('#status_detalle').addClass('bg-secondary');
-                        break;
-                    case "Red":
-                        $('#status_detalle').addClass('bg-danger');
-                        break;
-                    case "Blue":
-                        $('#status_detalle').addClass('bg-primary');
-                        break;
-                    case "Purple":
-                        $('#status_detalle').addClass('bg-purple');
-                        break;
-                    case "Cyan":
-                        $('#status_detalle').addClass('bg-cyan');
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            function printInfoPromotor(infoPromotor, dateInfo) {
-
-                let lineaPromotor = '<i class="bi bi-person-fill"></i> ' + infoPromotor.nombre;
-                let lineaFecha = '<i class="bi bi-clock"></i> ' + dateInfo.nombreDiaSemana + ', ' + dateInfo.diaMes + ' de ' +
-                    dateInfo.nombreMes + ' de ' + dateInfo.año;
-
-                $('#namePromotor').html(lineaPromotor);
-                $('#datePromotor').html(lineaFecha);
-            }
-
-            function establecerHorario(claveCampana, clavePlantel, claveNivel, claveCarrera) {
-                $("#horario_info").empty();
-                $.ajax({
-                    url: setBaseURL() + "obtener/horarios/" + claveCampana + '/' + clavePlantel + '/' +
-                        claveNivel + "/" + claveCarrera,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    console.log(data.Horarios);
-                    if (data.Horarios.length > 0) {
-                        //hay array de carreras
-                        $("#horario_info").append(
-                            '<option value="">Selecciona un horario</option>');
-                        for (let index = 0; index < data.Horarios.length; index++) {
-                            const element = data.Horarios[index];
-                            //console.log(element);
-                            $("#horario_info").append("<option value='" + element.Horario + "'>" +
-                                element.Descripcion + "</option>");
-                        }
-                    } else {
-                        $("#horario_info").append(
-                            '<option value="">Selecciona un horario</option>');
-                        $("#horario_info").append("<option value='" + data.Horarios.Horario + "'>" +
-                            data.Horarios.Descripcion + "</option>")
-                    }
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
-
-            //informacion de los tabs
-            function establecerNumeros(infoProspecto) {
-                if (infoProspecto.celular1 == "") {
-                    $('#etiqueta_celular_uno').addClass('bg-danger');
-                    $('#etiqueta_celular_uno').html('<i class="bi bi-x-circle-fill"></i>');
-                } else {
-                    $('#etiqueta_celular_uno').addClass('bg-success');
-                    $('#etiqueta_celular_uno').html('<i class="bi bi-check-circle-fill"></i>');
-                }
-                if (infoProspecto.celular2 == "") {
-                    $('#etiqueta_celular_dos').addClass('bg-danger');
-                    $('#etiqueta_celular_dos').html('<i class="bi bi-x-circle-fill"></i>');
-                } else {
-                    $('#etiqueta_celular_dos').addClass('bg-success');
-                    $('#etiqueta_celular_dos').html('<i class="bi bi-check-circle-fill"></i>');
-                }
-                if (infoProspecto.telefono1 == "") {
-                    $('#etiqueta_telefon_uno').addClass('bg-danger');
-                    $('#etiqueta_telefon_uno').html('<i class="bi bi-x-circle-fill"></i>');
-                } else {
-                    $('#etiqueta_telefon_uno').addClass('bg-success');
-                    $('#etiqueta_telefon_uno').html('<i class="bi bi-check-circle-fill"></i>');
-                }
-                if (infoProspecto.telefono2 == "") {
-                    $('#etiqueta_telefono_dos').addClass('bg-danger');
-                    $('#etiqueta_telefono_dos').html('<i class="bi bi-x-circle-fill"></i>');
-                } else {
-                    $('#etiqueta_telefono_dos').addClass('bg-success');
-                    $('#etiqueta_telefono_dos').html('<i class="bi bi-check-circle-fill"></i>');
-                }
-            }
-
-            function establecer_redes(listRedes) {
-                if (listRedes.length == 0) {
-                    //console.log('no se hace nada puesto que no tiene redes');
-                } else {
-                    //console.log('se accede a la otra variable para imprimir las redes con nombre');
-                    let arrayRedes = listRedes.Cls_RedesSociales;
-                    for (let index = 0; index < arrayRedes.length; index++) {
-                        const element = arrayRedes[index];
-                        //console.log(element);
-                        let fila = `
-                        <tr>
-                            <td>${element.descripcion}</td>
-                            <td>${element.userName}</td>
-                        </tr>
-                        `;
-
-                        $('#listRedes tbody').append(fila);
-                    }
-                }
-            }
+            // fin - funciones de establecimiento
 
             // parte de los mensajes de whats
             function establecer_mensajes_whats(folioCRM) {
@@ -479,6 +242,9 @@
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/js/consumo.js') }}"></script>
     <script src="{{ asset('assets/js/busquedas.js') }}"></script>
+    <script src="{{ asset('assets/js/combos.js') }}"></script>
+    <script src="{{ asset('assets/js/areas.js') }}"></script>
+    <script src="{{ asset('assets/js/llenar_combos.js') }}"></script>
 </body>
 
 </html>

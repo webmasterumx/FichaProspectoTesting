@@ -12,50 +12,7 @@ class FichaController extends Controller
 
     public function index()
     {
-
-        //* optencion de la info prospecto
-        if ((isset($_REQUEST['folio_crm']) == true)) {
-            $folio_crm = $_REQUEST['folio_crm'];
-            $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
-            $verificaciones = new VerificacionesController($infoProspecto);
-            $campanasList = app(PeticionesController::class)->getCampanas(0);
-            $campanas = (isset($campanasList['EntCampanaDTO'])) ? $campanasList['EntCampanaDTO'] : array();
-            $plantelesList = app(PeticionesController::class)->getPlanteles();
-            $niveles = $verificaciones->getNiveles();
-            $carrreasList = $verificaciones->getCarreras();
-            $carrreas = (isset($carrreasList['Carrera'])) ? $carrreasList['Carrera'] : array();
-            $horariosList  = $verificaciones->getHorarios();
-            $horarios = (isset($horariosList['Horarios'])) ? $horariosList['Horarios'] : array();
-            $origenesList = app(PeticionesController::class)->getOrigenes();
-            $origenes = (isset($origenesList['OrigenesDTO'])) ? $origenesList['OrigenesDTO'] : array();
-        } else {
-            $niveles = [];
-            $infoProspecto = array();
-            $campanas = array();
-            $plantelesList = array();
-            $niveles = array();
-            $carrreas = array();
-            $horarios = array();
-            $origenes = array();
-        }
-
-        //dd($carreras);
-        $actividadesRealizadas = app(PeticionesController::class)->getCatalogoTipoContacto(1); //! combo lista de actividades realizadas
-        $actividadesProximas = app(PeticionesController::class)->getCatalogoTipoContacto(2); //! combo lista de actividades por realizar
-
-        //dd($infoProspecto);
-
-        return view('inicio', [
-            "ficha_prospecto" => $infoProspecto,
-            "campanas" => $campanas,
-            "planteles" => $plantelesList,
-            "niveles" => $niveles,
-            "carreras" => $carrreas,
-            "horarios" => $horarios,
-            "origenes" => $origenes,
-            "actividadesRealizadas" => $actividadesRealizadas['TipoContacto'],
-            "actividadesProximas" => $actividadesProximas['TipoContacto'],
-        ]);
+        return view('inicio');
     }
 
     public function getInfoFichaProspecto($folio_crm, $promotor)
