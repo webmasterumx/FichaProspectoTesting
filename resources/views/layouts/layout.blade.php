@@ -72,127 +72,134 @@
         $validar_prmotor = isset($_REQUEST['promotor']);
     @endphp
     @if ($validar_folio == true && $validar_prmotor == true)
-        <script>
-            $(document).ready(function() {
+        @if ($_REQUEST['folio_crm'] == '' || $_REQUEST['folio_crm'] == 'promotor')
+            <script>
+                $(document).ready(function() {
+                    $("#modal_error").modal("show");
+                });
+            </script>
+        @else
+            <script>
+                $(document).ready(function() {
 
-                let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
-                let promotor = "{{ $_REQUEST['promotor'] }}";
-                let ruta = setBaseURL() + "getFichaProspecto/" + folio_crm + "/" + promotor;
+                    let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
+                    let promotor = "{{ $_REQUEST['promotor'] }}";
+                    let ruta = setBaseURL() + "getFichaProspecto/" + folio_crm + "/" + promotor;
 
-                $.ajax({
-                    url: ruta,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
-                    if (data == 1) {
-                        // no existe prospecto
-                        $("#modal_error_folio").modal("show");
-                    } else if (data == 2) {
-                        // no existe promotor
-                        $('#modal_error_promotor').modal('show');
-                    } else {
-                        // tratar info Prospecto
+                    $.ajax({
+                        url: ruta,
+                        method: "GET",
+                        dataType: 'json',
+                    }).done(function(data) {
+                        if (data == 1) {
+                            // no existe prospecto
+                            $("#modal_error_folio").modal("show");
+                        } else if (data == 2) {
+                            // no existe promotor
+                            $('#modal_error_promotor').modal('show');
+                        } else {
+                            // tratar info Prospecto
 
-                        let infoProspecto = data.infoProspecto;
-                        let infoPromotor = data.infoPromotor;
-                        let dateInfo = data.fechaFormateada;
-                        let matricula = data.infoProspecto.matricula;
-                        let listRedes = infoProspecto.listRedes;
-                        let nombre = infoProspecto.termometro;
-                        let ultimoEstatusDetalle = infoProspecto.ultimoEstatusDetalle;
+                            let infoProspecto = data.infoProspecto;
+                            let infoPromotor = data.infoPromotor;
+                            let dateInfo = data.fechaFormateada;
+                            let matricula = data.infoProspecto.matricula;
+                            let listRedes = infoProspecto.listRedes;
+                            let nombre = infoProspecto.termometro;
+                            let ultimoEstatusDetalle = infoProspecto.ultimoEstatusDetalle;
 
-                        validarMatricula(matricula);
-                        llenarInputs(infoProspecto);
-                        establecer_color(nombre, ultimoEstatusDetalle);
-                        llenar_combos(infoProspecto);
-                        establecerNumeros(infoProspecto);
-                        establecer_redes(listRedes);
-                        printInfoPromotor(infoPromotor, dateInfo);
-                        
+                            validarMatricula(matricula);
+                            llenarInputs(infoProspecto);
+                            establecer_color(nombre, ultimoEstatusDetalle);
+                            llenar_combos(infoProspecto);
+                            establecerNumeros(infoProspecto);
+                            establecer_redes(listRedes);
+                            printInfoPromotor(infoPromotor, dateInfo);
 
-                    }
 
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
+                        }
 
-            });
+                    }).fail(function(e) {
+                        console.log("Request: " + JSON.stringify(e));
+                    })
 
-            // incio - funciones de establecimiento 
+                });
 
-            function setBaseURL() {
-                let base_url = "{{ env('APP_URL') }}";
-                return base_url;
-            }
+                // incio - funciones de establecimiento 
 
-            function setFolioCrm() {
-                let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
-                return folio_crm;
-            }
+                function setBaseURL() {
+                    let base_url = "{{ env('APP_URL') }}";
+                    return base_url;
+                }
 
-            function setPromotor() {
-                let promotor = "{{ $_REQUEST['promotor'] }}";
-                return promotor;
-            }
+                function setFolioCrm() {
+                    let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
+                    return folio_crm;
+                }
 
-            // fin - funciones de establecimiento
+                function setPromotor() {
+                    let promotor = "{{ $_REQUEST['promotor'] }}";
+                    return promotor;
+                }
 
-            // parte de los mensajes de whats
-            function establecer_mensajes_whats(folioCRM) {
-                $('#conversaciones > tbody').empty();
+                // fin - funciones de establecimiento
 
-                let folio_crm = setFolioCrm();
-                let url = setBaseURL() + "obtener/mensajes/whatsapp/" + folio_crm;
-                console.log(url);
+                // parte de los mensajes de whats
+                function establecer_mensajes_whats(folioCRM) {
+                    $('#conversaciones > tbody').empty();
 
-                $.ajax({
-                    url: url,
-                    method: "GET",
-                    dataType: 'json',
-                }).done(function(data) {
+                    let folio_crm = setFolioCrm();
+                    let url = setBaseURL() + "obtener/mensajes/whatsapp/" + folio_crm;
+                    console.log(url);
 
-                    console.log(data);
-                    //console.log(data.length);
+                    $.ajax({
+                        url: url,
+                        method: "GET",
+                        dataType: 'json',
+                    }).done(function(data) {
 
-                    if (data.length == 0) {
-                        console.log('no hay datos');
+                        console.log(data);
+                        //console.log(data.length);
 
-                        $('#modal_no_mensajes').modal('show');
+                        if (data.length == 0) {
+                            console.log('no hay datos');
 
-                    } else {
-                        $('#editar_prospecto').addClass('d-none');
-                        $('#mensajes_whatsapp').removeClass('d-none');
+                            $('#modal_no_mensajes').modal('show');
 
-                        for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
-                            cont = index + 1;
-                            if (cont % 2 !== 0) {
-                                //numero inpar
-                                style = "background-color:white !important;";
-                            }
-                            if (cont % 2 === 0) {
-                                //numero par
-                                style = "background-color:#D3DFE8 !important;";
-                            }
-                            const element = data.Cls_MensajesWhatsapp[index];
+                        } else {
+                            $('#editar_prospecto').addClass('d-none');
+                            $('#mensajes_whatsapp').removeClass('d-none');
 
-                            //console.log(element);
+                            for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
+                                cont = index + 1;
+                                if (cont % 2 !== 0) {
+                                    //numero inpar
+                                    style = "background-color:white !important;";
+                                }
+                                if (cont % 2 === 0) {
+                                    //numero par
+                                    style = "background-color:#D3DFE8 !important;";
+                                }
+                                const element = data.Cls_MensajesWhatsapp[index];
 
-                            switch (element.sentimientoMW) {
-                                case "Normal":
-                                    caritaBg = "&#128512;";
-                                    break;
-                                case "Triste":
-                                    caritaBg = "&#128543;";
-                                    break;
-                                case "Enojado":
-                                    caritaBg = " &#128545;";
-                                    break;
+                                //console.log(element);
 
-                                default:
-                                    break;
-                            }
+                                switch (element.sentimientoMW) {
+                                    case "Normal":
+                                        caritaBg = "&#128512;";
+                                        break;
+                                    case "Triste":
+                                        caritaBg = "&#128543;";
+                                        break;
+                                    case "Enojado":
+                                        caritaBg = " &#128545;";
+                                        break;
 
-                            let fila = `
+                                    default:
+                                        break;
+                                }
+
+                                let fila = `
                                 <tr>
                                     <td style="${style}">${element.fechaMW}</td>
                                     <td style="${style}">${element.tipo_usuarioMW}</td>
@@ -202,26 +209,27 @@
                                     <td style="${style}">${caritaBg}</td>
                                 </tr>
                             `;
-                            $('#conversaciones tbody').append(fila);
+                                $('#conversaciones tbody').append(fila);
 
+                            }
                         }
-                    }
 
-                }).fail(function(e) {
-                    console.log("Request: " + JSON.stringify(e));
-                })
-            }
+                    }).fail(function(e) {
+                        console.log("Request: " + JSON.stringify(e));
+                    })
+                }
 
-            const myModal = new bootstrap.Modal('#modal_carga', {
-                backdrop: 'static',
-                keyboard: false
-            });
+                const myModal = new bootstrap.Modal('#modal_carga', {
+                    backdrop: 'static',
+                    keyboard: false
+                });
 
-            const modal_busqueda = new bootstrap.Modal('#exampleModal', {
-                backdrop: 'static',
-                keyboard: false
-            });
-        </script>
+                const modal_busqueda = new bootstrap.Modal('#exampleModal', {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            </script>
+        @endif
     @endif
     @if ($validar_folio == false && $validar_prmotor == false)
     @endif

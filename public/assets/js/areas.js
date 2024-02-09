@@ -9,7 +9,7 @@ function llenarInputs(infoProspecto) {
     $('#prospecto_info').val(infoProspecto.nombreCompleto);
     $('#promotor_propietario_info').val(infoProspecto.promotorPropietario);
     $('#saldo_actual').val(infoProspecto.saldoActual);
-    $('#referido_por_info').val('Tu referido ' + infoProspecto.referido);
+    $('#referido_por_info').val('Tu referido: ' + infoProspecto.referido);
 
     //! inputs de edicion
     $('#nombre_form').val(infoProspecto.nombre);

@@ -105,3 +105,14 @@ $("select[name=carrera_info]").change(function () {
 $("select[name=horario_info]").change(function () {
     $('#horario_info_error').addClass('d-none');
 });
+
+$("select[name=estatusDetalle]").change(function () {
+    let validacion = $(this).find(':selected').data('id');
+
+    if (validacion == 2) {
+        $('select[name=actividadProxima]').attr('disabled', true);
+        $('#date_bitacora').attr('disabled', true);
+        $('select[name=horarioContacto]').attr('disabled', true);
+    } 
+
+});

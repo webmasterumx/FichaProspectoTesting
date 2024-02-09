@@ -72,7 +72,9 @@ function getBitacora() {
     }).done(function (data) {
         console.log(data); // imprimimos la respuesta
         let bitacora = data.infoProspecto.listaBitacoraSeguimiento.Cls_Bitacora;
-        console.log(bitacora.Cls_Bitacora);
+        let nombre = data.infoProspecto.termometro;
+        let ultimoEstatusDetalle = data.infoProspecto.ultimoEstatusDetalle;
+
         if (bitacora.length == undefined) {
             //console.log(bitacora);
             if (bitacora.cerrado == false) {
@@ -135,6 +137,8 @@ function getBitacora() {
         else {
 
         }
+
+        establecer_color(nombre, ultimoEstatusDetalle);
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
     })
@@ -151,10 +155,12 @@ function getBitacora() {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
+        console.log(data);
+        const EstatusDetalle = data.EstatusDetalle;
         $("#estatusDetalle").append('<option value="">Selecciona Estatus Detalle</option>');
-        //console.log(data.EstatusDetalle); // imprimimos la respuesta
-        for (let index = 0; index < data.EstatusDetalle.length; index++) {
-            $("#estatusDetalle").append("<option value='" + data.EstatusDetalle[index].clave + "'>" + data.EstatusDetalle[index].descrip + "</option>");
+        for (let index = 0; index < EstatusDetalle.length; index++) {
+            let option = `<option value="${EstatusDetalle[index].clave}" data-id="${EstatusDetalle[index].grp_Id}">${EstatusDetalle[index].descrip}</option>`;
+            $("#estatusDetalle").append(option);
         }
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));

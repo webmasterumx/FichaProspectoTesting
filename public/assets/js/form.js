@@ -128,7 +128,6 @@ $("#formBitacora").validate({
             $('#lista_bitacora').addClass('d-none');
         }
 
-        let data = new FormData(form);
         let actividadRealizada = $('select[name=actividadRealizada]').val();
         let estatusDetalle = $('select[name=estatusDetalle]').val();
         let proximaActividad = $('select[name=actividadProxima]').val();
@@ -138,7 +137,7 @@ $("#formBitacora").validate({
         let promotor = setPromotor();
 
         let ruta = setBaseURL() + "guardar/bitacora/?folio_crm=" + setFolioCrm() + "&actividadRealizada=" + actividadRealizada + "&estatusDetalle=" + estatusDetalle + "&actividadProxima=" + proximaActividad + "&date_bitacora=" + fecha + "&horarioContacto=" + horarioContacto + "&comentariosBitacora=" + comentarios + "&promotor=" + promotor;
-        console.log(ruta);
+        //console.log(ruta);
         let xhr = new XMLHttpRequest();
 
         // 2. Configuración: solicitud GET para la URL /article/.../load
