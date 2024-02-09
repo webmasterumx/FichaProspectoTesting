@@ -101,9 +101,9 @@
             </div>
             <div class="col-12 col-md-4">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Referido Por:</label>
+                    <label for="exampleFormControlInput1" class="form-label">Referido Por: </label>
                     <input type="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Tú referido" disabled>
+                        placeholder="Tú referido: {{ $ficha_prospecto['referido'] }}" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-4">

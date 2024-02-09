@@ -22,7 +22,7 @@ function searchProspecto() {
     let search_text = $('#text_crm').val();
     let search_plantel = $('select[name=plantel_search]').val();
 
-    let ruta = setBaseURL() + "search/crm/" + search_type + "/" + search_text + "/" + search_plantel;
+    let ruta = setBaseURL() + "search/crm/?type=" + search_type + "&search=" + search_text + "&plantel=" + search_plantel;
 
     console.log(ruta);
 

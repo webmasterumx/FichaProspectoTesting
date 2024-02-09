@@ -452,7 +452,12 @@
             const myModal = new bootstrap.Modal('#modal_carga', {
                 backdrop: 'static',
                 keyboard: false
-            })
+            });
+
+            const modal_busqueda = new bootstrap.Modal('#exampleModal', {
+                backdrop: 'static',
+                keyboard: false
+            });
         </script>
     @endif
     @if ($validar_folio == false && $validar_prmotor == false)

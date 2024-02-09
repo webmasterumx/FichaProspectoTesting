@@ -16,7 +16,7 @@
                         <div class="modal-header" style="background: #337ab7;">
                             <h1 class="modal-title text-white fs-5" id="exampleModalLabel">Búsquedas de
                                 prospectos</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            <button onclick="limpiarTabla()" type="button" class="btn-close text-white" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

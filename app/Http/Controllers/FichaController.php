@@ -119,11 +119,11 @@ class FichaController extends Controller
             echo false;
         }
     }
-    public function searcCrm($search_type, $search_text, $search_plantel)
+    public function searcCrm()
     {
-        $tipo_search = $search_type;
-        $text_search = $search_text;
-        $plantel_search = $search_plantel;
+        $tipo_search = $_REQUEST['type'];
+        $text_search = $_REQUEST['search'];
+        $plantel_search = $_REQUEST['plantel'];
 
         //print($tipo_search);
 
