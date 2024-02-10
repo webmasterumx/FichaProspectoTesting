@@ -86,7 +86,6 @@
                 });
 
                 $(document).ready(function() {
-
                     let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
                     let promotor = "{{ $_REQUEST['promotor'] }}";
                     let ruta = setBaseURL() + "getFichaProspecto/" + folio_crm + "/" + promotor;

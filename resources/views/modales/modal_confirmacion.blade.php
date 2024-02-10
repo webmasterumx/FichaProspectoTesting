@@ -2,8 +2,14 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bs-primary-bg-subtle text-white ">
-            <div class="modal-header border-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header border-0 row">
+                <div class="col-11"></div>
+                <div class="col-1">
+                    <button type="button" class="text-white text-center bs-primary-bg-subtle border-0"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-body">
                 <h5 id="messageConfirmacion" class="text-center"></h5>

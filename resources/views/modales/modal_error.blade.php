@@ -3,8 +3,14 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-danger text-white ">
-            <div class="modal-header border-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header border-0 row">
+                <div class="col-11"></div>
+                <div class="col-1">
+                    <button type="button" class="text-white text-center  bg-danger border-0" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-body">
                 <h4 class="text-center">La cadena de entrada no tiene el formato correcto.</h4>
