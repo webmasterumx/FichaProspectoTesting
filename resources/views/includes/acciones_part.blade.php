@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12 col-md-2">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button onclick="llenarComboPlantel()" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-search"></i> Búsqueda
             </button>
 
@@ -69,7 +69,6 @@
                                     <p>Si conoces el plantel, seleccionalo aquí:</p>
                                     <select class="form-select" aria-label="Default select example"
                                         name="plantel_search" id="plantel_search">
-                                        <option value="0" selected>Selecciona una opción</option>
                                     </select>
                                 </div>
                                 <div id="cargador" class="col-12 col-md-12 mt-3 text-center d-none">

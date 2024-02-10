@@ -204,18 +204,20 @@
                                 }
 
                                 let fila = `
-                                <tr>
-                                    <td style="${style}">${element.fechaMW}</td>
-                                    <td style="${style}">${element.tipo_usuarioMW}</td>
-                                    <td style="${style}">${element.nombreMW}</td>
-                                    <td style="${style}">${element.detalleMW}</td>
-                                    <td style="${style}">${element.estatus_conversacionMW}</td>
-                                    <td style="${style}">${caritaBg}</td>
-                                </tr>
-                            `;
+                                    <tr>
+                                        <td style="${style}">${element.fechaMW}</td>
+                                        <td style="${style}">${element.tipo_usuarioMW}</td>
+                                        <td style="${style}">${element.nombreMW}</td>
+                                        <td style="${style}">${element.detalleMW}</td>
+                                        <td style="${style}">${element.estatus_conversacionMW}</td>
+                                        <td style="${style}">${caritaBg}</td>
+                                    </tr>
+                                `;
                                 $('#conversaciones tbody').append(fila);
+                                $('#estaus_conversacion').html(element.estatus_conversacionMW);
 
                             }
+
                         }
 
                     }).fail(function(e) {

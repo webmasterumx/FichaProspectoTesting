@@ -30,43 +30,51 @@
             </div>
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
-                    <x-input-form-general-tel name="telefono_uno" id="telefono_uno" placeholder="Tel. a 10 digitos"></x-input-form-general-tel>
-                    <span id="etiqueta_telefon_uno" class="input-group-text  text-white py-1" id="telefono_uno_label"></span>
+                    <x-input-form-general-tel name="telefono_uno" id="telefono_uno"
+                        placeholder="Tel. a 10 digitos"></x-input-form-general-tel>
+                    <span id="etiqueta_telefon_uno" class="input-group-text  text-white py-1"
+                        id="telefono_uno_label"></span>
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
-                    <x-input-form-general-tel name="telefono_dos" id="telefono_dos" placeholder="Tel. a 10 digitos"></x-input-form-general-tel>
-                    <span id="etiqueta_telefono_dos" class="input-group-text  text-white py-1" id="telefono_dos_label"></span>
+                    <x-input-form-general-tel name="telefono_dos" id="telefono_dos"
+                        placeholder="Tel. a 10 digitos"></x-input-form-general-tel>
+                    <span id="etiqueta_telefono_dos" class="input-group-text  text-white py-1"
+                        id="telefono_dos_label"></span>
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
-                    <x-input-form-general-tel name="celular_uno" id="celular_uno" placeholder="Telfono Celular 1"></x-input-form-general-tel>
-                    <span id="etiqueta_celular_uno" class="input-group-text  text-white py-1" id="celular_uno_label"></span>
+                    <x-input-form-general-tel name="celular_uno" id="celular_uno"
+                        placeholder="Telfono Celular 1"></x-input-form-general-tel>
+                    <span id="etiqueta_celular_uno" class="input-group-text  text-white py-1"
+                        id="celular_uno_label"></span>
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
-                    <x-input-form-general-tel name="celular_dos" id="celular_dos" placeholder="Telefono celular 2"></x-input-form-general-tel>
-                    <span id="etiqueta_celular_dos" class="input-group-text  text-white py-1" id="celular_dos_label"></span>
+                    <x-input-form-general-tel name="celular_dos" id="celular_dos"
+                        placeholder="Telefono celular 2"></x-input-form-general-tel>
+                    <span id="etiqueta_celular_dos" class="input-group-text  text-white py-1"
+                        id="celular_dos_label"></span>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="mb-3">
                     <label for="email_form" class="form-label">Correo electrónico:</label>
-                    <input type="email" class="form-control" id="email_form" name="email_form" form="formDatosGenerales">
+                    <input type="email" class="form-control" id="email_form" name="email_form"
+                        form="formDatosGenerales">
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <label for="referido_por_info" class="form-label">Referido Por: </label>
-                <input type="text" class="form-control" id="referido_por_info" name="referido_por_info"  disabled>
+                <input type="text" class="form-control" id="referido_por_info" name="referido_por_info" disabled>
             </div>
             <div class="col-12 col-md-4">
                 <div class="mb-3">
                     <label for="origen_info" class="form-label">Origen del Registro:</label>
-                    <select class="form-select form-select-sm" id="origen_info" name="origen_info" disabled>
-                    </select>
+                    <select class="form-select form-select-sm" id="origen_info" name="origen_info" disabled></select>
                 </div>
             </div>
             @isset($_REQUEST['folio_crm'])
@@ -82,7 +90,7 @@
         <div class="col-12 col-md-6">
             <p class="text-center">
                 Estatus Whatsapp: ACTIVA <br>
-                Estatus Conversación: CHB CON CARRERA
+                Estatus Conversación: <span id="estaus_conversacion"></span>
             </p>
         </div>
         <div class="col-11">

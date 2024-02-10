@@ -5,12 +5,14 @@ function llenar_combos(infoProspecto) {
     let claveNivel = infoProspecto.claveNivel;
     let claveCarrera = infoProspecto.claveCarrera;
     let claveHorario = infoProspecto.claveHorario;
+    let origen = infoProspecto.origen;
 
     llenarComboCampañas(claveCampana);
     llenaComboPlantel(clavePlantel);
     llenarComboNivel(clavePlantel, claveNivel);
     llenarCombosCarrera(claveCampana, clavePlantel, claveNivel);
-    llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera);
+    llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario);
+    llenarComboOrigen(origen);
 
 }
 
@@ -152,7 +154,35 @@ function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrer
             $("#horario_info").append(option_default);
         }
         $("#horario_info option[value=" + claveHorario + "]").attr("selected", true);
-        
+
+    }).fail(function (e) {
+        console.log("Request: " + JSON.stringify(e));
+    });
+}
+
+function llenarComboOrigen(origen) {
+    let ruta = setBaseURL() + 'obtener/origenes';
+
+    $.ajax({
+        url: ruta,
+        method: "GET",
+        dataType: 'json',
+    }).done(function (data) {
+        const origenes = data.OrigenesDTO;
+        let option_default = `<option value="">Seleciona un origen</option>`;
+        if (origenes != undefined) {
+            $("#origen_info").append(option_default); //se establece la campaña por defecto
+            for (let index = 0; index < origenes.length; index++) { //recorrer el array de campañas
+                const element = origenes[index]; // se establece un elemento por campaña optenida
+                let option = `<option value="${element.Origen_id}">${element.Descripcion}</option>`; //se establece la opcion por campaña
+                $("#origen_info").append(option); // se inserta la campaña de cada elemen  to
+            }
+        }
+        else {
+            $("#origen_info").append(option_default);
+        }
+        $("#origen_info option[value=" + origen + "]").attr("selected", true);
+
         $('#modal_carga').modal('hide');
 
     }).fail(function (e) {

@@ -16,7 +16,7 @@ function mostrarEdicionProspecto() {
 }
 
 function actualizarReferido() {
-    
+
     let claveCampana = $('select[name=campana_info]').val();
     let clavePlantel = $('select[name=plantel_info]').val();
     let claveNivel = $('select[name=nivel_info]').val();
@@ -88,4 +88,31 @@ function actualizarReferido() {
 
     }
 
+}
+
+function llenarComboPlantel() {
+    let ruta = setBaseURL() + 'get/planteles';
+
+    $.ajax({
+        url: ruta,
+        method: "GET",
+        dataType: 'json',
+    }).done(function (data) {
+        const plateles = data;
+        let option_default = `<option value="0">Seleciona un plantel</option>`;
+        if (plateles != undefined) {
+            $("#plantel_search").append(option_default); //se establece el plantel por defecto
+            for (let index = 0; index < plateles.length; index++) { //recorrer el array de planteles
+                const element = plateles[index]; // se establece un elemento por plantel optenida
+                let option = `<option value="${element.clave}">${element.descrip}</option>`; //se establece la opcion por campaña
+                $("#plantel_search").append(option); // se inserta la platel de cada elemento
+            }
+        }
+        else {
+            $("#plantel_search").append(option_default);
+        }
+
+    }).fail(function (e) {
+        console.log("Request: " + JSON.stringify(e));
+    });
 }
