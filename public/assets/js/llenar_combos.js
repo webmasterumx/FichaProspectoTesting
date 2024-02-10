@@ -152,6 +152,8 @@ function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrer
             $("#horario_info").append(option_default);
         }
         $("#horario_info option[value=" + claveHorario + "]").attr("selected", true);
+        
+        $('#modal_carga').modal('hide');
 
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));

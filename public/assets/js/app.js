@@ -41,6 +41,7 @@ function actualizarReferido() {
     }
     else {
 
+        $('#text_carga').html('Guardando datos..');
         $('#modal_carga').modal('show');
         let claveCampana = $('select[name=campana_info]').val();
         let clavePlantel = $('select[name=plantel_info]').val();

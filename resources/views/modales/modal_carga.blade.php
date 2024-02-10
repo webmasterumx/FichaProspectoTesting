@@ -7,7 +7,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-            <p>
+            <p id="text_carga">
                 Guardando datos...
             </p>
         </div>

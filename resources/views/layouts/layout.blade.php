@@ -80,6 +80,11 @@
             </script>
         @else
             <script>
+                window.addEventListener('load', function() {
+                    $('#text_carga').html('Cargando datos..');
+                    $('#modal_carga').modal('show');
+                });
+
                 $(document).ready(function() {
 
                     let folio_crm = "{{ $_REQUEST['folio_crm'] }}";
@@ -115,7 +120,6 @@
                             establecerNumeros(infoProspecto);
                             establecer_redes(listRedes);
                             printInfoPromotor(infoPromotor, dateInfo);
-
 
                         }
 

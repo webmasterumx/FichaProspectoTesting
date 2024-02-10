@@ -63,7 +63,7 @@
         <div class="col-12 col-md-4">
             <div class="mb-3 d-flex">
                 <input type="text" class="form-control text-center" id="telefonoReferido" name="telefonoReferido"
-                    placeholder="Tel. maximo 13 digitos" maxlength="13" minlength="10" onkeyup = "if(event.keyCode == 13) searchForTelefonon()">
+                    placeholder="Tel. maximo 13 digitos" maxlength="13" onkeyup = "if(event.keyCode == 13) searchForTelefono()">
                 <button onclick="searchForTelefono()" type="button" class="btn btn-primary">
                     <i id="iconoSearch" class="bi bi-search"></i>
                     <div id="iconoCargando" class="spinner-border d-none" style="height: 12px !important; width: 12px !important;" role="status">
