@@ -56,6 +56,7 @@ function establecer_redes(listRedes) {
  * @param {*} nombre 
  */
 function establecer_color(nombre, ultimoEstatusDetalle) {
+    console.log(nombre);
     $('#status_detalle').html('' + ultimoEstatusDetalle);
 
     switch (nombre) {
