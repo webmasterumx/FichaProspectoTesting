@@ -214,7 +214,7 @@ class FichaController extends Controller
         //dd($valores);
         $envio = app(PeticionesController::class)->guardarBitacora($valores);
         
-        //dd($envio);
+        dd($envio);
 
         if ($envio === true) {
             echo true;

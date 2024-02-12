@@ -10,7 +10,7 @@ function llenar_combos(infoProspecto) {
     llenarComboCampañas(claveCampana);
     llenaComboPlantel(clavePlantel);
     llenarComboNivel(clavePlantel, claveNivel);
-    llenarCombosCarrera(claveCampana, clavePlantel, claveNivel);
+    llenarCombosCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera);
     llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario);
     llenarComboOrigen(origen);
 
@@ -140,13 +140,13 @@ function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrer
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        const horarios = data.Carrera;
+        const horarios = data.Horarios;
         let option_default = `<option value="">Seleciona un Horario</option>`;
         if (horarios != undefined) {
             $("#horario_info").append(option_default); //se establece la campaña por defecto
             for (let index = 0; index < horarios.length; index++) { //recorrer el array de campañas
                 const element = horarios[index]; // se establece un elemento por campaña optenida
-                let option = `<option value="${element.clave_carrera}">${element.descrip_ofi}</option>`; //se establece la opcion por campaña
+                let option = `<option value="${element.Horario}">${element.Descripcion}</option>`; //se establece la opcion por campaña
                 $("#horario_info").append(option); // se inserta la campaña de cada elemen  to
             }
         }

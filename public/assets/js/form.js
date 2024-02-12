@@ -138,7 +138,7 @@ $("#formBitacora").validate({
         let promotor = setPromotor();
 
         let ruta = setBaseURL() + "guardar/bitacora/?folio_crm=" + setFolioCrm() + "&actividadRealizada=" + actividadRealizada + "&estatusDetalle=" + estatusDetalle + "&actividadProxima=" + proximaActividad + "&date_bitacora=" + fecha + "&horarioContacto=" + horarioContacto + "&comentariosBitacora=" + comentarios + "&promotor=" + promotor;
-        //console.log(ruta);
+        console.log(ruta);
         let xhr = new XMLHttpRequest();
 
         // 2. Configuración: solicitud GET para la URL /article/.../load
