@@ -114,5 +114,11 @@ $("select[name=estatusDetalle]").change(function () {
         $('#date_bitacora').attr('disabled', true);
         $('select[name=horarioContacto]').attr('disabled', true);
     } 
+    if (validacion == 1) {
+        $('select[name=actividadProxima]').attr('disabled', false);
+        $('#date_bitacora').attr('disabled', false);
+        $('select[name=horarioContacto]').attr('disabled', false);
+    } 
+
 
 });
