@@ -184,7 +184,8 @@ class FichaController extends Controller
         }
         else{
             //echo 'si hay fecha';
-            $date = $_REQUEST['date_bitacora'];
+            $date = date('Y-d-m', strtotime($_REQUEST['date_bitacora']));
+
         }//
 
         if ($_REQUEST['actividadProxima'] == 0) {
@@ -214,7 +215,7 @@ class FichaController extends Controller
         //dd($valores);
         $envio = app(PeticionesController::class)->guardarBitacora($valores);
         
-        dd($envio);
+        //var_dump($envio);
 
         if ($envio === true) {
             echo true;
