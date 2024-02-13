@@ -70,7 +70,7 @@ function getBitacora() {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        console.log(data); // imprimimos la respuesta
+        //console.log(data); // imprimimos la respuesta
         let bitacora = data.infoProspecto.listaBitacoraSeguimiento.Cls_Bitacora;
         let nombre = data.infoProspecto.termometro;
         let ultimoEstatusDetalle = data.infoProspecto.ultimoEstatusDetalle;
@@ -186,10 +186,14 @@ function getBitacora() {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        //console.log(data);
-        //console.log(data.TipoContacto); // imprimimos la respuesta
         for (let index = 0; index < data.TipoContacto.length; index++) {
-            $("#actividadRealizada").append("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
+            if (data.TipoContacto[index].tipoContacto == 0) {
+                tipoContacto = "";
+            }
+            else {
+                tipoContacto = data.TipoContacto[index].tipoContacto;
+            }
+            $("#actividadRealizada").append("<option value='" + tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
         }
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
