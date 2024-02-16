@@ -6,6 +6,8 @@ function limpiarTabla() {
     if ($("#dataBuscador").hasClass("d-none") === false) {
         $('#dataBuscador').addClass('d-none');
     }
+
+    $('#text_crm').val("");
 }
 
 function mostrarEdicionProspecto() {
@@ -92,6 +94,7 @@ function actualizarReferido() {
 
 function llenarComboPlantel() {
     let ruta = setBaseURL() + 'get/planteles';
+    $('#plantel_search').empty();
 
     $.ajax({
         url: ruta,
