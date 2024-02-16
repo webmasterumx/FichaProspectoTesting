@@ -70,6 +70,7 @@
                                     <select class="form-select" aria-label="Default select example"
                                         name="plantel_search" id="plantel_search">
                                     </select>
+                                    <p id="text_resultados" class="text-end text-primary mt-3"></p>
                                 </div>
                                 <div id="cargador" class="col-12 col-md-12 mt-3 text-center d-none">
                                     <div class="spinner-border" role="status">

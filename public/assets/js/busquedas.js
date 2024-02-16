@@ -103,6 +103,7 @@ function searchProspecto() {
         }).done(function (data) {
             $('#cargador').removeClass('d-none');
             console.log(data.length); // imprimimos la respuesta
+            $('#text_resultados').html(`Se encontraron: ${data.length} registros`);
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 //console.log(element);
