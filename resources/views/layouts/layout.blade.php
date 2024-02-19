@@ -73,9 +73,10 @@
     @endphp
     @if ($validar_folio == true && $validar_prmotor == true)
         @if ($_REQUEST['folio_crm'] == '' || $_REQUEST['folio_crm'] == 'promotor')
+            @include('modales.modal_danger_folio')
             <script>
                 $(document).ready(function() {
-                    $("#modal_error").modal("show");
+                    $("#modal_danger_folio").modal("show");
                 });
             </script>
         @else
