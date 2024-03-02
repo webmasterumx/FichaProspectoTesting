@@ -7,7 +7,7 @@
                 </svg>
             </a>
             <ul id="listaMenus" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li class="dropdown">
+                <li class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Doc. Grales
@@ -91,15 +91,30 @@
                                         Licenciatura
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaIzcalli2023-2.pdf">2023
-                                                - 2</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaIzcalli2023-3.pdf">2023
-                                                - 3</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaIzcalli2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaIzcalli2024-1.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Metro_Lic_Izcalli_A_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Metro_Lic_Izcalli_B_2025-1.pdf">
+                                                2025 - 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Posgrados_UNIMEX_Izcalli_2025-1.pdf">
+                                                2025 - 3
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="dropend">
@@ -108,9 +123,18 @@
                                         Posgrado
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradoIZCALLI2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradoIZCALLI2024-1.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Posgrados_UNIMEX_Izcalli_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
