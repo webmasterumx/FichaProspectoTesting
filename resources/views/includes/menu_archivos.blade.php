@@ -151,15 +151,29 @@
                                         Licenciatura
                                     </a>
                                     <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSat%C3%A9lite2024-1.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
                                         <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSat%C3%A9lite2023-2.pdf">2023
-                                                - 2</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSat%C3%A9lite2023-3.pdf">2023
-                                                - 3</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSat%C3%A9lite2024-1.pdf">2024
-                                                - 1</a></li>
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Licenciatura_Satelite_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Posgrados_UNIMEX_SatElite_2025-1.pdf">
+                                                2025 - 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Posgrados_UNIMEX_SatElite_2025-1.pdf">
+                                                2025 - 3
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="dropend">
@@ -168,9 +182,18 @@
                                         Posgrado
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradosSat%C3%A9lite2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSat%C3%A9lite2024-1.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Posgrados_UNIMEX_SatElite_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -187,15 +210,30 @@
                                         Licenciatura
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaPolanco2023-2.pdf">2023
-                                                - 2</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaPolanco2023-3.pdf">2023
-                                                - 3</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaPolanco2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaPolanco2024-1.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Licenciatura_Polanco_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Metro_Posgrado_Polanco_A.pdf">
+                                                2025 - 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Metro_Posgrado_Polanco_A.pdf">
+                                                2025 - 3
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="dropend">
@@ -204,9 +242,18 @@
                                         Posgrado
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradosPolanco2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaPolanco2024-1.pdf">
+                                                2024- 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Costos_Licenciatura_Polanco_2025-1.pdf">
+                                                2025- 1
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -223,21 +270,41 @@
                                         Licenciatura
                                     </a>
                                     <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/Cuotas2024-1Licenciaturas.pdf">
+                                                2024 - 3 LICENCIATURAS
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Cuotas_Licenciaturas_A_2025-1.pdf">
+                                                2025 - 1 LICENCIATURAS
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSUAVeracruz2023-2.pdf">
+                                                2024 - 3 SUA
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Cuotas_Licenciaturas_abiertas_SUA_2025-1.pdf">
+                                                2025 - 1 SUA
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/CuotasGastronom%C3%ADa2023-3.pdf">
+                                                2024 - 3 GASTRONOMIA
+                                            </a>
+                                        </li>
                                         <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSUAVeracruz2023-2.pdf">2023
-                                                - 2 SUA</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/CuotasGastronom%C3%ADa2023-3.pdf">2023
-                                                - 3 GASTRONOMIA</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/CuotasGastronom%C3%ADa2024-1.pdf">2024
-                                                - 1 GASTRONOMIA</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/Cuotas2024-1Licenciaturas.pdf">2024
-                                                - 1 LICENCIATURAS</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosLicenciaturaSUAVeracruz2024-1.pdf">2024
-                                                - 1 SUA</a></li>
+                                                href="https://kontux.unimex.edu.mx/archivos/Cuotas_Licenciatura_Gastronom%C3%ADa_2025-1.pdf">
+                                                2025 - 1 GASTRONOMIA
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="dropend">
@@ -246,12 +313,18 @@
                                         Posgrado
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradosVeracruz2023-2.pdf">2023
-                                                - 2</a></li>
-                                        <li><a class="dropdown-item" target="_blank"
-                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradosVeracruz2024-1.pdf">2024
-                                                - 1</a></li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://ficha.unimex.edu.mx/Documentos/HojadeCostosPosgradosVeracruz2023-2.pdf">
+                                                2024 - 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Cuotas_Posgrados_2025-1.pdf">
+                                                2025 - 1
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
