@@ -226,6 +226,11 @@
                     return folio_crm;
                 }
 
+                function setPromotor() {
+                    let promotor = "{{ $_REQUEST['promotor'] }}";
+                    return promotor;
+                }
+
                 const myModal = new bootstrap.Modal('#modal_carga', {
                     backdrop: 'static',
                     keyboard: false
