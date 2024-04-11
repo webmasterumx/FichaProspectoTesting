@@ -63,7 +63,7 @@ function submenus(elemento) {
                 console.log(element);
                 let item = `
                     <li>
-                        <a class="dropdown-item" target="_blank" href="${element.url_destino}">
+                        <a id="menu_${element.id_menu}" data-id="${element.id_menu}"  class="dropdown-item" target="_blank" href="${element.url_destino}">
                             ${element.descripcion}
                         </a>
                     </li>

@@ -65,6 +65,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+    <script src="{{ asset('assets/js/menu.js') }}"></script>
     <script>
         // incio - funciones de establecimiento 
 
@@ -74,6 +75,8 @@
         }
 
         // fin - funciones de establecimiento
+
+        //cargarMenuPrincipal();
     </script>
     <script src="{{ asset('assets/js/bloqueos.js') }}"></script>
     <script src="{{ asset('assets/js/form.js') }}"></script>
@@ -89,7 +92,7 @@
                     let promotor = "{{ $_REQUEST['promotor'] }}";
                     return promotor;
                 }
-                
+
                 $(document).ready(function() {
                     $("#modal_danger_folio").modal("show");
                 });
@@ -271,7 +274,6 @@
     <script src="{{ asset('assets/js/combos.js') }}"></script>
     <script src="{{ asset('assets/js/areas.js') }}"></script>
     <script src="{{ asset('assets/js/llenar_combos.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/menu.js') }}"></script> --}}
 </body>
 
 </html>
