@@ -6,20 +6,24 @@
                     <use xlink:href="#bootstrap"></use>
                 </svg>
             </a>
-            <ul id="listaMenus" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li class="dropdown">
+            <div id="listaMenus" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                {{-- 
+                <div class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Doc. Grales
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" target="_blank"
+                    <div class="dropdown-menu">
+                        <div><a class="dropdown-item" target="_blank"
                                 href="https://ficha.unimex.edu.mx/Documentos/ConveniosActualizados.pdf">Convenios</a>
-                        </li>
-                        <li><a class="dropdown-item" target="_blank"
+                        </div>
+                        <div>
+                            <a class="dropdown-item" target="_blank"
                                 href="https://ficha.unimex.edu.mx/Documentos/DocumentacionNuevoIngreso.pdf">Documentación
-                                Nuevo Ingreso</a></li>
-                        <li class="dropend">
+                                Nuevo Ingreso
+                            </a>
+                        </div>
+                        <div class="dropend">
                             <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Folleto de Ventajas
@@ -50,15 +54,15 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Apertura de Grupos
                     </a>
-                    <ul class="dropdown-menu">
+                    <div class="dropdown-menu">
                         <li><a class="dropdown-item" target="_blank"
                                 href="https://ficha.unimex.edu.mx/Documentos/ConsolidadoMETA24-224-3y25-1(Autorizado)IZC.pdf">IZCALLI</a>
                         </li>
@@ -71,8 +75,8 @@
                         <li><a class="dropdown-item" target="_blank"
                                 href="https://ficha.unimex.edu.mx/Documentos/ConsolidadoMETA24-224-3y25-1(Autorizado)VER.pdf">VERACRUZ</a>
                         </li>
-                    </ul>
-                </li>
+                    </div>
+                </div>
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -331,171 +335,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <div class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Folletos
                     </a>
-                    {{--  
-                    <ul class="dropdown-menu">
-                        <li class="dropend">
-                            <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Metropolitano
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Izcalli
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropend">
-                                            <a class="dropdown-item" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Licenciatura
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_AET.pdf">Administracion
-                                                        de empresas Turisticas</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_ADM.pdf">Administracion</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_CIA.pdf">Comercio
-                                                        Internacional y Aduanas</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_COM.pdf">Comunicación</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_CTA.pdf">Contaduria</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_CPU.pdf">Contaduria
-                                                        Publica</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_DER.pdf">Derecho</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_DGR.pdf">Diseño
-                                                        Grafico</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_IDI.pdf">Idiomas</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_MPU.pdf">Mercadotecnia
-                                                        y publicidad</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_PED.pdf">Pedagogia</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_PSO.pdf">Psicologia
-                                                        social</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_RIN.pdf">Relaciones
-                                                        Internacionales</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_RIC.pdf">Relaciones
-                                                        Internacionales y comercio Exterior</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_SCO.pdf">Sistemas
-                                                        Computacionales</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Lic_TUR.pdf">Turismo</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend">
-                                            <a class="dropdown-item" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Posgrado
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_EAD.pdf">Administracion</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_ECV.pdf">Comunicación
-                                                        Visual</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_EDP.pdf">Derecho
-                                                        Penal</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_DOC.pdf">Docencia</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_EDU.pdf">Educacion</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_HD.pdf">Habilidades
-                                                        Directivas</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_EIM.pdf">Impuestos</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_EMK.pdf">Mercadotecnia
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" target="_blank"
-                                                        href="https://kontux.unimex.edu.mx/archivos/Folleto_Metro_Posgrado_ETP.pdf">Terapias
-                                                        Psicosociales</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Polanco
-                                    </a>
-                                </li>
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Satélite
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <div class="dropdown-menu">
                         <li class="dropend">
                             <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -510,235 +355,91 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_ADM.pdf">Administracion</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_AET.pdf">Administracion
-                                                de empresas turisticas</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_CIA.pdf">Comercio
-                                                Internacional y aduanas</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_CED.pdf">Ciencias
-                                                de la educacion</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_COM.pdf">Comunicación</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_CPU.pdf">Contaduria
-                                                Publica</a>
-                                        </li>
-
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_DER.pdf">Derecho</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_DGR.pdf">Diseño
-                                                Grafico</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_GTI.pdf">Gastronomia
-                                                Internacional</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_IDI.pdf">Idiomas</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_MPU.pdf">Mercadotecnia
-                                                y publicidad</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_PSO.pdf">Psicologia
-                                                social</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_RIC.pdf">Relaciones
-                                                Internacionales y comercio Exterior</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_SCO.pdf">Sistemas
-                                                Computacionales</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_TUR.pdf">Turismo</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Posgrado
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_EAD.pdf">
-                                                Administracion
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_ECV.pdf">
-                                                Comunicación visual
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_EDP.pdf">
-                                                Derecho Penal
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_EDU.pdf">
-                                                Educacion
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_HD.pdf">
-                                                Habilidades Directivas
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Posgrado_ETP.pdf">
-                                                Terapias Psicosociales
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        SUA
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_ADM_SUA.pdf">
-                                                Administracion
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_CPU_SUA.pdf">
-                                                Contaduria Publica
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" target="_blank"
-                                                href="https://kontux.unimex.edu.mx/archivos/Folleto_Ver_Lic_DER_SUA.pdf">
-                                                Derecho
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul> --}}
-                    <ul class="dropdown-menu">
-                        <li class="dropend">
-                            <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Veracruz
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropend">
-                                    <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Licenciatura
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-ADM.pdf">
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-ADM.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/AdmonTuristicasVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/AdmonTuristicasVer.pdf">
                                                 Administración de Empresas Turísticas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/CiaVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/CiaVer.pdf">
                                                 Comercio Internacional y Aduanas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-CED.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-CED.pdf">
                                                 Ciencias de la Educación
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/ComunicacionVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/ComunicacionVer.pdf">
                                                 Comunicación
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-CPU.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-CPU.pdf">
                                                 Contaduría Pública
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-DER.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-DER.pdf">
                                                 Derecho
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-DGR.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-DGR.pdf">
                                                 Diseño Gráfico
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-GTI.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-GTI.pdf">
                                                 Gastronomía Internacional
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/IdiomasVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosLicVeracruz/IdiomasVer.pdf">
                                                 Idiomas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MPU.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MPU.pdf">
                                                 Mercadotecnia y Publicidad
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-PSO.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-PSO.pdf">
                                                 Psicología Social
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-RICE.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-RICE.pdf">
                                                 Relaciones Internacionales y Comercio Exterior
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-SCO.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-SCO.pdf">
                                                 Sistemas Computacionales
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-TUR.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-TUR.pdf">
                                                 Turismo
                                             </a>
                                         </li>
@@ -751,32 +452,38 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosAdministracionVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosAdministracionVer.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosComunicacionVisualVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosComunicacionVisualVer.pdf">
                                                 Comunicación Visual
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MAE%20Derecho%20Penal.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MAE%20Derecho%20Penal.pdf">
                                                 Derecho Penal
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosEducacionVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosEducacionVer.pdf">
                                                 Educación
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosHabilidadesDirectivasVer.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosPosVeracruz/PosHabilidadesDirectivasVer.pdf">
                                                 Habilidades Directivas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MAE%20Terapias.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Veracruz/FlyerVeracruz-MAE%20Terapias.pdf">
                                                 Terapias Psicosociales
                                             </a>
                                         </li>
@@ -789,17 +496,20 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/AdministracionVerSUA.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/AdministracionVerSUA.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/ContaduriaPublicaVerSUA.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/ContaduriaPublicaVerSUA.pdf">
                                                 Contaduría Pública
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/DerechoVerSUA.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="http://192.168.1.25/CallCenter/Archivos/FAQ/Folletos/Veracruz/FolletosSUA/DerechoVerSUA.pdf">
                                                 Derecho
                                             </a>
                                         </li>
@@ -820,57 +530,68 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20ADM%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20ADM%20Izcalli.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20DER%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20DER%20Izcalli.pdf">
                                                 Derecho
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20DGR%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20DGR%20Izcalli.pdf">
                                                 Diseño Gráfico
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20IDI%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20IDI%20Izcalli.pdf">
                                                 Idiomas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20MPU%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20MPU%20Izcalli.pdf">
                                                 Mercadotecnia y Publicidad
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20PED%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20PED%20Izcalli.pdf">
                                                 Pedagogía
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20PSO%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20PSO%20Izcalli.pdf">
                                                 Psicología Social
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20RICE%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20RICE%20Izcalli.pdf">
                                                 Relaciones Internacionales y Comercio Exterior
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20SCO%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20SCO%20Izcalli.pdf">
                                                 Sistemas Computacionales
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="ttps://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20TUR%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="ttps://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20TUR%20Izcalli.pdf">
                                                 Turismo
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20CPU%20Izcalli.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/Lic%20CPU%20Izcalli.pdf">
                                                 Contaduría Pública
                                             </a>
                                         </li>
@@ -883,12 +604,14 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Derecho%20Penal%20Izcalli_BJ.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Derecho%20Penal%20Izcalli_BJ.pdf">
                                                 Derecho Penal
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Terapias%20Izcalli_BJ.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Terapias%20Izcalli_BJ.pdf">
                                                 Terapias Psicosociales
                                             </a>
                                         </li>
@@ -915,7 +638,7 @@
                                                 Derecho
                                             </a>
                                         </li>
-                                    </ul> --}}
+                                    </ul> 
                                 </li>
                             </ul>
                         </li>
@@ -932,57 +655,68 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20ADM%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20ADM%20Satelite.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20CPU%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20CPU%20Satelite.pdf">
                                                 Contaduría Pública
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20DER%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20DER%20Satelite.pdf">
                                                 Derecho
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20DGR%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20DGR%20Satelite.pdf">
                                                 Diseño Gráfico
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20IDI%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20IDI%20Satelite.pdf">
                                                 Idiomas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20MPU%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20MPU%20Satelite.pdf">
                                                 Mercadotecnia y Publicidad
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20PED%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20PED%20Satelite.pdf">
                                                 Pedagogía
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20PSO%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20PSO%20Satelite.pdf">
                                                 Psicología Social
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20RICE%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20RICE%20Satelite.pdf">
                                                 Relaciones Internacionales y Comercio Exterior
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20SCO%20Satelite_bj.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20SCO%20Satelite_bj.pdf">
                                                 Sistemas Computacionales
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20Turismo%20Satelite.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Satelite/Lic%20Turismo%20Satelite.pdf">
                                                 Turismo
                                             </a>
                                         </li>
@@ -996,12 +730,14 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Derecho%20Penal%20Izcalli_BJ.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Derecho%20Penal%20Izcalli_BJ.pdf">
                                                 Derecho Penal
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Terapias%20Izcalli_BJ.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Izcalli/MAE%20en%20Terapias%20Izcalli_BJ.pdf">
                                                 Terapias Psicosociales
                                             </a>
                                         </li>
@@ -1028,7 +764,7 @@
                                                 Derecho
                                             </a>
                                         </li>
-                                    </ul> --}}
+                                    </ul> 
                                 </li>
                             </ul>
                         </li>
@@ -1037,7 +773,7 @@
                                 aria-expanded="false">
                                 Polanco
                             </a>
-                           
+
                             <ul class="dropdown-menu">
                                 <li class="dropend">
                                     <a class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown"
@@ -1046,67 +782,80 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20ADM%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20ADM%20Polanco.pdf">
                                                 Administración
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20CONTA%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20CONTA%20Polanco.pdf">
                                                 Contaduría
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20CPU%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20CPU%20Polanco.pdf">
                                                 Contaduría Pública
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20DER%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20DER%20Polanco.pdf">
                                                 Derecho
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20DGR%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20DGR%20Polanco.pdf">
                                                 Diseño Gráfico
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20IDI%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20IDI%20Polanco.pdf">
                                                 Idiomas
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20MPU%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20MPU%20Polanco.pdf">
                                                 Mercadotecnia y Publicidad
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20PED%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20PED%20Polanco.pdf">
                                                 Pedagogía
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20PSO%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20PSO%20Polanco.pdf">
                                                 Psicología Social
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20RI%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20RI%20Polanco.pdf">
                                                 Relaciones Internacionales
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20RICE%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20RICE%20Polanco.pdf">
                                                 Relaciones Internacionales y Comercio Exterior
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="ttps://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20SCO%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="ttps://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20SCO%20Polanco.pdf">
                                                 Sistemas Computacionales
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20TUR%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/Lic%20TUR%20Polanco.pdf">
                                                 Turismo
                                             </a>
                                         </li>
@@ -1119,22 +868,26 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Derecho%20Penal%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Derecho%20Penal%20Polanco.pdf">
                                                 Derecho Penal
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Impuestos%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Impuestos%20Polanco.pdf">
                                                 Impuestos
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Mercadotecnia%20Polanco.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Mercadotecnia%20Polanco.pdf">
                                                 Mercadotecnia
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" target="_blank" href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Terapias%20Polanco_bj.pdf">
+                                            <a class="dropdown-item" target="_blank"
+                                                href="https://kontux.unimex.edu.mx/archivos/Folletos/Polanco/MAE%20en%20Terapias%20Polanco_bj.pdf">
                                                 Terapias Psicosociales
                                             </a>
                                         </li>
@@ -1161,12 +914,12 @@
                                                 Derecho
                                             </a>
                                         </li>
-                                    </ul> --}}
+                                    </ul> 
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                </li>
+                    </div>
+                </div>
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -1236,8 +989,8 @@
                                 href="https://kontux.unimex.edu.mx/archivos/Contacto_Ver_Veracruz.pdf">VERACRUZ</a>
                         </li>
                     </ul>
-                </li>
-            </ul>
+                </li> --}}
+            </div>
         </div>
     </div>
 </header>
