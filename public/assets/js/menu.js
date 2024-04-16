@@ -52,19 +52,18 @@ function submenus(elemento) {
             method: "GET",
             dataType: 'json',
         }).done(function (data) {
-            console.log(data);
-
-
+            //console.log(data);
 
             let idSubmenu = "#subMenu_" + idMenu;
-            let menuItems = data.Cls_MenuDoctos;
+            let menuItems =  data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
             let item = "";
 
             if (data.Cls_MenuDoctos.descripcion == undefined || data.Cls_MenuDoctos.descripcion == null || data.Cls_MenuDoctos.descripcion == "") {
+                
                 for (let index = 0; index < menuItems.length; index++) {
 
                     const element = menuItems[index];
-                    console.log(element);
+                    //console.log(element);
 
                     if (element.url_destino == "" || element.url_destino == null) {
 
