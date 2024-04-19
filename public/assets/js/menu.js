@@ -18,7 +18,7 @@ function cargarMenuPrincipal() {
                     <a id="menu_${element.id_menu}" data-id="${element.id_menu}" 
                         class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" 
-                        onmouseover="submenus(this)" onmouseout="eliminarSubmenus("#subMenu_${element.id_menu}")">
+                        onmouseover="submenus(this)" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
                         ${element.descripcion}
                     </a>
                     <div id="subMenu_${element.id_menu}" class="dropdown-menu">
