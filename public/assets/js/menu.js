@@ -9,7 +9,12 @@ function cargarMenuPrincipal() {
     }).done(function (data) {
         console.log(data);
 
-        let menuItems = data.Cls_MenuDoctos;
+        let menuItems = data.Cls_MenuDoctos
+
+        /**
+         * onmouseover="submenus(this)"
+         * onclick="submenus(this)"
+         */
 
         for (let index = 0; index < menuItems.length; index++) {
             const element = menuItems[index];
@@ -18,7 +23,7 @@ function cargarMenuPrincipal() {
                     <a id="menu_${element.id_menu}" data-id="${element.id_menu}" 
                         class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" 
-                        onmouseover="submenus(this)" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
+                        onclick="submenus(this)" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
                         ${element.descripcion}
                     </a>
                     <div id="subMenu_${element.id_menu}" class="dropdown-menu">
@@ -55,11 +60,11 @@ function submenus(elemento) {
             //console.log(data);
 
             let idSubmenu = "#subMenu_" + idMenu;
-            let menuItems =  data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
+            let menuItems = data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
             let item = "";
 
             if (data.Cls_MenuDoctos.descripcion == undefined || data.Cls_MenuDoctos.descripcion == null || data.Cls_MenuDoctos.descripcion == "") {
-                
+
                 for (let index = 0; index < menuItems.length; index++) {
 
                     const element = menuItems[index];
@@ -70,7 +75,7 @@ function submenus(elemento) {
                         item = item + `
                             <div class="dropend">
                                 <a id="menu_${element.id_menu}" data-id="${element.id_menu}" class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    onmouseover="submenus(this)">
+                                    onclick="submenus(this)">
                                     ${element.descripcion}
                                 </a>
                                 <div id="subMenu_${element.id_menu}" class="dropdown-menu">
