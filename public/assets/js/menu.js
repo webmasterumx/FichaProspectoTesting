@@ -23,7 +23,7 @@ function cargarMenuPrincipal() {
                     <a id="menu_${element.id_menu}" data-id="${element.id_menu}" 
                         class="nav-link dropdown-toggle text-white" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" 
-                        onclick="submenus(this)" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
+                        onmouseover="submenus(this)" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
                         ${element.descripcion}
                     </a>
                     <div id="subMenu_${element.id_menu}" class="dropdown-menu">
@@ -57,7 +57,7 @@ function submenus(elemento) {
             method: "GET",
             dataType: 'json',
         }).done(function (data) {
-            //console.log(data);
+            console.log(data);
 
             let idSubmenu = "#subMenu_" + idMenu;
             let menuItems = data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
@@ -68,14 +68,14 @@ function submenus(elemento) {
                 for (let index = 0; index < menuItems.length; index++) {
 
                     const element = menuItems[index];
-                    //console.log(element);
+                    console.log(element);
 
                     if (element.url_destino == "" || element.url_destino == null) {
 
                         item = item + `
                             <div class="dropend">
                                 <a id="menu_${element.id_menu}" data-id="${element.id_menu}" class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    onclick="submenus(this)">
+                                    onmouseover="submenus(this)">
                                     ${element.descripcion}
                                 </a>
                                 <div id="subMenu_${element.id_menu}" class="dropdown-menu">

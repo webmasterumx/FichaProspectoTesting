@@ -22,17 +22,26 @@
     <label class="form-label">Último Estatus Detalle:</label>
     <span id="status_detalle" class="badge w-100"></span>
 </div>
-<div class="col-12 col-md-4 mb-3">
+<div id="sectionCampaña" class="col-12 col-md-4 mb-3">
     <label for="campana_info" class="form-label">Campaña:</label>
     <x-select-prospecto id="campana_info" name="campana_info"></x-select-prospecto>
     <div id="campana_info_error" class="text-danger fs-7 d-none">
         campo obligatorio
     </div>
 </div>
-<div class="col-12 col-md-4 mb-3">
+<div id="sectionPlantel" class="col-12 col-md-4 mb-3">
     <label for="plantel_info" class="form-label">Plantel:</label>
     <x-select-prospecto id="plantel_info" name="plantel_info"></x-select-prospecto>
     <div id="plantel_info_error" class="text-danger fs-7 d-none">
+        campo obligatorio
+    </div>
+</div>
+<div id="sectionPromotorResponsable" class="col-12 col-md-4 mb-3 d-none">
+    <label for="promotor_info" class="form-label">Promotor que realiza la actividad:</label>
+    <x-select-prospecto id="promotor_info" name="promotor_info">
+        <option value="0">Selecciona promotor</option>
+    </x-select-prospecto>
+    <div id="promotor_info_error" class="text-danger fs-7 d-none">
         campo obligatorio
     </div>
 </div>

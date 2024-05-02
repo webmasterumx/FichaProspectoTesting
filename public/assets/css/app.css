@@ -50,12 +50,12 @@ select {
     display: none;
 }
 
-.dropdown:hover>.dropdown-menu,
+ .dropdown:hover>.dropdown-menu,
 .dropend:hover>.dropdown-menu {
     display: block;
     margin-top: 0.125em;
     margin-left: 0.125em;
-}
+} 
 
 @media screen and (min-width: 769px) {
     .dropend:hover>.dropdown-menu {

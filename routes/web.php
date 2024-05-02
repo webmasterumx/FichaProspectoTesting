@@ -24,7 +24,8 @@ Route::get('/optener/referidos/{folio_crm}', [FichaController::class, 'getReferi
 
 //! Consultas a la api
 
-Route::get('/guardar/datos/prospecto', [FichaController::class, 'guardarDatosProspecto'])->name('guardar.datos.prospecto');
+Route::get('/guardar/datos/prospect', [FichaController::class, 'guardarDatosProspecto'])->name('guardar.datos.prospecto');
+Route::get('/get/infomacion/promotor/{idPromotor}', [PeticionesController::class, 'optenerDatosPromotor'])->name('get.info.promotor');
 Route::get('/get/planteles', [PeticionesController::class, 'getPlanteles'])->name('get.planteles');
 Route::get('/get/niveles/{clavePlan}', [PeticionesController::class, 'getNiveles'])->name('get.niveles');
 Route::get('/obtener/info/promotor/{promotor}', [FichaController::class, 'validarPromotor'])->name('validar.promotor');
@@ -40,4 +41,3 @@ Route::get('/obtener/horariosContacto', [PeticionesController::class, 'getCatalo
 Route::get('/obtener/actividadesRealizadas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
 Route::get('/obtener/actividadesProximas/{type}', [PeticionesController::class, 'getCatalogoTipoContacto']);
 Route::get('/viabilidad/matriculacion/{folioCRM}', [PeticionesController::class, 'viabilidadMatriculacion'])->name('viabilidad.matricula');
-
