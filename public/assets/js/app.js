@@ -119,3 +119,34 @@ function llenarComboPlantel() {
         console.log("Request: " + JSON.stringify(e));
     });
 }
+
+function llenarComboPromotores() {
+    $("#promotor_info").empty();
+    let promotor = setPromotor();
+    let ruta = setBaseURL() + 'obtener/listado/callcenter/' + promotor;
+    $('#plantel_search').empty();
+
+    $.ajax({
+        url: ruta,
+        method: "GET",
+        dataType: 'json',
+    }).done(function (data) {
+        console.log(data);
+        const promotores = data.Cls_Promotores;
+        let option_default = `<option value="0">Seleciona un promotor</option>`;
+        if (promotores != undefined) {
+            $("#promotor_info").append(option_default); //se establece el plantel por defecto
+            for (let index = 0; index < promotores.length; index++) { //recorrer el array de planteles
+                const element = promotores[index]; // se establece un elemento por plantel optenida
+                let option = `<option value="${element.claveUsuario}">${element.nombre}</option>`; //se establece la opcion por campaña
+                $("#promotor_info").append(option); // se inserta la platel de cada elemento
+            }
+        }
+        else {
+            $("#promotor_info").append(option_default);
+        }
+
+    }).fail(function (e) {
+        console.log("Request: " + JSON.stringify(e));
+    });
+}

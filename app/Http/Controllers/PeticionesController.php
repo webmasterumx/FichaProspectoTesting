@@ -186,4 +186,13 @@ class PeticionesController extends Controller
 
         return $response->json();
     }
+
+    public function getListadoCallCenter($promotor)
+    {
+        $response = Http::post($this->base_url . 'get/listado/callcenter', [
+            "claveUsuario" => $promotor
+        ]);
+
+        return $response->json();
+    }
 }

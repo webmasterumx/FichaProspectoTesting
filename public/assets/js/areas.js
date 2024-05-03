@@ -165,5 +165,6 @@ function validarPuestoPromotor(infoPromotor) {
         $('#sectionPromotorResponsable').removeClass('d-none');
 
         //* Aqui se pondra la funcion que llene el combo de promotor responsable
+        llenarComboPromotores();
     }
 }
