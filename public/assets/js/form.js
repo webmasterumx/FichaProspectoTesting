@@ -73,7 +73,7 @@ $("#formReferido").validate({
                     Swal.fire({
                         position: "center",
                         icon: "error",
-                        title: "Favor de seleccionar promotor.",
+                        title: "Favor de seleccionar promotor que realiza la actividad.",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -112,7 +112,53 @@ $("#formBitacora").validate({
         }
     },
     submitHandler: function (form) {
+        let promotor = setPromotor();
+        let ruta = setBaseURL() + 'get/infomacion/promotor/' + promotor;
 
+        $.ajax({
+            url: ruta,
+            method: "GET",
+            dataType: 'json',
+        }).done(function (data) {
+            //console.log(data);
+
+            if (data.puesto == 41 || data.puesto == 42) {
+                console.log("la peticion pasa normal");
+
+                let promotor = setPromotor();
+
+                agregarActividadBitacora(form, promotor);
+
+            } else {
+
+                console.log("se valida el combo");
+
+                let promotor = $('select[name=promotor_info]').val();
+
+                if (promotor != 0) {
+
+                    console.log('se agrega el referido pero hay que agregar la clave de promotor del comboo');
+                    agregarActividadBitacora(form, promotor);
+
+
+                } else {
+                    console.log('se manda mensaje de error');
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Favor de seleccionar promotor que realiza la actividad.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+
+            }
+
+
+        }).fail(function (e) {
+            console.log("Request: " + JSON.stringify(e));
+        });
     }
 });
 
@@ -197,7 +243,7 @@ function agregarReferido(form, promotor) {
     form.reset();
 }
 
-function agregarActividadBitacora(form) {
+function agregarActividadBitacora(form, promotor) {
     $('#enviarActividad').attr('disabled', true);
     $('#cargador_bitacora').removeClass('d-none');
     if ($("#form_bitacora").hasClass("d-none") === false || $("#lista_bitacora").hasClass("d-none") === false) {
@@ -211,7 +257,6 @@ function agregarActividadBitacora(form) {
     let fecha = $('#date_bitacora').val();
     let horarioContacto = $('select[name=horarioContacto]').val();
     let comentarios = $('#comentariosBitacora').val();
-    let promotor = setPromotor();
 
     let ruta = setBaseURL() + "guardar/bitacora/?folio_crm=" + setFolioCrm() + "&actividadRealizada=" + actividadRealizada + "&estatusDetalle=" + estatusDetalle + "&actividadProxima=" + proximaActividad + "&date_bitacora=" + fecha + "&horarioContacto=" + horarioContacto + "&comentariosBitacora=" + comentarios + "&promotor=" + promotor;
     console.log(ruta);
