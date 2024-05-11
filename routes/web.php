@@ -24,7 +24,7 @@ Route::get('/optener/referidos/{folio_crm}', [FichaController::class, 'getReferi
 
 //! Consultas a la api
 
-Route::get('/guardar/datos/prospect', [FichaController::class, 'guardarDatosProspecto'])->name('guardar.datos.prospecto');
+Route::get('/guardar/datos/prospecto', [FichaController::class, 'guardarDatosProspecto'])->name('guardar.datos.prospecto');
 Route::get('/get/infomacion/promotor/{idPromotor}', [PeticionesController::class, 'optenerDatosPromotor'])->name('get.info.promotor');
 Route::get('/get/planteles', [PeticionesController::class, 'getPlanteles'])->name('get.planteles');
 Route::get('/get/niveles/{clavePlan}', [PeticionesController::class, 'getNiveles'])->name('get.niveles');
