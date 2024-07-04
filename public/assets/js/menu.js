@@ -57,13 +57,14 @@ function submenus(elemento) {
             method: "GET",
             dataType: 'json',
         }).done(function (data) {
-            console.log(data);
+            console.log(data.Cls_MenuDoctos.descripcion);
 
             let idSubmenu = "#subMenu_" + idMenu;
-            let menuItems = data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
             let item = "";
 
-            if (data.Cls_MenuDoctos.descripcion == undefined || data.Cls_MenuDoctos.descripcion == null || data.Cls_MenuDoctos.descripcion == "") {
+            if (data.Cls_MenuDoctos.descripcion == undefined || data.Cls_MenuDoctos.descripcion == null) {
+
+                let menuItems = data.Cls_MenuDoctos.sort((a, b) => a.orden - b.orden);
 
                 for (let index = 0; index < menuItems.length; index++) {
 
