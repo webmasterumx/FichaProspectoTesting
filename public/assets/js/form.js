@@ -29,7 +29,8 @@ $("#formReferido").validate({
         },
         telefonoReferido: {
             required: "campo requerido",
-            maxlength: "numero max de 13 digitos"
+            maxlength: "numero max de 10 digitos",
+            minlength: "numero min de 10 digitos"
         },
         emailReferido: {
             required: "campo requerido",

@@ -24,7 +24,6 @@ function actualizarReferido() {
     let claveNivel = $('select[name=nivel_info]').val();
     let claveCarrera = $('select[name=carrera_info]').val();
     let claveHorario = $('select[name=horario_info]').val();
-    console.log(claveHorario);
 
     if ((claveCampana == "") || (claveCampana == null) || (claveCampana == undefined) || (claveCampana == " ") || (claveCampana == 0)) {
         $('#campana_info_error').removeClass('d-none');
@@ -43,8 +42,6 @@ function actualizarReferido() {
     }
     else {
 
-        $('#text_carga').html('Guardando datos..');
-        $('#modal_carga').modal('show');
         let claveCampana = $('select[name=campana_info]').val();
         let clavePlantel = $('select[name=plantel_info]').val();
         let claveNivel = $('select[name=nivel_info]').val();
@@ -60,7 +57,29 @@ function actualizarReferido() {
         let email_form = $('#email_form').val()
         let folio_crm = setFolioCrm();
 
-        let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" + claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
+        let longiTelefonoUno = telefono_uno.length;
+        let longiTelefonoDos = telefono_dos.length;
+        let longiCelularUno = celular_uno.length;
+        let longiCelularDos = celular_dos.length;
+
+        console.log(telefono_uno.length);
+        //&& (longiTelefonoDos > 0 && longiTelefonoDos < 10) && (longiCelularUno > 0 && longiCelularUno < 10) && (longiCelularDos > 0 && longiCelularDos < 10)
+
+        if ((longiTelefonoUno != 10)) {
+            Swal.fire({
+                title: "Error",
+                text: "Los telefonos introducidos deben tener una longitud minima y maxima de 10 digitos.",
+                icon: "error"
+            });
+        } else {
+
+            $('#text_carga').html('Guardando datos..');
+            $('#modal_carga').modal('show');
+
+            console.log("el registrio pasa sin problemas");
+        }
+
+        /* let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" + claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
         let xhr = new XMLHttpRequest();
 
         // 2. Configuración: solicitud GET para la URL /article/.../load
@@ -86,7 +105,7 @@ function actualizarReferido() {
 
                 }
             }
-        };
+        }; */
 
     }
 

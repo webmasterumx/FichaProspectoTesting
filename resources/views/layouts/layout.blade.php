@@ -78,6 +78,34 @@
         // fin - funciones de establecimiento
 
         cargarMenuPrincipal();
+
+        window.onload = function() {
+            var elementEtiquetaTelefonUno = document.getElementById('telefono_uno');
+            var elementEtiquetaTelefonoDos = document.getElementById('telefono_dos');
+            var elementEtiquetaCelularUno = document.getElementById('celular_uno');
+            var elementEtiquetaCelularDos = document.getElementById('celular_dos');
+
+            noPegar(elementEtiquetaTelefonUno);
+            noPegar(elementEtiquetaTelefonoDos);
+            noPegar(elementEtiquetaCelularUno);
+            noPegar(elementEtiquetaCelularDos);
+
+
+        }
+
+        function noCopiar(element) {
+            element.oncopy = function(e) {
+                e.preventDefault();
+                console.log("esta acción está prohibida");
+            }
+        }
+
+        function noPegar(element) {
+            element.onpaste = function(e) {
+                e.preventDefault();
+                console.log("esta acción está prohibida");
+            }
+        }
     </script>
     <script src="{{ asset('assets/js/bloqueos.js') }}"></script>
     <script src="{{ asset('assets/js/form.js') }}"></script>
