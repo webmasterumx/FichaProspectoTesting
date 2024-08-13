@@ -65,47 +65,69 @@ function actualizarReferido() {
         console.log(telefono_uno.length);
         //&& (longiTelefonoDos > 0 && longiTelefonoDos < 10) && (longiCelularUno > 0 && longiCelularUno < 10) && (longiCelularDos > 0 && longiCelularDos < 10)
 
-        if ((longiTelefonoUno != 10)) {
+        if ((longiTelefonoUno > 0 && longiTelefonoUno < 10)) {
             Swal.fire({
                 title: "Error",
-                text: "Los telefonos introducidos deben tener una longitud minima y maxima de 10 digitos.",
+                text: "Los números telefónicos introducidos deben de tener una longitud de 10 dígitos.",
                 icon: "error"
             });
-        } else {
+        }
+        else if ((longiTelefonoDos > 0 && longiTelefonoDos < 10)) {
+            Swal.fire({
+                title: "Error",
+                text: "Los números telefónicos introducidos deben de tener una longitud de 10 dígitos.",
+                icon: "error"
+            });
+        }
+        else if ((longiCelularUno > 0 && longiCelularUno < 10)) {
+            Swal.fire({
+                title: "Error",
+                text: "Los números telefónicos introducidos deben de tener una longitud de 10 dígitos.",
+                icon: "error"
+            });
+        }
+        else if ((longiCelularDos > 0 && longiCelularDos < 10)) {
+            Swal.fire({
+                title: "Error",
+                text: "Los números telefónicos introducidos deben de tener una longitud de 10 dígitos.",
+                icon: "error"
+            });
+        }
+        else {
 
             $('#text_carga').html('Guardando datos..');
-            $('#modal_carga').modal('show');
+            $('#modal_carga').modal('show'); 
 
             console.log("el registrio pasa sin problemas");
+
+            let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" + claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
+            let xhr = new XMLHttpRequest();
+
+            // 2. Configuración: solicitud GET para la URL /article/.../load
+            xhr.open('GET', ruta);
+
+            // 3. Envía la solicitud a la red
+            xhr.send();
+
+            // 4. Esto se llamará después de que la respuesta se reciba
+            xhr.onload = function () {
+                if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+                    console.log(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+                } else { // muestra el resultado
+                    console.log(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
+                    console.log("respuesta: " + xhr.response);
+
+                    if (xhr.response == true || xhr.response == 1) {
+                        $('#modal_carga').modal('hide');
+                        $('#messageConfirmacion').html('Datos del prospecto guardados con exito')
+                        $("#modal_confirmacion").modal("show");
+                    }
+                    else {
+
+                    }
+                }
+            };
         }
-
-        /* let ruta = setBaseURL() + "guardar/datos/prospecto?claveCampana=" + claveCampana + "&clavePlantel=" + clavePlantel + "&claveNivel=" + claveNivel + "&claveCarrera=" + claveCarrera + "&claveHorario=" + claveHorario + "&nombre_form=" + nombre_form + "&apellidos_form=" + apellidos_form + "&apellido_mat_form=" + apellido_mat_form + "&telefono_uno=" + telefono_uno + "&telefono_dos=" + telefono_dos + "&celular_uno=" + celular_uno + "&celular_dos=" + celular_dos + "&email_form=" + email_form + "&folio_crm=" + folio_crm;
-        let xhr = new XMLHttpRequest();
-
-        // 2. Configuración: solicitud GET para la URL /article/.../load
-        xhr.open('GET', ruta);
-
-        // 3. Envía la solicitud a la red
-        xhr.send();
-
-        // 4. Esto se llamará después de que la respuesta se reciba
-        xhr.onload = function () {
-            if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
-                console.log(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
-            } else { // muestra el resultado
-                console.log(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
-                console.log("respuesta: " + xhr.response);
-
-                if (xhr.response == true || xhr.response == 1) {
-                    $('#modal_carga').modal('hide');
-                    $('#messageConfirmacion').html('Datos del prospecto guardados con exito')
-                    $("#modal_confirmacion").modal("show");
-                }
-                else {
-
-                }
-            }
-        }; */
 
     }
 

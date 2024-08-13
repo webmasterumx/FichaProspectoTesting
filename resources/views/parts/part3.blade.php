@@ -1,7 +1,7 @@
 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
     <form id="formReferido" action="{{ route('guardar.referido') }}" method="GET" class="row">
         <div class="col-12 col-md-4 d-flex">
-            Telefono
+            Teléfono
             <div class="form-check">
                 <input class="ms-3 form-check-input" type="radio" id="radio_casa" name="telefonoReferidoType[]"
                     value="1" checked>
@@ -63,7 +63,7 @@
         <div class="col-12 col-md-4">
             <div class="mb-3 d-flex">
                 <input type="text" class="form-control text-center" id="telefonoReferido" name="telefonoReferido"
-                    placeholder="Tel. maximo 10 digitos" maxlength="10" minlength="10" onkeyup = "if(event.keyCode == 13) searchForTelefono()">
+                    placeholder="Tel. máximo 10 dígitos" maxlength="10" onkeyup = "if(event.keyCode == 13) searchForTelefono()">
                 <button onclick="searchForTelefono()" type="button" class="btn btn-primary">
                     <i id="iconoSearch" class="bi bi-search"></i>
                     <div id="iconoCargando" class="spinner-border d-none" style="height: 12px !important; width: 12px !important;" role="status">

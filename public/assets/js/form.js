@@ -29,8 +29,7 @@ $("#formReferido").validate({
         },
         telefonoReferido: {
             required: "campo requerido",
-            maxlength: "numero max de 10 digitos",
-            minlength: "numero min de 10 digitos"
+            maxlength: "numero max de 10 digitos"
         },
         emailReferido: {
             required: "campo requerido",
@@ -41,51 +40,62 @@ $("#formReferido").validate({
 
         let promotor = setPromotor();
         let ruta = setBaseURL() + 'get/infomacion/promotor/' + promotor;
+        let telefonoReferido = $('#telefonoReferido').val();
 
-        $.ajax({
-            url: ruta,
-            method: "GET",
-            dataType: 'json',
-        }).done(function (data) {
-            //console.log(data);
+        if (telefonoReferido.length < 10) {
+            Swal.fire({
+                title: "Error",
+                text: "El número telefónico introducido debe de tener una longitud de 10 dígitos.",
+                icon: "error"
+            });
+        } else {
+            $.ajax({
+                url: ruta,
+                method: "GET",
+                dataType: 'json',
+            }).done(function (data) {
+                //console.log(data);
 
-            if (data.puesto == 41 || data.puesto == 42) {
-                console.log("la peticion pasa normal");
+                if (data.puesto == 41 || data.puesto == 42) {
+                    console.log("la peticion pasa normal");
 
-                let promotor = setPromotor();
+                    let promotor = setPromotor();
 
-                agregarReferido(form, promotor);
-
-            } else {
-
-                console.log("se valida el combo");
-
-                let promotor = $('select[name=promotor_info]').val();
-
-                if (promotor != 0) {
-
-                    console.log('se agrega el referido pero hay que agregar la clave de promotor del comboo');
                     agregarReferido(form, promotor);
 
-
                 } else {
-                    console.log('se manda mensaje de error');
 
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        title: "Favor de seleccionar promotor que realiza la actividad.",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    console.log("se valida el combo");
+
+                    let promotor = $('select[name=promotor_info]').val();
+
+                    if (promotor != 0) {
+
+                        console.log('se agrega el referido pero hay que agregar la clave de promotor del comboo');
+                        agregarReferido(form, promotor);
+
+
+                    } else {
+                        console.log('se manda mensaje de error');
+
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Favor de seleccionar promotor que realiza la actividad.",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+
                 }
 
-            }
 
+            }).fail(function (e) {
+                console.log("Request: " + JSON.stringify(e));
+            });
+        }
 
-        }).fail(function (e) {
-            console.log("Request: " + JSON.stringify(e));
-        });
+        /* */
     }
 });
 

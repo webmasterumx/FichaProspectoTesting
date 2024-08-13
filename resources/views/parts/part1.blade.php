@@ -47,7 +47,7 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <x-input-form-general-tel name="celular_uno" id="celular_uno"
-                        placeholder="Telfono Celular 1"></x-input-form-general-tel>
+                        placeholder="Teléfono Celular 1"></x-input-form-general-tel>
                     <span id="etiqueta_celular_uno" class="input-group-text  text-white py-1"
                         id="celular_uno_label"></span>
                 </div>
@@ -55,7 +55,7 @@
             <div class="col-12 col-md-3">
                 <div class="input-group mb-3">
                     <x-input-form-general-tel name="celular_dos" id="celular_dos"
-                        placeholder="Telefono celular 2"></x-input-form-general-tel>
+                        placeholder="Teléfono celular 2"></x-input-form-general-tel>
                     <span id="etiqueta_celular_dos" class="input-group-text  text-white py-1"
                         id="celular_dos_label"></span>
                 </div>
