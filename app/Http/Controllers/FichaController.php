@@ -18,7 +18,11 @@ class FichaController extends Controller
     public function getInfoFichaProspecto($folio_crm, $promotor)
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
-        var_dump($infoProspecto);
+
+        $data = json_decode($infoProspecto);
+        var_dump($data['status']);
+
+        //var_dump($infoProspecto);
 
        /*  if (isset($infoProspecto['folioCRM'])) {
             if ($infoProspecto['folioCRM'] == 0) {
