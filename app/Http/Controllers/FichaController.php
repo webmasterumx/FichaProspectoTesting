@@ -19,7 +19,7 @@ class FichaController extends Controller
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        echo $infoProspecto;
+        var_dump($infoProspecto);
 
         //var_dump($infoProspecto);
 
