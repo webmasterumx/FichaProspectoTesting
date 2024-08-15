@@ -25,8 +25,9 @@ class FichaController extends Controller
         } else {
             //print('existe el prospecto falta validar el promotor <br>'); 
             $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
+            var_dump($validacionPromotor);
 
-            if ($validacionPromotor['claveUsuario'] != 0) {
+          /*   if ($validacionPromotor['claveUsuario'] != 0) {
                 //print('existe promotor <br>');
                 $infoPromotor = $validacionPromotor;
                 $cadenaFecha = $infoPromotor['fechaActual'];
@@ -43,7 +44,7 @@ class FichaController extends Controller
             } else {
                 //print('no existe promotor'); //retornar 2
                 return 2;
-            }
+            } */
         }
     }
 
