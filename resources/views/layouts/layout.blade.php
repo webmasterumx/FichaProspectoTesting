@@ -144,6 +144,8 @@
                         method: "GET",
                         dataType: 'json',
                     }).done(function(data) {
+                        console.log(data);
+                        
                         if (data == 1) {
                             // no existe prospecto
                             $("#modal_error_folio").modal("show");

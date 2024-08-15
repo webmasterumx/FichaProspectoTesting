@@ -46,7 +46,7 @@ class FichaController extends Controller
                             "fechaFormateada" => $fechaFormateada
                         );
 
-                        return response()->json($infoFinal);
+                        //return response()->json($infoFinal);
                     } else {
                         //print('no existe promotor'); //retornar 2
                         return 2;
