@@ -61,7 +61,11 @@ class PeticionesController extends Controller
     {
         $response = Http::get($this->base_url . 'oferta/planteles');
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function getNiveles($clavePlantel)
@@ -71,7 +75,11 @@ class PeticionesController extends Controller
             'clavePlantel' => $clavePlantel,
         ]);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function getCarreras($claveCampana, $clavePlantel, $claveNivel)
@@ -82,7 +90,11 @@ class PeticionesController extends Controller
             "claveNivel" => $claveNivel
         ]);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function getHorarios($claveCampana, $clavePlantel, $claveNivel, $claveCarrera)
@@ -94,7 +106,11 @@ class PeticionesController extends Controller
             "claveCarrera" => $claveCarrera
         ]);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function getCampanas($claveCampana)
@@ -103,7 +119,11 @@ class PeticionesController extends Controller
             "claveCampana" => $claveCampana
         ]);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function getConversacionesWhatsapp($folio_crm)
