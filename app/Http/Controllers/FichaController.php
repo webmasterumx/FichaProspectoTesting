@@ -19,11 +19,11 @@ class FichaController extends Controller
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        var_dump($infoProspecto);
+        //var_dump($infoProspecto);
 
         //var_dump($infoProspecto);
 
-       /*  if (isset($infoProspecto['folioCRM'])) {
+        if (isset($infoProspecto['folioCRM'])) {
             if ($infoProspecto['folioCRM'] == 0) {
                 //print(' no existe prospecto <br>'); //retornar 1
                 return 1;
@@ -53,14 +53,14 @@ class FichaController extends Controller
                         return 2;
                     }
                 } else {
-                    var_dump("infopromotor: ".$validacionPromotor);
+                    var_dump($validacionPromotor);
                     return 4;
                 }
             }
         } else {
-            var_dump("info prospect: ".$infoProspecto);
+            var_dump($infoProspecto);
             return 4;
-        } */
+        }
     }
 
     public function guardarDatosProspecto(Request $request)
