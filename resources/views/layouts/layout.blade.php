@@ -153,7 +153,7 @@
                         } else if (data == 4) {
                             console.log("error al cargar datos");
                             $('#modal_danger_carga_datos').modal('show');
-                            setTimeout('document.location.reload()', 5000);
+                            setTimeout('location.reload()', 5000);
                         } else {
                             // tratar info Prospecto
 
