@@ -49,12 +49,12 @@ class FichaController extends Controller
                         return 2;
                     }
                 } else {
-                    //var_dump($validacionPromotor);
+                    var_dump($validacionPromotor);
                     return 4;
                 }
             }
         } else {
-            //var_dump($infoProspecto);
+            var_dump($infoProspecto);
             return 4;
         }
     }
