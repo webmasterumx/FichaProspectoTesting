@@ -20,7 +20,7 @@ class FichaController extends Controller
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
         $data = json_decode($infoProspecto);
-        var_dump($data['status']);
+        var_dump($data);
 
         //var_dump($infoProspecto);
 
