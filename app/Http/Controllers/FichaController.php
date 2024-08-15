@@ -50,12 +50,12 @@ class FichaController extends Controller
                         return 2;
                     }
                 } else {
-                    var_dump("infopromotor: "+$validacionPromotor);
+                    var_dump("infopromotor: ".$validacionPromotor);
                     return 4;
                 }
             }
         } else {
-            var_dump("info prospect: "+$infoProspecto);
+            var_dump("info prospect: ".$infoProspecto);
             return 4;
         }
     }

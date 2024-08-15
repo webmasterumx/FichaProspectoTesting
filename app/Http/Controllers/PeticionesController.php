@@ -14,7 +14,7 @@ class PeticionesController extends Controller
 
     public function getFichaProspecto($folio_crm)
     {
-        $response = Http::post($this->base_url . 'ficha/prospecto', [
+        $response = Http::retry(3, 100)->post($this->base_url . 'ficha/prospecto', [
             'folioCRM' => $folio_crm,
         ]);
 
