@@ -149,7 +149,11 @@
                         } else if (data == 2) {
                             // no existe promotor
                             $('#modal_error_promotor').modal('show');
-                        } else {
+                        }
+                        else if (data == 4) {
+                            console.log("error al cargar datos");
+                        }
+                        else {
                             // tratar info Prospecto
 
                             let infoProspecto = data.infoProspecto;
