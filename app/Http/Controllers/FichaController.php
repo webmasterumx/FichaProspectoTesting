@@ -25,7 +25,7 @@ class FichaController extends Controller
         } else {
             //print('existe el prospecto falta validar el promotor <br>'); 
             $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
-            var_dump($validacionPromotor);
+            //var_dump($validacionPromotor);
 
             if (isset($validacionPromotor['claveUsuario'])) {
 
