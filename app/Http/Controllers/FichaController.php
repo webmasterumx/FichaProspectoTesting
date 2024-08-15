@@ -27,24 +27,31 @@ class FichaController extends Controller
             $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
             var_dump($validacionPromotor);
 
-          /*   if ($validacionPromotor['claveUsuario'] != 0) {
-                //print('existe promotor <br>');
-                $infoPromotor = $validacionPromotor;
-                $cadenaFecha = $infoPromotor['fechaActual'];
-                $fecha = date('Y-m-d', strtotime($cadenaFecha));
-                $fechaFormateada = SELF::formatearFecha($fecha);
+            if (isset($validacionPromotor['claveUsuario'])) {
 
-                $infoFinal = array(
-                    "infoProspecto" => $infoProspecto,
-                    "infoPromotor" => $infoPromotor,
-                    "fechaFormateada" => $fechaFormateada
-                );
+                if ($validacionPromotor['claveUsuario'] != 0) {
+                    //print('existe promotor <br>');
+                    $infoPromotor = $validacionPromotor;
+                    $cadenaFecha = $infoPromotor['fechaActual'];
+                    $fecha = date('Y-m-d', strtotime($cadenaFecha));
+                    $fechaFormateada = SELF::formatearFecha($fecha);
 
-                return response()->json($infoFinal);
+                    $infoFinal = array(
+                        "infoProspecto" => $infoProspecto,
+                        "infoPromotor" => $infoPromotor,
+                        "fechaFormateada" => $fechaFormateada
+                    );
+
+                    return response()->json($infoFinal);
+                } else {
+                    //print('no existe promotor'); //retornar 2
+                    return 2;
+                }
+
             } else {
-                //print('no existe promotor'); //retornar 2
-                return 2;
-            } */
+
+                return 4;
+            }
         }
     }
 
@@ -179,15 +186,13 @@ class FichaController extends Controller
     public function guardarBitacora(Request $request)
     {
 
-        if ($_REQUEST['date_bitacora'] == null || $_REQUEST['date_bitacora'] == "")  {
+        if ($_REQUEST['date_bitacora'] == null || $_REQUEST['date_bitacora'] == "") {
             //echo 'no hay fecha';
             $date = " ";
-        }
-        else{
+        } else {
             //echo 'si hay fecha';
             $date = date('Y-d-m', strtotime($_REQUEST['date_bitacora']));
-
-        }//
+        } //
 
         if ($_REQUEST['actividadProxima'] == 0) {
             $contacto = null;
@@ -215,7 +220,7 @@ class FichaController extends Controller
 
         //dd($valores);
         $envio = app(PeticionesController::class)->guardarBitacora($valores);
-        
+
         //var_dump($envio);
 
         if ($envio === true) {
