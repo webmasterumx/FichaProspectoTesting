@@ -19,43 +19,40 @@ class FichaController extends Controller
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        if ($infoProspecto['folioCRM']) {
-            if ($infoProspecto['folioCRM'] == 0) {
-                //print(' no existe prospecto <br>'); //retornar 1
-                return 1;
-            } else {
-                //print('existe el prospecto falta validar el promotor <br>'); 
-                $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
-                //var_dump($validacionPromotor);
+        var_dump(isset($infoProspecto['folioCRM']));
 
-                if (isset($validacionPromotor['claveUsuario'])) {
+        if ($infoProspecto['folioCRM'] == 0) {
+            //print(' no existe prospecto <br>'); //retornar 1
+            return 1;
+        } else {
+            //print('existe el prospecto falta validar el promotor <br>'); 
+            $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
+            //var_dump($validacionPromotor);
 
-                    if ($validacionPromotor['claveUsuario'] != 0) {
-                        //print('existe promotor <br>');
-                        $infoPromotor = $validacionPromotor;
-                        $cadenaFecha = $infoPromotor['fechaActual'];
-                        $fecha = date('Y-m-d', strtotime($cadenaFecha));
-                        $fechaFormateada = SELF::formatearFecha($fecha);
+            if (isset($validacionPromotor['claveUsuario'])) {
 
-                        $infoFinal = array(
-                            "infoProspecto" => $infoProspecto,
-                            "infoPromotor" => $infoPromotor,
-                            "fechaFormateada" => $fechaFormateada
-                        );
+                if ($validacionPromotor['claveUsuario'] != 0) {
+                    //print('existe promotor <br>');
+                    $infoPromotor = $validacionPromotor;
+                    $cadenaFecha = $infoPromotor['fechaActual'];
+                    $fecha = date('Y-m-d', strtotime($cadenaFecha));
+                    $fechaFormateada = SELF::formatearFecha($fecha);
 
-                        return response()->json($infoFinal);
-                    } else {
-                        //print('no existe promotor'); //retornar 2
-                        return 2;
-                    }
+                    $infoFinal = array(
+                        "infoProspecto" => $infoProspecto,
+                        "infoPromotor" => $infoPromotor,
+                        "fechaFormateada" => $fechaFormateada
+                    );
+
+                    return response()->json($infoFinal);
                 } else {
-
-                    return 4;
+                    //print('no existe promotor'); //retornar 2
+                    return 2;
                 }
+            } else {
+
+                return 4;
             }
-        }
-        else {
-            return 4;
         }
     }
 
