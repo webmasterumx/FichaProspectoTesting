@@ -52,12 +52,12 @@ class FichaController extends Controller
                         return 2;
                     }
                 } else {
-
+                    var_dump($validacionPromotor['claveUsuario']);
                     return 4;
                 }
             }
         } else {
-
+            var_dump($infoProspecto['folioCRM']);
             return 4;
         }
     }
