@@ -18,6 +18,7 @@ class FichaController extends Controller
     public function getInfoFichaProspecto($folio_crm, $promotor)
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
+        //var_dump($infoProspecto);
 
         if (isset($infoProspecto['folioCRM'])) {
             if ($infoProspecto['folioCRM'] == 0) {
@@ -43,18 +44,18 @@ class FichaController extends Controller
                             "fechaFormateada" => $fechaFormateada
                         );
 
-                        //return response()->json($infoFinal);
+                        return response()->json($infoFinal);
                     } else {
                         //print('no existe promotor'); //retornar 2
                         return 2;
                     }
                 } else {
-                    var_dump($validacionPromotor);
+                    var_dump("infopromotor: "+$validacionPromotor);
                     return 4;
                 }
             }
         } else {
-            var_dump($infoProspecto);
+            var_dump("info prospect: "+$infoProspecto);
             return 4;
         }
     }
