@@ -19,41 +19,46 @@ class FichaController extends Controller
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        var_dump(isset($infoProspecto['folioCRM']));
-        var_dump($infoProspecto['folioCRM']);
+        //var_dump(isset($infoProspecto['folioCRM']));
+        //var_dump($infoProspecto['folioCRM']);
 
-        if ($infoProspecto['folioCRM'] == 0) {
-            //print(' no existe prospecto <br>'); //retornar 1
-            return 1;
-        } else {
-            //print('existe el prospecto falta validar el promotor <br>'); 
-            $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
-            //var_dump($validacionPromotor);
-
-            if (isset($validacionPromotor['claveUsuario'])) {
-
-                if ($validacionPromotor['claveUsuario'] != 0) {
-                    //print('existe promotor <br>');
-                    $infoPromotor = $validacionPromotor;
-                    $cadenaFecha = $infoPromotor['fechaActual'];
-                    $fecha = date('Y-m-d', strtotime($cadenaFecha));
-                    $fechaFormateada = SELF::formatearFecha($fecha);
-
-                    $infoFinal = array(
-                        "infoProspecto" => $infoProspecto,
-                        "infoPromotor" => $infoPromotor,
-                        "fechaFormateada" => $fechaFormateada
-                    );
-
-                    return response()->json($infoFinal);
-                } else {
-                    //print('no existe promotor'); //retornar 2
-                    return 2;
-                }
+        if (isset($infoProspecto['folioCRM'])) {
+            if ($infoProspecto['folioCRM'] == 0) {
+                //print(' no existe prospecto <br>'); //retornar 1
+                return 1;
             } else {
+                //print('existe el prospecto falta validar el promotor <br>'); 
+                $validacionPromotor = app(PeticionesController::class)->optenerDatosPromotor($promotor);
+                //var_dump($validacionPromotor);
 
-                return 4;
+                if (isset($validacionPromotor['claveUsuario'])) {
+
+                    if ($validacionPromotor['claveUsuario'] != 0) {
+                        //print('existe promotor <br>');
+                        $infoPromotor = $validacionPromotor;
+                        $cadenaFecha = $infoPromotor['fechaActual'];
+                        $fecha = date('Y-m-d', strtotime($cadenaFecha));
+                        $fechaFormateada = SELF::formatearFecha($fecha);
+
+                        $infoFinal = array(
+                            "infoProspecto" => $infoProspecto,
+                            "infoPromotor" => $infoPromotor,
+                            "fechaFormateada" => $fechaFormateada
+                        );
+
+                        return response()->json($infoFinal);
+                    } else {
+                        //print('no existe promotor'); //retornar 2
+                        return 2;
+                    }
+                } else {
+
+                    return 4;
+                }
             }
+        } else {
+
+            return 4;
         }
     }
 
