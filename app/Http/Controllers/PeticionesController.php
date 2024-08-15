@@ -14,10 +14,12 @@ class PeticionesController extends Controller
 
     public function getFichaProspecto($folio_crm)
     {
-        echo $folio_crm;
+        
         $response = Http::post($this->base_url . 'ficha/prospecto', [
             'folioCRM' => $folio_crm,
         ]);
+
+        var_dump($response);
 
         return $response->json();
     }
