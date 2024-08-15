@@ -18,10 +18,14 @@ class PeticionesController extends Controller
             'folioCRM' => $folio_crm,
         ]);
 
-        $respuesta['status'] = $response->status();
-        $respuesta['data'] = $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } 
+        else{
+            return $response->json();
+        }
 
-        return response()->json($respuesta);
+        
     }
 
     public function validarPromotor($promotor)
