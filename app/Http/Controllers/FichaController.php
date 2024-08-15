@@ -19,9 +19,6 @@ class FichaController extends Controller
     {
         $infoProspecto = app(PeticionesController::class)->getFichaProspecto($folio_crm);
 
-        var_dump($folio_crm);
-        var_dump($promotor);
-
         if (isset($infoProspecto['folioCRM'])) {
             if ($infoProspecto['folioCRM'] == 0) {
                 //print(' no existe prospecto <br>'); //retornar 1
