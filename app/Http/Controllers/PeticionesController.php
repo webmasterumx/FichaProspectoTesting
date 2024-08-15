@@ -20,12 +20,9 @@ class PeticionesController extends Controller
 
         if ($response->status() != 200) {
             return $response->status();
-        } 
-        else{
+        } else {
             return $response->json();
         }
-
-        
     }
 
     public function validarPromotor($promotor)
@@ -45,7 +42,11 @@ class PeticionesController extends Controller
             'promotor' => $identificador,
         ]);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            return $response->status();
+        } else {
+            return $response->json();
+        }
     }
 
     public function guardarDatosGeneralesProspecto($valores)
