@@ -304,6 +304,8 @@ function agregarActividadBitacora(form, promotor) {
         } else { // muestra el resultado
             console.log(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
             console.log("respuesta: " + xhr.response);
+            console.log(xhr);
+            
 
             if (xhr.response == true || xhr.response == 1) {
                 $('#messageConfirmacion').html('Datos guardados con exito')
