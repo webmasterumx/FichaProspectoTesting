@@ -172,7 +172,7 @@ function getBitacora() {
         dataType: 'json',
     }).done(function (data) {
         //console.log(data);
-        $("#horarioContacto").append('<option value="0">Seleccion Horario de Contactación</option>');
+        $("#horarioContacto").append('<option value="">Seleccion Horario de Contactación</option>');
         //console.log(data.RangoContactacion); // imprimimos la respuesta
         for (let index = 0; index < data.RangoContactacion.length; index++) {
             $("#horarioContacto").append("<option value='" + data.RangoContactacion[index].id + "'>" + data.RangoContactacion[index].nombre + "</option>");
@@ -207,7 +207,13 @@ function getBitacora() {
         //console.log(data);
         //console.log(data.TipoContacto); // imprimimos la respuesta
         for (let index = 0; index < data.TipoContacto.length; index++) {
-            $("#actividadProxima").append("<option value='" + data.TipoContacto[index].tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
+            if (data.TipoContacto[index].tipoContacto == 0) {
+                tipoContacto = "";
+            }
+            else {
+                tipoContacto = data.TipoContacto[index].tipoContacto;
+            }
+            $("#actividadProxima").append("<option value='" + tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
         }
 
         $('#cargador_bitacora').addClass('d-none');

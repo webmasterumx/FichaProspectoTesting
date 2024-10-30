@@ -113,12 +113,21 @@ $("select[name=estatusDetalle]").change(function () {
         $('select[name=actividadProxima]').attr('disabled', true);
         $('#date_bitacora').attr('disabled', true);
         $('select[name=horarioContacto]').attr('disabled', true);
-    } 
+
+        $("#actividadProxima").removeClass("error");
+        $("#date_bitacora").removeClass("error");
+        $("#horarioContacto").removeClass("error");
+
+        $("#actividadProxima-error").hide();
+        $("#horarioContacto-error").hide();
+        $("#date_bitacora-error").hide();
+       
+    }
     if (validacion == 1) {
         $('select[name=actividadProxima]').attr('disabled', false);
         $('#date_bitacora').attr('disabled', false);
         $('select[name=horarioContacto]').attr('disabled', false);
-    } 
+    }
 
 
 });
