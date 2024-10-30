@@ -121,12 +121,64 @@ $("select[name=estatusDetalle]").change(function () {
         $("#actividadProxima-error").hide();
         $("#horarioContacto-error").hide();
         $("#date_bitacora-error").hide();
-       
+
+        $("#actividadProxima").empty();
+        $("#actividadProxima").append(`<option value="">Selecciona Próxima Actividad</option>`);
+        $("#date_bitacora").val("");
+        $("#horarioContacto").empty();
+        $("#horarioContacto").append(`<option value="">Seleccion Horario de Contactación</option>`);
+
+
     }
     if (validacion == 1) {
         $('select[name=actividadProxima]').attr('disabled', false);
         $('#date_bitacora').attr('disabled', false);
         $('select[name=horarioContacto]').attr('disabled', false);
+
+        $("#actividadProxima").empty();
+        //$("#actividadProxima").append(`<option value="">Selecciona Próxima Actividad</option>`);
+        $("#date_bitacora").val("");
+        $("#horarioContacto").empty();
+        //$("#horarioContacto").append(`<option value="">Seleccion Horario de Contactación</option>`);
+
+        let combo2 = setBaseURL() + "obtener/horariosContacto";
+        let combo4 = setBaseURL() + "obtener/actividadesProximas/" + 2
+
+        $.ajax({
+            url: combo4,
+            method: "GET",
+            dataType: 'json',
+        }).done(function (data) {
+            //console.log(data);
+            //console.log(data.TipoContacto); // imprimimos la respuesta
+            for (let index = 0; index < data.TipoContacto.length; index++) {
+                if (data.TipoContacto[index].tipoContacto == 0) {
+                    tipoContacto = "";
+                }
+                else {
+                    tipoContacto = data.TipoContacto[index].tipoContacto;
+                }
+                $("#actividadProxima").append("<option value='" + tipoContacto + "'>" + data.TipoContacto[index].Descripcion + "</option>");
+            }
+
+        }).fail(function (e) {
+            console.log("Request: " + JSON.stringify(e));
+        })
+
+        $.ajax({
+            url: combo2,
+            method: "GET",
+            dataType: 'json',
+        }).done(function (data) {
+            //console.log(data);
+            $("#horarioContacto").append('<option value="">Seleccion Horario de Contactación</option>');
+            //console.log(data.RangoContactacion); // imprimimos la respuesta
+            for (let index = 0; index < data.RangoContactacion.length; index++) {
+                $("#horarioContacto").append("<option value='" + data.RangoContactacion[index].id + "'>" + data.RangoContactacion[index].nombre + "</option>");
+            }
+        }).fail(function (e) {
+            console.log("Request: " + JSON.stringify(e));
+        })
     }
 
 
