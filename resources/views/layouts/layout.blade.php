@@ -78,7 +78,8 @@
 
         // fin - funciones de establecimiento
 
-        cargarMenuPrincipal();
+        //cargarMenuPrincipal();
+        cargarMenuTest()
 
         window.onload = function() {
             var elementEtiquetaTelefonUno = document.getElementById('telefono_uno');

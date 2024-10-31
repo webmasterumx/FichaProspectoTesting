@@ -172,7 +172,7 @@ function llenarComboPromotores() {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        console.log(data);
+        //console.log(data);
         const promotores = data.Cls_Promotores;
         let option_default = `<option value="0">Seleciona un promotor</option>`;
         if (promotores != undefined) {

@@ -56,7 +56,7 @@ function establecer_redes(listRedes) {
  * @param {*} nombre 
  */
 function establecer_color(nombre, ultimoEstatusDetalle) {
-    console.log(nombre);
+    //console.log(nombre);
     $('#status_detalle').html('' + ultimoEstatusDetalle);
 
     switch (nombre) {
@@ -144,16 +144,16 @@ function establecerNumeros(infoProspecto) {
 }
 
 function validarPuestoPromotor(infoPromotor) {
-    console.log(infoPromotor);
+    //console.log(infoPromotor);
 
     /**
      * Puestos 41 y 42 Agente o Supervisor Call Center
      */
     if (infoPromotor.puesto == 41 || infoPromotor.puesto == 42) {
-        console.log('no hay cambios en la ficha');
+        //console.log('no hay cambios en la ficha');
     }
     else {
-        console.log('se muestra el combo de promotor responsable');
+        //console.log('se muestra el combo de promotor responsable');
 
         $("#sectionCampaña").removeClass('col-md-4');
         $("#sectionPlantel").removeClass('col-md-4');

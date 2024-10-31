@@ -17,11 +17,15 @@ function llenar_combos(infoProspecto) {
 }
 
 function llenarComboCampañas(claveCampana) {
-    let ruta = setBaseURL() + 'obtener/campanas/0';
+
+    let base = "https://api-testing.unimexver.edu.mx/api/obtener/campanas/activas";
 
     $.ajax({
-        url: ruta,
-        method: "GET",
+        url: base,
+        method: "POST",
+        data: {
+            claveCampana: 0
+        },
         dataType: 'json',
     }).done(function (data) {
         const campañas = data.EntCampanaDTO;
@@ -46,11 +50,12 @@ function llenarComboCampañas(claveCampana) {
 
 }
 
+
 function llenaComboPlantel(clavePlantel) {
-    let ruta = setBaseURL() + 'get/planteles';
+    let base = "https://api-testing.unimexver.edu.mx/api/oferta/planteles"
 
     $.ajax({
-        url: ruta,
+        url: base,
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
@@ -104,11 +109,16 @@ function llenarComboNivel(clavePlantel, claveNivel) {
 }
 
 function llenarCombosCarrera(claveCampana, clavePlantel, claveNivel, claveCarrera) {
-    let ruta = setBaseURL() + 'obtener/carreras/' + claveCampana + '/' + clavePlantel + '/' + claveNivel;
+    let base = "https://api-testing.unimexver.edu.mx/api/obtener/carrera";
 
     $.ajax({
-        url: ruta,
-        method: "GET",
+        url: base,
+        method: "POST",
+        data: {
+            claveCampana : claveCampana,
+            clavePlantel : clavePlantel,
+            claveNivel : claveNivel
+        },
         dataType: 'json',
     }).done(function (data) {
         const carreras = data.Carrera;
@@ -133,11 +143,17 @@ function llenarCombosCarrera(claveCampana, clavePlantel, claveNivel, claveCarrer
 }
 
 function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrera, claveHorario) {
-    let ruta = setBaseURL() + 'obtener/horarios/' + claveCampana + '/' + clavePlantel + '/' + claveNivel + '/' + claveCarrera;
+    let base = "https://api-testing.unimexver.edu.mx/api/obtener/horario";
 
     $.ajax({
-        url: ruta,
-        method: "GET",
+        url: base,
+        method: "POST",
+        data: {
+            claveCampana : claveCampana,
+            clavePlantel : clavePlantel,
+            claveNivel : claveNivel,
+            claveCarrera : claveCarrera
+        },
         dataType: 'json',
     }).done(function (data) {
         const horarios = data.Horarios;
