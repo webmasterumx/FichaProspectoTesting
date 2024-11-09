@@ -169,7 +169,7 @@ function cargarMenuTest() {
 
             $("#listaMenus").append($("<li>").html(item));
 
-            crearSubmenus(element);
+            //crearSubmenus(element);
 
         }
 
