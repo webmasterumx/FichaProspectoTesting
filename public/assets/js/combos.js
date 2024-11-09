@@ -89,7 +89,7 @@ $("select[name=nivel_info]").change(function () {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        console.log(data);
+        //console.log(data);
         $("#carrera_info").empty();
         $("#carrera_info").append('<option value="" disabled selected >Selecciona un carrera</option>');
         if (data.length == 0) {
@@ -124,7 +124,7 @@ $("select[name=carrera_info]").change(function () {
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        console.log(data.Horarios);
+        //console.log(data.Horarios);
         if (data.Horarios.length > 0) {
             //hay array de carreras
             $("#horario_info").append(
