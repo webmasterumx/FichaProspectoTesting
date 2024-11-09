@@ -1,14 +1,55 @@
 // primer escuchador cambio de campaña
 $("select[name=campana_info]").change(function () {
+
     $('#campana_info_error').addClass('d-none');
+
+    //limpieza de los combos siguientes
+    $("#plantel_info").empty();
+    $("#plantel_info").append('<option value="" disabled selected>Seleciona un plantel</option>');
+    $("#nivel_info").empty();
+    $("#nivel_info").append('<option value="" disabled selected>Selecciona un nivel</option>');
+    $("#carrera_info").empty();
+    $("#carrera_info").append('<option value="" disabled selected>Selecciona un carrera</option>');
+    $("#horario_info").empty();
+    $("#horario_info").append('<option value="" disabled selected>Selecciona un horario</option>');
+
+    // se llena el combo de plantel
+    let base = "https://api-testing.unimexver.edu.mx/api/oferta/planteles"
+
+    $.ajax({
+        url: base,
+        method: "GET",
+        dataType: 'json',
+    }).done(function (data) {
+        $("#plantel_info").empty();
+        const plateles = data;
+        let option_default = `<option value="">Seleciona un plantel</option>`;
+        if (plateles != undefined) {
+            $("#plantel_info").append(option_default); //se establece el plantel por defecto
+            for (let index = 0; index < plateles.length; index++) { //recorrer el array de planteles
+                const element = plateles[index]; // se establece un elemento por plantel optenida
+                let option = `<option value="${element.clave}">${element.descrip}</option>`; //se establece la opcion por campaña
+                $("#plantel_info").append(option); // se inserta la platel de cada elemento
+            }
+        }
+        else {
+            $("#plantel_info").append(option_default);
+        }
+
+    }).fail(function (e) {
+        console.log("Request: " + JSON.stringify(e));
+    });
 });
 
 // escuchador de cambio de plantel se llena de nuevo el combo nivel y se resetan carrera y horario
 $("select[name=plantel_info]").change(function () {
     $('#plantel_info_error').addClass('d-none');
     $("#nivel_info").empty();
+    $("#nivel_info").append('<option value="" disabled selected>Selecciona un nivel</option>');
     $("#carrera_info").empty();
+    $("#carrera_info").append('<option value="" disabled selected>Selecciona un carrera</option>');
     $("#horario_info").empty();
+    $("#horario_info").append('<option value="" disabled selected>Selecciona un horario</option>');
 
     let plantel = $('select[name=plantel_info]').val();
 
@@ -18,7 +59,8 @@ $("select[name=plantel_info]").change(function () {
         dataType: 'json',
     }).done(function (data) {
         //console.log(data);
-        $("#nivel_info").append('<option value="">Selecciona un nivel</option>');
+        $("#nivel_info").empty();
+        $("#nivel_info").append('<option value="" disabled selected >Selecciona un nivel</option>');
         for (let index = 0; index < data.length; index++) {
             const element = data[index].clave;
             $("#nivel_info").append("<option value='" + data[index].clave +
@@ -33,7 +75,9 @@ $("select[name=plantel_info]").change(function () {
 $("select[name=nivel_info]").change(function () {
     $('#nivel_info_error').addClass('d-none');
     $("#carrera_info").empty();
+    $("#carrera_info").append('<option value="" disabled selected>Selecciona un carrera</option>');
     $("#horario_info").empty();
+    $("#horario_info").append('<option value="" disabled selected>Selecciona un horario</option>');
 
     let claveCampana = $('select[name=campana_info]').val();
     let clavePlantel = $('select[name=plantel_info]').val();
@@ -46,7 +90,8 @@ $("select[name=nivel_info]").change(function () {
         dataType: 'json',
     }).done(function (data) {
         console.log(data);
-        $("#carrera_info").append('<option value="">Selecciona un carrera</option>');
+        $("#carrera_info").empty();
+        $("#carrera_info").append('<option value="" disabled selected >Selecciona un carrera</option>');
         if (data.length == 0) {
             console.log('no hay carreras disponibles');
         } else if (data.Carrera.length > 0) {
@@ -83,7 +128,7 @@ $("select[name=carrera_info]").change(function () {
         if (data.Horarios.length > 0) {
             //hay array de carreras
             $("#horario_info").append(
-                '<option value="">Selecciona un horario</option>');
+                '<option value="" disabled selected>Selecciona un horario</option>');
             for (let index = 0; index < data.Horarios.length; index++) {
                 const element = data.Horarios[index];
                 //console.log(element);
@@ -92,7 +137,7 @@ $("select[name=carrera_info]").change(function () {
             }
         } else {
             $("#horario_info").append(
-                '<option value="">Selecciona un horario</option>');
+                '<option value="" disabled selected>Selecciona un horario</option>');
             $("#horario_info").append("<option value='" + data.Horarios.Horario + "'>" +
                 data.Horarios.Descripcion + "</option>")
         }

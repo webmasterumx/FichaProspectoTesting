@@ -28,13 +28,21 @@ function llenarComboCampañas(claveCampana) {
         },
         dataType: 'json',
     }).done(function (data) {
+        console.log(data);
+
         const campañas = data.EntCampanaDTO;
         let option_default = `<option value="">Seleciona una campaña</option>`;
         if (campañas != undefined) {
             $("#campana_info").append(option_default); //se establece la campaña por defecto
-            for (let index = 0; index < campañas.length; index++) { //recorrer el array de campañas
-                const element = campañas[index]; // se establece un elemento por campaña optenida
-                let option = `<option value="${element.Campana}">${element.Nombre}</option>`; //se establece la opcion por campaña
+
+            if (campañas.Campana == undefined || campañas.Campana == null) {
+                for (let index = 0; index < campañas.length; index++) { //recorrer el array de campañas
+                    const element = campañas[index]; // se establece un elemento por campaña optenida
+                    let option = `<option value="${element.Campana}">${element.Nombre}</option>`; //se establece la opcion por campaña
+                    $("#campana_info").append(option); // se inserta la campaña de cada elemen  to
+                }
+            } else {
+                let option = `<option value="${campañas.Campana}">${campañas.Nombre}</option>`; //se establece la opcion por campaña
                 $("#campana_info").append(option); // se inserta la campaña de cada elemen  to
             }
         }
@@ -115,9 +123,9 @@ function llenarCombosCarrera(claveCampana, clavePlantel, claveNivel, claveCarrer
         url: base,
         method: "POST",
         data: {
-            claveCampana : claveCampana,
-            clavePlantel : clavePlantel,
-            claveNivel : claveNivel
+            claveCampana: claveCampana,
+            clavePlantel: clavePlantel,
+            claveNivel: claveNivel
         },
         dataType: 'json',
     }).done(function (data) {
@@ -149,22 +157,31 @@ function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrer
         url: base,
         method: "POST",
         data: {
-            claveCampana : claveCampana,
-            clavePlantel : clavePlantel,
-            claveNivel : claveNivel,
-            claveCarrera : claveCarrera
+            claveCampana: claveCampana,
+            clavePlantel: clavePlantel,
+            claveNivel: claveNivel,
+            claveCarrera: claveCarrera
         },
         dataType: 'json',
     }).done(function (data) {
+        console.log(data);
+
         const horarios = data.Horarios;
         let option_default = `<option value="">Seleciona un Horario</option>`;
         if (horarios != undefined) {
             $("#horario_info").append(option_default); //se establece la campaña por defecto
-            for (let index = 0; index < horarios.length; index++) { //recorrer el array de campañas
-                const element = horarios[index]; // se establece un elemento por campaña optenida
-                let option = `<option value="${element.Horario}">${element.Descripcion}</option>`; //se establece la opcion por campaña
+
+            if (horarios.Clave_turno == undefined || horarios.Clave_turno == null) {
+                for (let index = 0; index < horarios.length; index++) { //recorrer el array de campañas
+                    const element = horarios[index]; // se establece un elemento por campaña optenida
+                    let option = `<option value="${element.Horario}">${element.Descripcion}</option>`; //se establece la opcion por campaña
+                    $("#horario_info").append(option); // se inserta la campaña de cada elemen  to
+                }
+            } else {
+                let option = `<option value="${horarios.Horario}">${horarios.Descripcion}</option>`; //se establece la opcion por campaña
                 $("#horario_info").append(option); // se inserta la campaña de cada elemen  to
             }
+
         }
         else {
             $("#horario_info").append(option_default);
