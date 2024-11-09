@@ -215,7 +215,7 @@ function crearSubmenus(elemento) {
                         item = item + `
                             <div class="dropend">
                                 <a id="menu_${element.id_menu}" data-id="${element.id_menu}" class="dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    onmouseover="submenus(this)">
+                                    onclick="submenus(this)">
                                     ${element.descripcion}
                                 </a>
                                 <div id="subMenu_${element.id_menu}" class="dropdown-menu">

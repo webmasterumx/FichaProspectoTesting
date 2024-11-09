@@ -332,5 +332,5 @@ function agregarActividadBitacora(form, promotor) {
         console.log("Solicitud fallida");
     };
 
-    form.reset();
+    form.reset(); 
 }

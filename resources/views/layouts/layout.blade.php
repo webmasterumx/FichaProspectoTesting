@@ -146,7 +146,7 @@
                         dataType: 'json',
                     }).done(function(data) {
                         console.log(data);
-                        
+
                         if (data == 1) {
                             // no existe prospecto
                             $("#modal_error_folio").modal("show");
@@ -210,21 +210,56 @@
                             $('#editar_prospecto').addClass('d-none');
                             $('#mensajes_whatsapp').removeClass('d-none');
 
-                            for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
-                                cont = index + 1;
-                                if (cont % 2 !== 0) {
-                                    //numero inpar
-                                    style = "background-color:white !important;";
-                                }
-                                if (cont % 2 === 0) {
-                                    //numero par
-                                    style = "background-color:#D3DFE8 !important;";
-                                }
-                                const element = data.Cls_MensajesWhatsapp[index];
+                            if (data.Cls_MensajesWhatsapp.nombreMW == undefined || data.Cls_MensajesWhatsapp.nombreMW ==
+                                null) {
+                                for (let index = 0; index < data.Cls_MensajesWhatsapp.length; index++) {
+                                    cont = index + 1;
+                                    if (cont % 2 !== 0) {
+                                        //numero inpar
+                                        style = "background-color:white !important;";
+                                    }
+                                    if (cont % 2 === 0) {
+                                        //numero par
+                                        style = "background-color:#D3DFE8 !important;";
+                                    }
+                                    const element = data.Cls_MensajesWhatsapp[index];
 
-                                //console.log(element);
+                                    //console.log(element);
 
-                                switch (element.sentimientoMW) {
+                                    switch (element.sentimientoMW) {
+                                        case "Normal":
+                                            caritaBg = "&#128512;";
+                                            break;
+                                        case "Triste":
+                                            caritaBg = "&#128543;";
+                                            break;
+                                        case "Enojado":
+                                            caritaBg = " &#128545;";
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+
+                                    let fila = `
+                                    <tr>
+                                        <td style="${style}">${element.fechaMW}</td>
+                                        <td style="${style}">${element.tipo_usuarioMW}</td>
+                                        <td style="${style}">${element.nombreMW}</td>
+                                        <td style="${style}">${element.detalleMW}</td>
+                                        <td style="${style}">${element.estatus_conversacionMW}</td>
+                                        <td style="${style}">${caritaBg}</td>
+                                    </tr>
+                                    `;
+                                    $('#conversaciones tbody').append(fila);
+                                    $('#estaus_conversacion').html(element.estatus_conversacionMW);
+
+                                }
+                            } else {
+
+                                style = "background-color:white !important;";
+                                
+                                switch (data.Cls_MensajesWhatsapp.sentimientoMW) {
                                     case "Normal":
                                         caritaBg = "&#128512;";
                                         break;
@@ -241,18 +276,20 @@
 
                                 let fila = `
                                     <tr>
-                                        <td style="${style}">${element.fechaMW}</td>
-                                        <td style="${style}">${element.tipo_usuarioMW}</td>
-                                        <td style="${style}">${element.nombreMW}</td>
-                                        <td style="${style}">${element.detalleMW}</td>
-                                        <td style="${style}">${element.estatus_conversacionMW}</td>
+                                        <td style="${style}">${data.Cls_MensajesWhatsapp.fechaMW}</td>
+                                        <td style="${style}">${data.Cls_MensajesWhatsapp.tipo_usuarioMW}</td>
+                                        <td style="${style}">${data.Cls_MensajesWhatsapp.nombreMW}</td>
+                                        <td style="${style}">${data.Cls_MensajesWhatsapp.detalleMW}</td>
+                                        <td style="${style}">${data.Cls_MensajesWhatsapp.estatus_conversacionMW}</td>
                                         <td style="${style}">${caritaBg}</td>
                                     </tr>
                                 `;
-                                $('#conversaciones tbody').append(fila);
-                                $('#estaus_conversacion').html(element.estatus_conversacionMW);
 
+                                $('#conversaciones tbody').append(fila);
+                                $('#estaus_conversacion').html(data.Cls_MensajesWhatsapp.estatus_conversacionMW);
                             }
+
+
 
                         }
 
