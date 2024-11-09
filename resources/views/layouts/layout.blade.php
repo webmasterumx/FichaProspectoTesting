@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <title>Ficha Prospecto</title>
     <link rel="shortcut icon" href="https://unimexver.edu.mx/favicon.webp" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -258,7 +262,7 @@
                             } else {
 
                                 style = "background-color:white !important;";
-                                
+
                                 switch (data.Cls_MensajesWhatsapp.sentimientoMW) {
                                     case "Normal":
                                         caritaBg = "&#128512;";
