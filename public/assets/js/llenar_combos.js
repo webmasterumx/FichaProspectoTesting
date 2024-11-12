@@ -31,7 +31,7 @@ function llenarComboCampañas(claveCampana) {
         console.log(data);
 
         const campañas = data.EntCampanaDTO;
-        let option_default = `<option value="">Seleciona una campaña</option>`;
+        let option_default = `<option value="" disabled selected >Seleciona una campaña</option>`;
         if (campañas != undefined) {
             $("#campana_info").append(option_default); //se establece la campaña por defecto
 
@@ -58,7 +58,6 @@ function llenarComboCampañas(claveCampana) {
 
 }
 
-
 function llenaComboPlantel(clavePlantel) {
     let base = "https://api-testing.unimexver.edu.mx/api/oferta/planteles"
 
@@ -68,7 +67,7 @@ function llenaComboPlantel(clavePlantel) {
         dataType: 'json',
     }).done(function (data) {
         const plateles = data;
-        let option_default = `<option value="">Seleciona un plantel</option>`;
+        let option_default = `<option value="" disabled selected >Seleciona un plantel</option>`;
         if (plateles != undefined) {
             $("#plantel_info").append(option_default); //se establece el plantel por defecto
             for (let index = 0; index < plateles.length; index++) { //recorrer el array de planteles
@@ -96,7 +95,7 @@ function llenarComboNivel(clavePlantel, claveNivel) {
         dataType: 'json',
     }).done(function (data) {
         const niveles = data;
-        let option_default = `<option value="">Seleciona un Nivel</option>`;
+        let option_default = `<option value="" disabled selected >Seleciona un Nivel</option>`;
         if (niveles != undefined) {
             $("#nivel_info").append(option_default); //se establece la campaña por defecto
             for (let index = 0; index < niveles.length; index++) { //recorrer el array de campañas
@@ -130,7 +129,7 @@ function llenarCombosCarrera(claveCampana, clavePlantel, claveNivel, claveCarrer
         dataType: 'json',
     }).done(function (data) {
         const carreras = data.Carrera;
-        let option_default = `<option value="">Seleciona una Carrera</option>`;
+        let option_default = `<option value="" disabled selected>Seleciona una Carrera</option>`;
         if (carreras != undefined) {
             $("#carrera_info").append(option_default); //se establece la campaña por defecto
             for (let index = 0; index < carreras.length; index++) { //recorrer el array de campañas
@@ -167,7 +166,7 @@ function llenarComboHorarios(claveCampana, clavePlantel, claveNivel, claveCarrer
         console.log(data);
 
         const horarios = data.Horarios;
-        let option_default = `<option value="">Seleciona un Horario</option>`;
+        let option_default = `<option value="" disabled selected>Seleciona un Horario</option>`;
         if (horarios != undefined) {
             $("#horario_info").append(option_default); //se establece la campaña por defecto
 
