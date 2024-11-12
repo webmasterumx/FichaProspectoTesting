@@ -4,8 +4,6 @@ $("select[name=campana_info]").change(function () {
     $('#campana_info_error').addClass('d-none');
 
     //limpieza de los combos siguientes
-    $("#plantel_info").empty();
-    $("#plantel_info").append('<option value="" disabled selected>Seleciona un plantel</option>');
     $("#nivel_info").empty();
     $("#nivel_info").append('<option value="" disabled selected>Selecciona un nivel</option>');
     $("#carrera_info").empty();
@@ -13,32 +11,25 @@ $("select[name=campana_info]").change(function () {
     $("#horario_info").empty();
     $("#horario_info").append('<option value="" disabled selected>Selecciona un horario</option>');
 
-    // se llena el combo de plantel
-    let base = "https://api-testing.unimexver.edu.mx/api/oferta/planteles"
+    let plantel = $('select[name=plantel_info]').val();
 
     $.ajax({
-        url: base,
+        url: setBaseURL() + "get/niveles/" + plantel,
         method: "GET",
         dataType: 'json',
     }).done(function (data) {
-        $("#plantel_info").empty();
-        const plateles = data;
-        let option_default = `<option value="">Seleciona un plantel</option>`;
-        if (plateles != undefined) {
-            $("#plantel_info").append(option_default); //se establece el plantel por defecto
-            for (let index = 0; index < plateles.length; index++) { //recorrer el array de planteles
-                const element = plateles[index]; // se establece un elemento por plantel optenida
-                let option = `<option value="${element.clave}">${element.descrip}</option>`; //se establece la opcion por campaña
-                $("#plantel_info").append(option); // se inserta la platel de cada elemento
-            }
+        //console.log(data);
+        $("#nivel_info").empty();
+        $("#nivel_info").append('<option value="" disabled selected >Selecciona un nivel</option>');
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index].clave;
+            $("#nivel_info").append("<option value='" + data[index].clave +
+                "'>" + data[index].descrip + "</option>");
         }
-        else {
-            $("#plantel_info").append(option_default);
-        }
-
     }).fail(function (e) {
         console.log("Request: " + JSON.stringify(e));
-    });
+    })
+
 });
 
 // escuchador de cambio de plantel se llena de nuevo el combo nivel y se resetan carrera y horario
