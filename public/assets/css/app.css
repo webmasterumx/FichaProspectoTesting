@@ -46,9 +46,9 @@ select {
     margin-left: 1em;
 }
 
-.dropdown .dropdown-menu {
+/* .dropdown .dropdown-menu {
     display: none;
-}
+} */
 
  .dropdown:hover>.dropdown-menu,
 .dropend:hover>.dropdown-menu {
@@ -67,7 +67,7 @@ select {
     .dropend .dropdown-toggle {
         margin-left: 0.5em;
     }
-}
+} 
 
 .error{
     color: red;
