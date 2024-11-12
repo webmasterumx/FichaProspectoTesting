@@ -79,7 +79,7 @@ function submenus(elemento) {
                                     onclick="submenus(this)">
                                     ${element.descripcion}
                                 </a>
-                                <div id="subMenu_${element.id_menu}" class="dropdown-menu" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
+                                <div id="subMenu_${element.id_menu}" class="dropdown-menu">
                                     
                                 </div>
                             </div>
@@ -218,7 +218,7 @@ function crearSubmenus(elemento) {
                                     onclick="submenus(this)">
                                     ${element.descripcion}
                                 </a>
-                                <div id="subMenu_${element.id_menu}" class="dropdown-menu" onmouseout="eliminarSubmenus('#subMenu_${element.id_menu}')">
+                                <div id="subMenu_${element.id_menu}" class="dropdown-menu">
                                     
                                 </div>
                             </div>
